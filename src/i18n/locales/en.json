@@ -1,4 +1,10 @@
 {
+  "locales": {
+    "english": "English",
+    "swedish": "Svenska",
+    "en": "en",
+    "sv": "sv"
+  },
   "menu": {
     "start": "Home",
     "gallery": "Gallery",
@@ -7,6 +13,8 @@
     "contact": "Contact",
     "links": "Links"
   },
-  "line2": "Dolor amet",
+  "header": {
+    "copyright": "Copyright © 2009-{{thisYear}}\n Tobias Bergstedt (Handmade by Bergstedt)"
+  },
   "line3": "Est aleacta"
 }

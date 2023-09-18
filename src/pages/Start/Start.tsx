@@ -44,7 +44,7 @@ const Start = (): JSX.Element => {
           hamster of them all. And to do that, we're going to need <b>YOUR</b>{' '}
           help.{' '}
         </p>
-        <p>{t('line2.part2')}</p>
+        <p>{t('line3')}</p>
       </div>
 
       {/* <div className="info-box">

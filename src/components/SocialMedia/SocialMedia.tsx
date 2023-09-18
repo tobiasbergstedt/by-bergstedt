@@ -1,10 +1,10 @@
-import styles from "./SocialMedia.module.scss";
-import clsx from "clsx";
+import styles from './SocialMedia.module.scss';
+import clsx from 'clsx';
 
-import { ReactComponent as FbIcon } from "../../assets/icons/fb.svg";
-import { ReactComponent as IgIcon } from "../../assets/icons/ig.svg";
-import { ReactComponent as GitIcon } from "../../assets/icons/github.svg";
-import { Link } from "react-router-dom";
+import { ReactComponent as FbIcon } from '../../assets/icons/fb.svg';
+import { ReactComponent as IgIcon } from '../../assets/icons/ig.svg';
+import { ReactComponent as GitIcon } from '../../assets/icons/github.svg';
+import { Link } from 'react-router-dom';
 
 interface SocialMediaProps {
   isDesktop: boolean;
@@ -23,15 +23,15 @@ const SocialMedia = ({ isDesktop }: SocialMediaProps): JSX.Element => {
   const navLinks = [
     {
       asset: <FbIcon />,
-      link: "fb://profile/bybergstedt",
+      link: 'fb://profile/bybergstedt',
     },
     {
       asset: <IgIcon />,
-      link: "instagram://user?username=bybergstedt",
+      link: 'instagram://user?username=bybergstedt',
     },
     {
       asset: <GitIcon />,
-      link: "shop",
+      link: 'shop',
     },
   ];
 

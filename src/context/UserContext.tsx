@@ -5,10 +5,11 @@ import React, {
   type ReactNode,
   type Dispatch,
   type SetStateAction,
-} from "react";
-import { local } from "../utils/storage";
-import { LANGUAGE_CHOSEN } from "../config/constants";
-import { setLanguage } from "../i18n/i18n";
+} from 'react';
+import { local } from '../utils/storage';
+import { LANGUAGE_CHOSEN } from '../config/constants';
+import { setLanguage } from '../i18n/i18n';
+import { useTranslation } from 'react-i18next';
 
 interface UserContextType {
   languageChosen: string | null;
@@ -22,9 +23,10 @@ interface UserProviderProps {
 }
 
 const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
+  const { t } = useTranslation();
   const [languageChosen, setLanguageChosen] = useState<string | null>(() => {
     const storedLanguage = local.read(LANGUAGE_CHOSEN) as string | null;
-    return storedLanguage ?? "Svenska";
+    return storedLanguage ?? t('locales.swedish');
   });
 
   // Update localStorage whenever languageChosen changes.
@@ -37,11 +39,11 @@ const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
   useEffect(() => {
     if (
       local.read(LANGUAGE_CHOSEN) !== null &&
-      local.read(LANGUAGE_CHOSEN) === "English"
+      local.read(LANGUAGE_CHOSEN) === t('locales.english')
     ) {
-      setLanguage("en");
+      setLanguage(t('locales.en'));
     } else {
-      setLanguage("sv");
+      setLanguage(t('locales.sv'));
     }
   }, []);
 

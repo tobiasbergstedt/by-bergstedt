@@ -1,4 +1,10 @@
 {
+  "locales": {
+    "english": "English",
+    "swedish": "Svenska",
+    "en": "en",
+    "sv": "sv"
+  },
   "menu": {
     "start": "Startsida",
     "gallery": "Galleri",
@@ -7,9 +13,8 @@
     "contact": "Kontakt",
     "links": "Länkar"
   },
-  "line2": {
-    "part1": "Alltså",
-    "part2": "Vad"
+  "header": {
+    "copyright": "Copyright © 2009-{{thisYear}}\n Tobias Bergstedt (Handmade by Bergstedt)"
   },
   "line3": "Att använda"
 }
