@@ -1,13 +1,13 @@
-import { useEffect } from "react";
-import "./App.scss";
-import { Navigate, Routes, Route } from "react-router-dom";
-import Start from "./components/start/Start";
-import NotFound from "./components/notfound/NotFound";
-import Header from "./components/header/Header";
-import MyFooter from "./components/footer/MyFooter";
-import useBreakpoint, { DESKTOP } from "./hooks/useBreakpoint";
-import SocialMedia from "./components/SocialMedia/SocialMedia";
-import { UserProvider } from "./context/UserContext";
+import { useEffect } from 'react';
+import './App.scss';
+import { Navigate, Routes, Route } from 'react-router-dom';
+import Start from './pages/Start/Start';
+import NotFound from './pages/NotFound/NotFound';
+import Header from './components/Header/Header';
+import MyFooter from './components/Footer/Footer';
+import useBreakpoint, { DESKTOP } from './hooks/useBreakpoint';
+import SocialMedia from './components/SocialMedia/SocialMedia';
+import { UserProvider } from './context/UserContext';
 // import { useRecoilState } from 'recoil'
 // import allHamstersAtom from './atoms/Hamsters'
 // import { fixUrl } from './utils'

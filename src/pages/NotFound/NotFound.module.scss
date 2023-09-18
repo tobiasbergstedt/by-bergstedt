@@ -1,0 +1,19 @@
+@import '../../utils.scss';
+
+.notFound {
+  min-height: calc(
+    100vh - var(--header-height-mobile) - var(--footer-height) - 2 *
+      var(--main-padding-height-mobile)
+  );
+  padding: var(--main-padding-height-mobile) var(--main-padding-width-mobile);
+  color: var(--nav-hover-bg);
+
+  @include is-desktop {
+    min-height: calc(
+      100vh - var(--header-height-desktop) - var(--footer-height) - 2 *
+        var(--main-padding-height-desktop)
+    );
+    padding: var(--main-padding-height-desktop)
+      var(--main-padding-width-desktop);
+  }
+}

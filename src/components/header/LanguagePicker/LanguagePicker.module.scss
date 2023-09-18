@@ -1,4 +1,4 @@
-@import '../../utils.scss';
+@import '../../../utils.scss';
 
 .languagePickerContainer {
   position: absolute;
@@ -15,6 +15,11 @@
   svg {
     max-height: 24px;
     width: auto;
+  }
+  
+  &.isMobile {
+    right: 96px;
+    min-width: 112px;
   }
 
   &:hover,
@@ -123,9 +128,19 @@
       }
     }
   }
+
+  &.isMobile {
+    min-width: 112px;
+    padding: 16px 8px;
+
+    input {
+      margin-right: 6px;
+    }
+  }
 }
 
 .isInvisible {
+  top: 32px;
   padding-top: 0;
   padding-bottom: 0;
   opacity: 0;

@@ -1,23 +1,20 @@
-import styles from "./LanguagePicker.module.scss";
-import GlobeIcon from "../../assets/icons/globe.svg";
-import { ReactComponent as ArrowDownIcon } from "../../assets/icons/arrowdown.svg";
-import { useContext, useState } from "react";
-import clsx from "clsx";
-import { UserContext } from "../../context/UserContext";
-import { i18n } from "../../i18n/i18n";
+import styles from './LanguagePicker.module.scss';
+import GlobeIcon from '../../../assets/icons/globe.svg';
+import { ReactComponent as ArrowDownIcon } from '../../../assets/icons/arrowdown.svg';
+import { useContext, useState } from 'react';
+import clsx from 'clsx';
+import { UserContext } from '../../../context/UserContext';
+import { i18n } from '../../../i18n/i18n';
+import useBreakpoint, { DESKTOP } from '../../../hooks/useBreakpoint';
 
-interface LanguagePickerProps {
-  isDesktop: boolean;
-}
-
-const LanguagePicker = ({ isDesktop }: LanguagePickerProps): JSX.Element => {
+const LanguagePicker = (): JSX.Element => {
   const { languageChosen, setLanguageChosen } = useContext(UserContext);
   const [isLanguagePickerOpen, setIsLanguagePickerOpen] =
     useState<boolean>(false);
 
-  console.log("Language: ", languageChosen);
-
-  const languages = ["Svenska", "English"];
+  const breakpoint = useBreakpoint();
+  const isDesktop = breakpoint === DESKTOP;
+  const languages = ['Svenska', 'English'];
 
   const toggleLanguagePicker = (): void => {
     setIsLanguagePickerOpen(!isLanguagePickerOpen);
@@ -26,10 +23,10 @@ const LanguagePicker = ({ isDesktop }: LanguagePickerProps): JSX.Element => {
   const selectLanguage = async (language: string): Promise<void> => {
     setLanguageChosen(language);
     setIsLanguagePickerOpen(false); // Close the language picker when a language is selected
-    if (language === "Svenska") {
-      await i18n.changeLanguage("sv");
-    } else if (language === "English") {
-      await i18n.changeLanguage("en");
+    if (language === 'Svenska') {
+      await i18n.changeLanguage('sv');
+    } else if (language === 'English') {
+      await i18n.changeLanguage('en');
     }
   };
 
@@ -37,12 +34,8 @@ const LanguagePicker = ({ isDesktop }: LanguagePickerProps): JSX.Element => {
     <div
       className={clsx(styles.languagePickerContainer, {
         [styles.isLanguagePickerOpen]: isLanguagePickerOpen,
+        [styles.isMobile]: !isDesktop,
       })}
-      // onClick={(e) => {
-      //   e.stopPropagation();
-      //   setIsLanguagePickerOpen(!isLanguagePickerOpen);
-      //   console.log("Clicked");
-      // }}
     >
       <div className={styles.languagePicker} onClick={toggleLanguagePicker}>
         <div
@@ -53,7 +46,9 @@ const LanguagePicker = ({ isDesktop }: LanguagePickerProps): JSX.Element => {
           }}
         />
         <span className={styles.languageChosenWrapper}>
-          <span className={styles.languageChosen}>{languageChosen}</span>
+          <span className={styles.languageChosen}>
+            {isDesktop ? languageChosen : languageChosen.slice(0, 2)}
+          </span>
           <span
             className={clsx(styles.arrowDown, {
               [styles.isRotated]: isLanguagePickerOpen,
@@ -66,6 +61,7 @@ const LanguagePicker = ({ isDesktop }: LanguagePickerProps): JSX.Element => {
       <ul
         className={clsx(styles.languagesList, {
           [styles.isInvisible]: !isLanguagePickerOpen,
+          [styles.isMobile]: !isDesktop,
         })}
       >
         {languages.map((language: string) => (

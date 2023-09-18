@@ -1,13 +1,13 @@
-import styles from "./Header.module.scss";
+import styles from './Header.module.scss';
 // import { fixUrl } from '../../utils'
-import ByBergstedtLogo from "../../assets/icons/logo2.svg";
+import ByBergstedtLogo from '../../assets/icons/logo2.svg';
 
-import { useState } from "react";
-import useBreakpoint, { DESKTOP } from "../../hooks/useBreakpoint";
-import { NavLink } from "react-router-dom";
-import SocialMedia from "../SocialMedia/SocialMedia";
-import LanguagePicker from "../languagePicker/LanguagePicker";
-import { useTranslation } from "react-i18next";
+import { useState } from 'react';
+import useBreakpoint, { DESKTOP } from '../../hooks/useBreakpoint';
+import { NavLink } from 'react-router-dom';
+import SocialMedia from '../SocialMedia/SocialMedia';
+import LanguagePicker from './LanguagePicker/LanguagePicker';
+import { useTranslation } from 'react-i18next';
 
 interface NavLinkItem {
   title: string;
@@ -23,28 +23,28 @@ const Header = (): JSX.Element => {
 
   const navLinks = [
     {
-      title: t("menu.start"),
-      link: "/",
+      title: t('menu.start'),
+      link: '/',
     },
     {
-      title: t("menu.gallery"),
-      link: "gallery",
+      title: t('menu.gallery'),
+      link: 'gallery',
     },
     {
-      title: t("menu.shop"),
-      link: "shop",
+      title: t('menu.shop'),
+      link: 'shop',
     },
     {
-      title: t("menu.about"),
-      link: "about",
+      title: t('menu.about'),
+      link: 'about',
     },
     {
-      title: t("menu.contact"),
-      link: "contact",
+      title: t('menu.contact'),
+      link: 'contact',
     },
     {
-      title: t("menu.links"),
-      link: "links",
+      title: t('menu.links'),
+      link: 'links',
     },
   ];
 
@@ -76,9 +76,9 @@ const Header = (): JSX.Element => {
         <NavLink to="/" className={`${styles.logo}`}>
           <img src={ByBergstedtLogo} alt="Logo" className={styles.logoImg} />
         </NavLink>
-        {isDesktop && <LanguagePicker isDesktop />}
+        <LanguagePicker />
         <ul
-          className={`${styles.navMenu} ${isNavExpanded ? styles.active : ""}`}
+          className={`${styles.navMenu} ${isNavExpanded ? styles.active : ''}`}
         >
           {navLinks.map((item, index) => (
             <ItemComponent key={index} item={item} />
@@ -87,7 +87,7 @@ const Header = (): JSX.Element => {
             <>
               <SocialMedia isDesktop={false} />
               <div className={`${styles.copyRight}`}>
-                Copyright © 2009-2023{"\n"} Tobias Bergstedt (Handmade by
+                Copyright © 2009-2023{'\n'} Tobias Bergstedt (Handmade by
                 Bergstedt)
               </div>
             </>
@@ -96,7 +96,7 @@ const Header = (): JSX.Element => {
 
         <div
           className={`${styles.hamburger} ${
-            isNavExpanded ? styles.active : ""
+            isNavExpanded ? styles.active : ''
           }`}
           onClick={toggleMenu}
         >

@@ -1,5 +1,5 @@
-import "./Start.css";
-import { useTranslation } from "react-i18next";
+import styles from './Start.module.scss';
+import { useTranslation } from 'react-i18next';
 
 // import { useEffect, useState } from 'react'
 // import { Link } from 'react-router-dom'
@@ -30,10 +30,10 @@ const Start = (): JSX.Element => {
   // }
 
   return (
-    <section className="start">
-      <div className="start-info">
+    <section className={styles.start}>
+      <div className={styles.startInfo}>
         <h1>
-          <span>Welcome to</span>{" "}
+          <span>Welcome to</span>{' '}
           <span>
             <b>the Hamster Wars</b>
           </span>
@@ -41,10 +41,10 @@ const Start = (): JSX.Element => {
         <p>
           Your number 1 go-to place when it comes to hamsters, hamster battles
           and all things cute. This website is dedicated to finding the cutest
-          hamster of them all. And to do that, we're going to need <b>YOUR</b>{" "}
-          help.{" "}
+          hamster of them all. And to do that, we're going to need <b>YOUR</b>{' '}
+          help.{' '}
         </p>
-        <p>{t("line2.part2")}</p>
+        <p>{t('line2.part2')}</p>
       </div>
 
       {/* <div className="info-box">
