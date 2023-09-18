@@ -11,12 +11,13 @@
   min-width: 168px;
   height: 32px;
   border-radius: 0 0 8px 8px;
+  font-family:"Maven Pro",  -apple-system, BlinkMacSystemFont, "Source Sans Pro", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
 
   svg {
     max-height: 24px;
     width: auto;
   }
-  
+
   &.isMobile {
     right: 96px;
     min-width: 112px;

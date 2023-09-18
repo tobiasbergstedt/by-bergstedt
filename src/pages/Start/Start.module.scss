@@ -1,27 +1,25 @@
 @import '../../utils.scss';
 
-.start {
-  min-height: 100%;
+.startContainer {
+  width: 100%;
+  background-color: red;
 }
 
-.startInfo {
-  padding: var(--main-padding-height-mobile) var(--main-padding-width-mobile);
+.mainArticle {
+  width: 100%;
+  display: flex;
+}
 
-  h1 {
-    text-align: center;
-    margin-bottom: 0.25em;
+.mainContent {
+  width: 40%;
+}
 
-    span:nth-child(2) {
-      display: block;
-      color: var(--nav-bg);
-    }
-  }
+.mainImage {
+  width: 60%;
+  background-color: blue;
+}
 
-  p {
-    margin-bottom: 0em;
-  }
-
-  @include is-desktop {
-    padding: 0;
-  }
+.mainHeading {
+  @include font-32-bold;
+  margin-bottom: 16px;
 }
