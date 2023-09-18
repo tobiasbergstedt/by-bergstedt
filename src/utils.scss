@@ -1,3 +1,6 @@
+@use 'sass:math';
+
+// Mixins
 @mixin is-tablet() {
   @media (min-width: 768px) {
     @content;
@@ -14,4 +17,226 @@
   @media (min-width: 1440px) {
     @content;
   }
+}
+
+// Functions
+// Convert px to rem
+@function rem($pixels, $context: 16px) {
+  @if unitless($pixels) {
+    $pixels: $pixels * 1px;
+  }
+
+  @if unitless($context) {
+    $context: $context * 1px;
+  }
+
+  @return math.div($pixels, $context) * 1rem;
+}
+
+// Convert px to em
+@function em($pixels, $context: 16px) {
+  @if unitless($pixels) {
+    $pixels: $pixels * 1px;
+  }
+
+  @if unitless($context) {
+    $context: $context * 1px;
+  }
+
+  @return math.div($pixels, $context) * 1em;
+}
+
+// Typography
+@mixin font-14 {
+  font-weight: 400;
+  font-size: rem(14);
+  line-height: rem(17);
+}
+
+@mixin font-16 {
+  font-weight: 400;
+  font-size: rem(16);
+  line-height: rem(19);
+}
+
+@mixin font-20 {
+  font-weight: 400;
+  font-size: rem(20);
+  line-height: rem(26);
+}
+
+@mixin font-24 {
+  font-weight: 400;
+  font-size: rem(24);
+  line-height: rem(30);
+}
+
+@mixin font-24-bold {
+  font-weight: 700;
+  font-size: rem(24);
+  line-height: rem(30);
+}
+
+@mixin font-32 {
+  font-weight: 400;
+  font-size: rem(38);
+  line-height: rem(42);
+}
+
+@mixin font-32-bold {
+  font-weight: 700;
+  font-size: rem(38);
+  line-height: rem(42);
+}
+
+@mixin font-40 {
+  font-weight: 400;
+  font-size: rem(40);
+  line-height: rem(48);
+}
+
+@mixin font-54 {
+  font-weight: 600;
+  font-size: rem(54);
+  line-height: rem(58);
+}
+
+@mixin h1 {
+  margin: 0 0 rem(8);
+
+  font-weight: 600;
+  font-size: rem(30);
+  line-height: rem(36);
+
+  @include is-desktop {
+    font-size: rem(46);
+    line-height: rem(55);
+  }
+}
+
+@mixin h2 {
+  margin: 0 0 rem(4);
+
+  font-weight: 600;
+  font-size: rem(28);
+  line-height: rem(34);
+
+  @include is-desktop {
+    font-size: rem(40);
+    line-height: rem(48);
+  }
+}
+
+@mixin h3 {
+  margin: 0 0 rem(4);
+
+  font-weight: 600;
+  font-size: rem(24);
+  line-height: rem(31);
+
+  @include is-desktop {
+    font-size: rem(32);
+    line-height: rem(38);
+  }
+}
+
+@mixin h4 {
+  margin: 0 0 rem(4);
+
+  font-weight: 600;
+  font-size: rem(18);
+  line-height: rem(23);
+
+  @include is-desktop {
+    margin: 0 0 rem(8);
+
+    font-size: rem(26);
+    line-height: rem(31);
+  }
+}
+
+@mixin h5 {
+  margin: 0 0 rem(2);
+
+  font-weight: 600;
+  font-size: rem(15);
+  line-height: rem(18);
+
+  @include is-desktop {
+    margin: 0;
+
+    font-size: rem(18);
+    line-height: rem(22);
+  }
+}
+
+@mixin paragraph-large {
+  margin: 0 0 rem(24);
+
+  font-size: rem(24);
+  line-height: rem(31);
+}
+
+@mixin paragraph {
+  margin: 0 0 rem(16);
+
+  font-size: rem(18);
+  line-height: rem(23);
+}
+
+@mixin paragraph-small {
+  margin: 0 0 rem(16);
+
+  font-size: rem(15);
+  line-height: rem(18);
+
+  @include is-desktop {
+    font-size: rem(13);
+    line-height: rem(16);
+  }
+}
+
+// Base
+h1 {
+  @include h1;
+}
+
+h2 {
+  @include h2;
+}
+
+h3 {
+  @include h3;
+}
+
+h4 {
+  @include h4;
+}
+
+h5 {
+  @include h5;
+}
+
+p {
+  @include paragraph;
+}
+
+button {
+  display: block;
+
+  margin: 0;
+  padding: 0;
+
+  background-color: transparent;
+  border: 0 none;
+
+  outline: 0 none;
+  cursor: pointer;
+}
+
+img {
+  display: block;
+
+  width: auto;
+  max-width: 100%;
 }
