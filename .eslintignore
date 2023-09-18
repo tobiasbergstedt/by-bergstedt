@@ -1,0 +1,9 @@
+/dist
+*.scss
+*.css
+*.d.ts
+*.config.js
+*.config.ts
+/.next
+/node_modules
+/build

@@ -1,0 +1,350 @@
+.start {
+	min-height: 100%;
+}
+
+.info-box {
+	background-color: var(--header-bg);
+	padding: var(--main-padding-height-mobile) var(--main-padding-width-mobile);
+	margin-top: 1.5em;
+}
+
+.info-box p {
+	margin-bottom: 0.5em;
+}
+
+.start-info {
+	padding: var(--main-padding-height-mobile) var(--main-padding-width-mobile);
+}
+
+.start-info h1,
+.single-hamster h1 {
+	text-align: center;
+	margin-bottom: 0.25em;
+}
+
+.start-info h1 span:nth-child(2) {
+	display: block;
+	color: var(--nav-bg);
+}
+
+.start-info p {
+	margin-bottom: 0em;
+}
+
+.start .last-p {
+	text-align: center;
+	margin-top: 0.75em;
+	margin-bottom: 1.5em;
+}
+
+.start .most-winnerest,
+.single-hamster .hamster-info {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	background: linear-gradient(
+		to bottom,
+		var(--nav-bg) 0%,
+		var(--header-bg) 50%,
+		#f6f6f6 50%,
+		#ffffff 100%
+	);
+	color: var(--yellow);
+	padding: 0.75em;
+	margin: 1em;
+	border-radius: 2em;
+	box-shadow: 0 0.35em 0.75em rgba(0, 0, 0, 0.7);
+}
+
+.start .most-winnerest .hamster-info {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.start .most-winnerest a {
+	text-decoration: none;
+	color: var(--yellow);
+	transition: color 0.2s, transform 0.2s;
+}
+
+.start .most-winnerest a:hover {
+	color: #ffe681;
+	transform: translateY(-0.2em);
+}
+
+.start .most-winnerest h2,
+.single-hamster .hamster-info h2 {
+	position: relative;
+	margin-top: 0;
+	margin-bottom: 0.25rem;
+	font-size: 2.5em;
+}
+
+.start .most-winnerest h2 .win-age,
+.single-hamster .hamster-info h2 .hamster-age {
+	font-size: 1.4rem;
+}
+
+.start .most-winnerest .crown {
+	position: absolute;
+	top: -0.7em;
+	left: -0.75em;
+	transform: rotateZ(-20deg);
+	filter: drop-shadow(0.2rem 0.2rem 0.2rem rgba(34, 34, 34, 0.747));
+	width: 70px;
+	transition: opacity 0.3s, transform 1s ease-in-out;
+}
+
+.start .most-winnerest .crown:hover {
+	transform: rotate(-30deg) translateX(-20px) translateY(-10px);
+	/* transform: translateX(20px); */
+}
+
+.most-winnerest p {
+	margin-bottom: 1em;
+}
+
+.single-hamster .hamster-info .hamster-pic {
+	border-radius: 1em;
+	overflow: hidden;
+	background-color: var(--yellow);
+	margin-bottom: 0.75em;
+	max-width: 100%;
+	max-height: 200px;
+}
+
+/* .start .most-winnerest a:nth-child(3), */
+.single-hamster .hamster-info .hamster-pic {
+	max-width: 100%;
+	max-height: 200px;
+	box-shadow: 0 0.35em 0.75em rgba(0, 0, 0, 0.7);
+	transition: opacity 0.2s;
+}
+
+.start .most-winnerest .cutest-pic {
+	max-width: 300px;
+	max-height: 250px;
+	box-shadow: 0 0.35em 0.75em rgba(0, 0, 0, 0.7);
+	transition: opacity 0.2s;
+	background-color: var(--yellow);
+	border-radius: 1em;
+	overflow: hidden;
+	transition: transform 0.2s;
+}
+
+.start .most-winnerest .cutest-pic:hover {
+	transition: transform 0.2s;
+	transform: translateY(-0.25em);
+}
+
+.start .most-winnerest .cutest-pic img {
+	width: 100%;
+	height: 100%;
+	transition: opacity 0.2s;
+	object-fit: cover;
+}
+
+.start .most-winnerest .cutest-pic img:hover {
+	opacity: 0.75;
+}
+
+.cutest-not-found {
+	outline: 4px solid var(--red-wildcard);
+}
+
+.statistics-div {
+	display: flex;
+	width: 100%;
+	position: relative;
+}
+
+.statistics-div p:nth-child(2) {
+	position: absolute;
+	right: 0;
+}
+
+.graph-div {
+	display: flex;
+	background: linear-gradient(to bottom, lightgrey 0%, rgb(121, 121, 121) 100%);
+	padding: 4px;
+	border-radius: 0.5em;
+	overflow: hidden;
+	box-shadow: 0.2em 0.2em 0.35em rgba(0, 0, 0, 0.5);
+}
+
+.graph-div-2 {
+	display: flex;
+	height: 10px;
+	background: linear-gradient(to bottom, lightgrey 0%, rgb(121, 121, 121) 100%);
+	padding: 4px;
+	border-radius: 0.5em;
+	overflow: hidden;
+	box-shadow: 0.2em 0.2em 0.35em rgba(0, 0, 0, 0.5);
+}
+
+.graph1 {
+	height: 10px;
+	background: linear-gradient(to top, var(--green) 0%, var(--header-bg) 100%);
+	border-radius: 0.25em;
+}
+
+.graph-divider {
+	opacity: 0;
+}
+
+.graph2 {
+	height: 10px;
+	background: linear-gradient(
+		to bottom,
+		var(--red-wildcard) 0%,
+		rgb(168, 0, 0) 100%
+	);
+	border-radius: 0.25em;
+}
+
+.most-winnerest .winnerest-info {
+	text-align: center;
+	margin-top: 0.5em;
+	width: 90%;
+}
+
+.most-winnerest .winnerest-info p {
+	color: black;
+	margin-bottom: 0.5em;
+}
+
+.winnerest-info .reload {
+	text-align: center;
+	color: black;
+	margin-top: 0;
+	margin-bottom: 1em;
+}
+
+.winnerest-info .reload p {
+	margin-bottom: 0.5em;
+}
+
+.winnerest-info .reload .ghost-button {
+	cursor: pointer;
+	background-color: transparent;
+	color: var(--red-wildcard);
+	margin: 0.5em 0.5em 0 0.5em;
+	padding: 0.5em 1em;
+	font-size: 1em;
+	border: 2px solid rgb(192, 0, 0);
+	border-radius: 0.5em;
+	box-shadow: 0.25em 0.25em 0.25em rgb(175, 0, 0);
+	transition: border 0.2s ease-in-out, box-shadow 0.2s ease-in-out,
+		color 0.2s ease-in-out;
+}
+
+.winnerest-info .reload .ghost-button:hover {
+	border: 2px solid black;
+	color: black;
+	box-shadow: 0.25em 0.25em 0.25em black;
+}
+
+.most-winnerest .winnerest-info .wins {
+	font-weight: 600;
+	color: var(--green);
+}
+
+.most-winnerest .winnerest-info .losses {
+	font-weight: 600;
+	color: var(--red-wildcard);
+}
+
+@media screen and (min-width: 1024px) {
+	.start-info {
+		padding: 0;
+	}
+
+	.most-winnerest .hamster-info,
+	.most-winnerest .winnerest-info {
+		width: 50%;
+	}
+
+	.most-winnerest .hamster-info {
+		margin-right: 0.75em;
+	}
+
+	.most-winnerest .winnerest-info {
+		margin-left: 0.75em;
+	}
+
+	.info-box {
+		margin: 2em -1em -1em -1em;
+		padding: var(--main-padding-height-mobile) var(--main-padding-width-mobile);
+	}
+
+	.info-box p {
+		margin-bottom: 0.5em;
+	}
+
+	.single-hamster .hamster-info .hamster-pic {
+		max-width: 100%;
+		max-height: 300px;
+	}
+}
+
+@media screen and (min-width: 1024px) {
+	.winnerest-info .graph-div {
+		width: 70%;
+	}
+
+	.start .winner .most-winnerest {
+		position: relative;
+		background: white;
+		padding: 0;
+		box-shadow: none;
+	}
+
+	.most-winnerest .hamster-info {
+		background: linear-gradient(
+			to right,
+			var(--nav-bg) 0%,
+			var(--header-bg) 100%
+		);
+		border-radius: 1.5em 0 0 1.5em;
+	}
+
+	.most-winnerest .hamster-info,
+	.most-winnerest .winnerest-info {
+		box-shadow: 0 0.35em 0.75em rgba(0, 0, 0, 0.7);
+	}
+
+	.hamster-info a:first-child {
+		margin-top: 0;
+	}
+
+	.hamster-info a:last-child {
+		margin-bottom: 2em;
+	}
+
+	.most-winnerest .winnerest-info {
+		background: white;
+		border-radius: 0 1.5em 1.5em 0;
+		position: absolute;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		margin-top: 0;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.statistics-div p {
+		margin-left: 4em;
+		margin-right: 4em;
+	}
+}
+
+@media screen and (min-width: 1440px) {
+	.statistics-div p {
+		margin-left: 6em;
+		margin-right: 6em;
+	}
+}

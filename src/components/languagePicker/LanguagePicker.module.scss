@@ -1,0 +1,133 @@
+@import '../../utils.scss';
+
+.languagePickerContainer {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  right: 128px;
+  color: var(--color-black);
+  background-color: var(--color-white);
+  width: fit-content;
+  min-width: 168px;
+  height: 32px;
+  border-radius: 0 0 8px 8px;
+
+  svg {
+    max-height: 24px;
+    width: auto;
+  }
+
+  &:hover,
+  &.isLanguagePickerOpen {
+    .globeIcon::after {
+      opacity: 1;
+    }
+    .languageChosen {
+      color: var(--color-brown-2);
+    }
+    svg {
+      fill: var(--color-brown-2);
+    }
+  }
+}
+
+.globeIcon {
+  position: relative;
+  height: 24px;
+  width: 24px;
+  background-color: var(--color-grey);
+
+  mask-repeat: no-repeat;
+  -webkit-mask-repeat: no-repeat;
+  mask-position: center;
+  -webkit-mask-position: center;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: var(--color-brown-2);
+    opacity: 0;
+    transition: opacity 0.2s;
+  }
+}
+
+.languagePicker {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+  padding: 0 16px;
+  cursor: pointer;
+}
+
+.languageChosenWrapper {
+  display: flex;
+}
+
+.languageChosen {
+  transition: color 0.2s;
+}
+
+.arrowDown {
+  width: 8px;
+  height: auto;
+  margin-left: 12px;
+  color: var(--color-grey);
+
+  svg {
+    width: 100%;
+    height: 100%;
+    transform: rotate(0deg);
+    transition: transform 0.5s, fill 0.2s;
+  }
+}
+
+.isRotated svg {
+  transform: rotate(-180deg);
+}
+
+.languagesList {
+  position: absolute;
+  top: 40px;
+  right: 0;
+  background-color: white;
+  min-width: 168px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 8px;
+  gap: 12px;
+  transition: all 0.4s;
+  transform-origin: top;
+
+  input {
+    margin-right: 12px;
+  }
+
+  li {
+    width: 100%;
+    justify-content: flex-start;
+    cursor: pointer;
+
+    .language {
+      transition: transform 0.2s;
+    }
+
+    &:hover {
+      .language {
+        transform: translateX(2px);
+      }
+    }
+  }
+}
+
+.isInvisible {
+  padding-top: 0;
+  padding-bottom: 0;
+  opacity: 0;
+  transform: scaleY(0);
+}

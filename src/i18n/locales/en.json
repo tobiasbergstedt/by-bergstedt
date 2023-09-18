@@ -1,0 +1,12 @@
+{
+  "menu": {
+    "start": "Home",
+    "gallery": "Gallery",
+    "shop": "For sale",
+    "about": "About me",
+    "contact": "Contact",
+    "links": "Links"
+  },
+  "line2": "Dolor amet",
+  "line3": "Est aleacta"
+}

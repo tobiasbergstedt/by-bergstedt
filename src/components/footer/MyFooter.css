@@ -1,0 +1,13 @@
+.my-footer {
+	height: var(--footer-height);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 0.9em;
+	background-color: transparent;
+	color: var(--yellow);
+}
+
+.my-footer p {
+	font-size: 1em;
+}

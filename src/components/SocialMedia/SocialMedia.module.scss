@@ -1,0 +1,55 @@
+@import '../../utils.scss';
+
+.socialMedia {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 14px;
+  background-color: var(--color-white);
+  width: 40px;
+  height: auto;
+  padding: 12px 0;
+  top: 96px;
+  right: auto;
+  transform: translateX(-40px);
+
+  & svg {
+    width: 24px;
+    height: auto;
+    transition: transform 0.2s ease-in-out;
+
+    &:hover {
+      // opacity: 0.65;
+      // transform: translateY(2px);
+      transform: scale(1.2);
+    }
+  }
+
+  @include is-desktop {
+    border-radius: 8px 0 0 8px;
+    box-shadow: -8px 8px 24px 0 rgba(0,0,0,0.4);
+  }
+}
+
+.link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.socialMediaMobile {
+  position: relative;
+  flex-direction: row;
+  margin-top: auto;
+  top: auto;
+  right: auto;
+  transform: translateX(0px);
+  gap: 64px;
+  width: 100%;
+  border-radius: 0;
+  background-color: transparent;
+  height: auto;
+  padding: 0;
+}

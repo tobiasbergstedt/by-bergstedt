@@ -1,0 +1,18 @@
+.not-found {
+	min-height: calc(
+		100vh - var(--header-height-mobile) - var(--footer-height) - 2 *
+			var(--main-padding-height-mobile)
+	);
+	padding: var(--main-padding-height-mobile) var(--main-padding-width-mobile);
+	color: var(--nav-hover-bg);
+}
+
+@media screen and (min-width: 768px) {
+  .not-found {
+    min-height: calc(
+		100vh - var(--header-height-desktop) - var(--footer-height) - 2 *
+			var(--main-padding-height)
+	  );
+    padding: var(--main-padding-height-desktop) var(--main-padding-width-desktop);
+  }
+}

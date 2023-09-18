@@ -1,0 +1,74 @@
+@import 'utils.scss';
+
+/* color-scheme {
+body-bg: #fbefbf; (yellow/beige)
+header-bg: #7fa894; (light green)
+nav-bg: #26655c;  (dark green)
+nav:hover-bg: #0c3a45 (dark blue)
+wildcard: #eb2c3d;  (red)
+} */
+
+
+:root {
+	--header-height-mobile: 96px;
+  --header-height-desktop: 160px;
+  --primary-bg-color: #353535;
+  --secondary-bg-color: #1f1e1d;
+  --color-white: #FFF;
+  --color-black: #000;
+  --color-grey: #535353;
+  --color-brown-1: #B68960;
+  --color-brown-2: #9A6D42;
+  --color-brown-3: #ebc199;
+	--header-bg: #7fa894;
+	--nav-bg: #26655c;
+	--nav-hover-bg: #0c3a45;
+	--green: #0e5b00;
+	--yellow: #fbefbf;
+	--red-wildcard: #eb2c3d;
+	--main-padding-width-desktop: 88px;
+	--main-padding-width-mobile: 1em;
+	--main-padding-height-desktop: 2em;
+	--main-padding-height-mobile: 1em;
+	--main-margin-top: 18px;
+	--main-margin-bottom: 48px;
+	--footer-height: 50px;
+}
+
+/* Mobile first styling*/
+
+.app {
+  position: relative;
+	min-height: 100vh;
+	/* overflow: hidden; */
+  color: var(--color-white);
+
+  @include is-desktop {
+    margin-top: var(--main-margin-top);
+    min-height: calc(100vh - var(--main-margin-top));
+  }
+}
+
+main {
+  padding: var(--header-height-mobile) var(--main-padding-width-mobile) var(--main-padding-height-mobile);
+  margin-top: calc(var(--header-height-mobile) * -1);
+	min-height: 100vh;
+	background: linear-gradient(to bottom right, var(--primary-bg-color) 0%, var(--secondary-bg-color) 100%);
+
+  @include is-tablet {
+    padding: var(--header-height-mobile) var(--main-padding-width-desktop) var(--main-padding-height-mobile);
+  }
+
+  @include is-desktop {
+    padding: var(--header-height-desktop) var(--main-padding-width-desktop) var(--main-padding-height-desktop);
+    margin-top: calc(var(--header-height-desktop) * -1);
+    min-height: calc(
+      100vh -
+        calc(
+          var(--main-margin-top) + var(--footer-height)
+        )
+    );
+		border-radius: 12px;
+    box-shadow: -48px 48px 64px 0 rgba(20, 18, 12, 0.75);
+  }
+}

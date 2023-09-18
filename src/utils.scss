@@ -1,0 +1,17 @@
+@mixin is-tablet() {
+  @media (min-width: 768px) {
+    @content;
+  }
+}
+
+@mixin is-desktop() {
+  @media (min-width: 1024px) {
+    @content;
+  }
+}
+
+@mixin is-desktop-large() {
+  @media (min-width: 1440px) {
+    @content;
+  }
+}

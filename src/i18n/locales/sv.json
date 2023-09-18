@@ -1,0 +1,15 @@
+{
+  "menu": {
+    "start": "Startsida",
+    "gallery": "Galleri",
+    "shop": "Till salu",
+    "about": "Om mig",
+    "contact": "Kontakt",
+    "links": "Länkar"
+  },
+  "line2": {
+    "part1": "Alltså",
+    "part2": "Vad"
+  },
+  "line3": "Att använda"
+}
