@@ -21,6 +21,8 @@ const Header = (): JSX.Element => {
   const breakpoint = useBreakpoint();
   const isDesktop = breakpoint === DESKTOP;
 
+  const currentYear = new Date().getFullYear();
+
   const navLinks = [
     {
       title: t('menu.start'),
@@ -74,7 +76,11 @@ const Header = (): JSX.Element => {
     <header className={styles.header}>
       <nav className={styles.navbar}>
         <NavLink to="/" className={`${styles.logo}`}>
-          <img src={ByBergstedtLogo} alt="Logo" className={styles.logoImg} />
+          <img
+            src={ByBergstedtLogo}
+            alt="byBergstedt logo"
+            className={styles.logoImg}
+          />
         </NavLink>
         <LanguagePicker />
         <ul
@@ -87,8 +93,7 @@ const Header = (): JSX.Element => {
             <>
               <SocialMedia isDesktop={false} />
               <div className={`${styles.copyRight}`}>
-                Copyright © 2009-2023{'\n'} Tobias Bergstedt (Handmade by
-                Bergstedt)
+                {t('header.copyright', { thisYear: currentYear })}
               </div>
             </>
           )}

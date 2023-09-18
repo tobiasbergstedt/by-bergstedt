@@ -1,10 +1,14 @@
+import { useTranslation } from 'react-i18next';
 import styles from './Footer.module.scss';
 
 const MyFooter = (): JSX.Element => {
+  const { t } = useTranslation();
+  const currentYear = new Date().getFullYear();
+
   return (
-    <div className={styles.footer}>
-      <p>Copyright © Hamster Association of The Earth, 2022</p>
-    </div>
+    <p className={styles.footer}>
+      {t('header.copyright', { thisYear: currentYear })}
+    </p>
   );
 };
 
