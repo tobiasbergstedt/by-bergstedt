@@ -4,6 +4,7 @@ import { BrowserRouter as Router } from 'react-router-dom';
 // import { RecoilRoot } from "recoil";
 import App from './App';
 import './index.scss';
+import './styles/index.scss';
 import { initializeI18n } from './i18n/i18n';
 
 const startApp = async (): Promise<void> => {
