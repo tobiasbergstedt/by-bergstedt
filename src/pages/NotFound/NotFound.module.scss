@@ -6,7 +6,7 @@
       var(--main-padding-height-mobile)
   );
   padding: var(--main-padding-height-mobile) var(--main-padding-width-mobile);
-  color: var(--nav-hover-bg);
+  color: red;
 
   @include is-desktop {
     min-height: calc(

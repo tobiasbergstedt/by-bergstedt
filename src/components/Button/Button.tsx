@@ -6,7 +6,7 @@ import clsx from 'clsx';
 import styles from './Button.module.scss';
 
 interface ButtonProps {
-  children: React.ReactNode[];
+  children: React.ReactNode | React.ReactNode[];
   className?: string;
   type?: 'button' | 'submit';
   to?: string;
@@ -15,7 +15,6 @@ interface ButtonProps {
   isSecondary?: boolean;
   isTertiary?: boolean;
   isQuaternary?: boolean;
-  isSmall?: boolean;
   hasIcon?: string;
   onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
 }
@@ -30,18 +29,12 @@ const Button: React.FC<ButtonProps> = ({
   href,
   isDisabled,
   isSecondary,
-  isTertiary,
-  isQuaternary,
-  isSmall,
   hasIcon,
   onClick,
 }) => {
   const classNames = clsx(styles.button, className, {
     [styles.isDisabled]: isDisabled,
     [styles.isSecondary]: isSecondary,
-    [styles.isTertiary]: isTertiary,
-    [styles.isQuaternary]: isQuaternary,
-    [styles.isSmall]: isSmall,
   });
 
   const text = (): JSX.Element | null => {
@@ -90,9 +83,6 @@ Button.defaultProps = {
   href: undefined,
   isDisabled: false,
   isSecondary: false,
-  isTertiary: false,
-  isQuaternary: false,
-  isSmall: false,
   hasIcon: undefined,
   onClick: () => {},
 };

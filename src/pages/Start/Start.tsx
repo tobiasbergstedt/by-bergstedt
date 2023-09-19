@@ -1,6 +1,7 @@
 import { useTranslation } from 'react-i18next';
 
 import styles from './Start.module.scss';
+import Button from '../../components/Button/Button';
 
 // import { fixUrl } from '../../utils'
 
@@ -18,7 +19,12 @@ const Start = (): JSX.Element => {
             Paragraph to the first heading of this woodworking portfolio
             website.
           </p>
-          <button>Read more</button>
+          <Button>Read more</Button>
+          <Button isDisabled>Read more</Button>
+          <Button isSecondary>Read more</Button>
+          <Button isSecondary isDisabled>
+            Read more
+          </Button>
         </section>
         <div className={styles.mainImage}></div>
       </article>
