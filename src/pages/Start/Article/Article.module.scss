@@ -3,29 +3,63 @@
 .mainArticle {
   width: 100%;
   display: flex;
+  flex-direction: column-reverse;
+  gap: 16px;
+
+  @include is-desktop {
+    flex-direction: row;
+    gap: 5%;
+  }
 }
 
 .mainContent {
-  width: 40%;
+  width: 100%;
+
+  &.gridContent {
+    width: 100%;
+  }
+
+  @include is-desktop {
+    width: 40%;
+  }
 }
 
 .mainHeading {
-  @include font-32-bold;
+  @include font-24-bold;
   margin-bottom: 24px;
+
+  &.smallerHeading {
+    @include font-20;
+    font-weight: 700;
+    margin-bottom: 16px;
+  }
+
+  @include is-desktop {
+    @include font-32-bold;
+  }
 }
 
 .mainParagraph {
   margin-bottom: 12px;
+
+  &.smallParagraph {
+    @include font-14;
+  }
 }
 
 .mainImageWrapper {
-  width: 60%;
+  width: 100%;
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
   align-items: center;
+
+  @include is-desktop {
+    width: 55%;
+    justify-content: flex-end;
+  }
 }
 
 .mainImage {
-  width: 10%;
-  height: 10%;
+  width: 100%;
+  height: auto;
 }
