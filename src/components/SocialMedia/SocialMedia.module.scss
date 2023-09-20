@@ -1,19 +1,21 @@
 @import '../../utils.scss';
 
 .socialMedia {
-  position: fixed;
+  position: relative;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
-  gap: 14px;
-  background-color: var(--color-white);
-  width: 40px;
-  height: auto;
-  padding: 12px 0;
-  top: 96px;
+  margin-top: 100px;
+  gap: 64px;
+  top: auto;
   right: auto;
-  transform: translateX(-40px);
+  width: 100%;
+  height: auto;
+  padding: 0;
+  transform: translateX(0px);
+  border-radius: 0;
+  background-color: transparent;
 
   & svg {
     width: 24px;
@@ -39,17 +41,15 @@
   align-items: center;
 }
 
-.socialMediaMobile {
-  position: relative;
-  flex-direction: row;
-  margin-top: auto;
-  top: auto;
-  right: auto;
-  transform: translateX(0px);
-  gap: 64px;
-  width: 100%;
-  border-radius: 0;
-  background-color: transparent;
+.socialMediaDesktop {
+  position: fixed;
+  flex-direction: column;
+  margin-top: 0;
+  gap: 14px;
+  width: 40px;
   height: auto;
-  padding: 0;
+  padding: 12px 0;
+  top: 96px;
+  transform: translateX(-40px);
+  background-color: var(--color-white);
 }

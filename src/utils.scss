@@ -1,6 +1,17 @@
 @use 'sass:math';
 
 // Mixins
+@mixin flex-centered($direction-column: false) {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  @if $direction-column {
+    flex-direction: column;
+  }
+}
+
 @mixin is-tablet() {
   @media (min-width: 768px) {
     @content;

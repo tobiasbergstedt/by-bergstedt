@@ -46,7 +46,7 @@ const SocialMedia = ({ isDesktop }: SocialMediaProps): JSX.Element => {
   return (
     <div
       className={clsx(styles.socialMedia, {
-        [styles.socialMediaMobile]: !isDesktop,
+        [styles.socialMediaDesktop]: isDesktop,
       })}
     >
       {navLinks.map((item, index) => (

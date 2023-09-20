@@ -8,6 +8,7 @@ import { NavLink } from 'react-router-dom';
 import SocialMedia from '../SocialMedia/SocialMedia';
 import LanguagePicker from './LanguagePicker/LanguagePicker';
 import { useTranslation } from 'react-i18next';
+import clsx from 'clsx';
 
 interface NavLinkItem {
   title: string;
@@ -65,7 +66,7 @@ const Header = (): JSX.Element => {
   const ItemComponent: React.FC<ItemComponentProps> = ({ item }) => {
     return (
       <li onClick={closeMenu}>
-        <NavLink to={item.link} className={`${styles.navLink}`}>
+        <NavLink to={item.link} className={styles.navLink}>
           {item.title}
         </NavLink>
       </li>
@@ -75,7 +76,7 @@ const Header = (): JSX.Element => {
   return (
     <header className={styles.header}>
       <nav className={styles.navbar}>
-        <NavLink to="/" className={`${styles.logo}`}>
+        <NavLink to="/" className={styles.logo}>
           <img
             src={ByBergstedtLogo}
             alt="byBergstedt logo"
@@ -84,7 +85,9 @@ const Header = (): JSX.Element => {
         </NavLink>
         <LanguagePicker />
         <ul
-          className={`${styles.navMenu} ${isNavExpanded ? styles.active : ''}`}
+          className={clsx(styles.navMenu, {
+            [styles.active]: isNavExpanded,
+          })}
         >
           {navLinks.map((item, index) => (
             <ItemComponent key={index} item={item} />
@@ -92,7 +95,7 @@ const Header = (): JSX.Element => {
           {!isDesktop && (
             <>
               <SocialMedia isDesktop={false} />
-              <div className={`${styles.copyRight}`}>
+              <div className={styles.copyRight}>
                 {t('header.copyright', { thisYear: currentYear })}
               </div>
             </>
@@ -100,14 +103,14 @@ const Header = (): JSX.Element => {
         </ul>
 
         <div
-          className={`${styles.hamburger} ${
-            isNavExpanded ? styles.active : ''
-          }`}
+          className={clsx(styles.hamburger, {
+            [styles.active]: isNavExpanded,
+          })}
           onClick={toggleMenu}
         >
-          <span className={`${styles.bar}`}></span>
-          <span className={`${styles.bar}`}></span>
-          <span className={`${styles.bar}`}></span>
+          <span className={styles.bar}></span>
+          <span className={styles.bar}></span>
+          <span className={styles.bar}></span>
         </div>
       </nav>
     </header>
