@@ -1,0 +1,31 @@
+@import '../../../utils.scss';
+
+.mainArticle {
+  width: 100%;
+  display: flex;
+}
+
+.mainContent {
+  width: 40%;
+}
+
+.mainHeading {
+  @include font-32-bold;
+  margin-bottom: 24px;
+}
+
+.mainParagraph {
+  margin-bottom: 12px;
+}
+
+.mainImageWrapper {
+  width: 60%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.mainImage {
+  width: 10%;
+  height: 10%;
+}

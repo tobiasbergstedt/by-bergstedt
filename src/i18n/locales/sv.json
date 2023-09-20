@@ -16,5 +16,7 @@
   "header": {
     "copyright": "Copyright © 2009-{{thisYear}}\n Tobias Bergstedt (Handmade by Bergstedt)"
   },
-  "line3": "Att använda"
+  "start": {
+    "readMore": "Läs mer"
+  }
 }
