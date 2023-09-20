@@ -2,29 +2,24 @@
 @import 'utils.scss';
 
 * {
-	margin: 0;
-	padding: 0;
+  margin: 0;
+  padding: 0;
 }
 
 html {
-	background: rgb(148, 155, 172);
-	background: linear-gradient(
-		to bottom right,
-		rgba(148, 155, 172, 1) 0%,
-		rgba(76, 83, 99, 1) 100%
-	);
+  background: var(--color-html-bg);
 }
 
 body {
-	font-family: Arial, Helvetica, sans-serif;
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
+  font-family: Arial, Helvetica, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   /* min-height: 100vh; */
 }
 
 code {
-	font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-		monospace;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
 }
 
 #root {
@@ -32,8 +27,8 @@ code {
 
   @include is-desktop {
     max-width: 80vw;
-		width: 1280px;
-		margin-left: auto;
+    width: 1280px;
+    margin-left: auto;
     margin-right: auto;
   }
 }
