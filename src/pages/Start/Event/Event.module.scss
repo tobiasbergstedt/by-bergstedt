@@ -1,0 +1,16 @@
+@import '../../../utils.scss';
+
+.eventContainer {
+  width: 100%;
+}
+
+.heading {
+  @include font-16;
+  font-weight: 700;
+  // margin-bottom: 24px;
+}
+
+.paragraph {
+  // margin-bottom: 12px;
+  @include font-14;
+}

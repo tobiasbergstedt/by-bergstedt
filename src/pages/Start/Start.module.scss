@@ -3,11 +3,73 @@
 .startContainer {
   width: 100%;
   // background-color: red;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.contentContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+
+  @include is-desktop {
+    flex-direction: row;
+  }
+}
+
+.articlesContainer {
+  min-width: calc(100% - var(--insta-feed-width-desktop));
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 24px;
+
+  @include is-desktop {
+    flex-direction: column;
+    gap: 0;
+  }
 }
 
 .articlesGrid {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr;
+  gap: 32px;
 
-  margin-top: 48px;
+  @include is-desktop {
+    grid-template-columns: 1fr 1fr 1fr;
+    margin-top: 48px;
+    gap: 48px;
+  }
+}
+
+.eventsContainer {
+  margin-top: 32px;
+  h3 {
+    @include font-20;
+
+    margin-bottom: 12px;
+    font-weight: 700;
+  }
+}
+
+.eventsGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 32px;
+
+  @include is-desktop {
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 48px;
+  }
+}
+
+.instaWrapper {
+  @include flex-centered;
+  max-width: 100%;
+  width: fit-content;
+  // height: 100%;
+
+  @include is-desktop {
+    max-width: var(--insta-feed-width-desktop);
+  }
 }
