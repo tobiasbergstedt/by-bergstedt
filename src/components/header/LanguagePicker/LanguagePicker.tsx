@@ -9,7 +9,8 @@ import useBreakpoint, { DESKTOP } from '../../../hooks/useBreakpoint';
 import { useTranslation } from 'react-i18next';
 
 const LanguagePicker = (): JSX.Element => {
-  const { languageChosen, setLanguageChosen } = useContext(UserContext);
+  const { languageChosen, setLanguageChosen, setLocale } =
+    useContext(UserContext);
   const [isLanguagePickerOpen, setIsLanguagePickerOpen] =
     useState<boolean>(false);
   const componentRef = useRef<HTMLDivElement>(null);
@@ -28,8 +29,10 @@ const LanguagePicker = (): JSX.Element => {
     setLanguageChosen(language);
     setIsLanguagePickerOpen(false); // Close the language picker when a language is selected
     if (language === t('locales.swedish')) {
+      setLocale(t('locales.sv'));
       await i18n.changeLanguage(t('locales.sv'));
     } else if (language === t('locales.english')) {
+      setLocale(t('locales.en'));
       await i18n.changeLanguage(t('locales.en'));
     }
   };

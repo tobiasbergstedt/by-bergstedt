@@ -14,6 +14,8 @@ import { useTranslation } from 'react-i18next';
 interface UserContextType {
   languageChosen: string | null;
   setLanguageChosen: Dispatch<SetStateAction<string | null>>;
+  locale: string;
+  setLocale: Dispatch<SetStateAction<string>>;
 }
 
 const UserContext = createContext<UserContextType | undefined>(undefined);
@@ -28,6 +30,7 @@ const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
     const storedLanguage = local.read(LANGUAGE_CHOSEN) as string | null;
     return storedLanguage ?? t('locales.swedish');
   });
+  const [locale, setLocale] = useState<string>('sv');
 
   // Update localStorage whenever languageChosen changes.
   useEffect(() => {
@@ -42,8 +45,10 @@ const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
       local.read(LANGUAGE_CHOSEN) === t('locales.english')
     ) {
       setLanguage(t('locales.en'));
+      setLocale(t('locales.en'));
     } else {
       setLanguage(t('locales.sv'));
+      setLocale(t('locales.sv'));
     }
   }, []);
 
@@ -52,6 +57,8 @@ const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
       value={{
         languageChosen,
         setLanguageChosen,
+        locale,
+        setLocale,
       }}
     >
       {children}
