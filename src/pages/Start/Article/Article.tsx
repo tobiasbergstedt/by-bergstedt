@@ -32,11 +32,15 @@ const Article = ({
         })}
       >
         {isMainArticle === true ? (
-          <h1 className={styles.mainHeading}>{title}</h1>
+          <a href={linkTo}>
+            <h1 className={styles.mainHeading}>{title}</h1>
+          </a>
         ) : (
-          <h2 className={clsx(styles.mainHeading, styles.smallerHeading)}>
-            {title}
-          </h2>
+          <a href={linkTo}>
+            <h2 className={clsx(styles.mainHeading, styles.smallerHeading)}>
+              {title}
+            </h2>
+          </a>
         )}
 
         <p
@@ -50,7 +54,9 @@ const Article = ({
       </section>
       {imageUrl != null && (
         <div className={styles.mainImageWrapper}>
-          <img src={imageUrl} alt={imageAlt} className={styles.mainImage} />
+          <a href={linkTo}>
+            <img src={imageUrl} alt={imageAlt} className={styles.mainImage} />
+          </a>
         </div>
       )}
     </article>

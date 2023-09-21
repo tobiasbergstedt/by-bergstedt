@@ -57,7 +57,7 @@
     left: 0;
     background-color: var(--color-brown-2);
     opacity: 0;
-    transition: opacity 0.2s;
+    transition: opacity var(--standard-transition);
   }
 }
 
@@ -75,7 +75,7 @@
 }
 
 .languageChosen {
-  transition: color 0.2s;
+  transition: color var(--standard-transition);
 }
 
 .arrowDown {
@@ -88,7 +88,7 @@
     width: 100%;
     height: 100%;
     transform: rotate(0deg);
-    transition: transform 0.5s, fill 0.2s;
+    transition: transform 0.5s, fill var(--standard-transition);
   }
 }
 
@@ -120,7 +120,7 @@
     cursor: pointer;
 
     .language {
-      transition: transform 0.2s;
+      transition: transform var(--standard-transition);
     }
 
     &:hover {

@@ -27,6 +27,12 @@
 .mainHeading {
   @include font-24-bold;
   margin-bottom: 24px;
+  color: var(--color-white);
+  transition: color var(--standard-transition);
+
+  &:hover {
+    color: var(--color-blue-4);
+  }
 
   &.smallerHeading {
     @include font-20;
@@ -62,4 +68,10 @@
 .mainImage {
   width: 100%;
   height: auto;
+  transition: opacity var(--standard-transition), scale var(--standard-transition);
+
+  &:hover {
+    // opacity: 0.7;
+    scale: 1.025;
+  }
 }

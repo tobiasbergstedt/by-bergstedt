@@ -20,7 +20,7 @@
   & svg {
     width: 24px;
     height: auto;
-    transition: transform 0.2s ease-in-out;
+    transition: transform var(--standard-transition) ease-in-out;
 
     &:hover {
       // opacity: 0.65;

@@ -90,7 +90,7 @@ a {
   height: calc(100% - var(--header-height-mobile));
   transition:
     left 0.7s ease-in-out,
-    transform 0.2s;
+    transform var(--standard-transition);
   background-color: #e4e4e4;
   padding: 36px 0 10px;
 
@@ -121,8 +121,8 @@ a {
   align-items: center;
   height: 50px;
   transition:
-    color 0.2s,
-    transform 0.2s;
+    color var(--standard-transition),
+    transform var(--standard-transition);
 
   &:hover {
     color: var(--color-brown-2);
