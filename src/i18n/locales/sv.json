@@ -17,6 +17,10 @@
     "copyright": "Copyright © 2009-{{thisYear}}\n Tobias Bergstedt (Handmade by Bergstedt)"
   },
   "start": {
-    "readMore": "Läs mer"
+    "readMore": "Läs mer",
+    "upcoming": "Kommande händelser"
+  },
+  "misc": {
+    "loading": "Laddar..."
   }
 }
