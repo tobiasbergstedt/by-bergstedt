@@ -23,6 +23,8 @@ wildcard: #eb2c3d;  (red)
 }
 
 main {
+  display: flex;
+  flex-direction: column;
   padding: var(--header-height-mobile) var(--main-padding-width-mobile)
     var(--main-padding-height-mobile);
   margin-top: calc(var(--header-height-mobile) * -1);

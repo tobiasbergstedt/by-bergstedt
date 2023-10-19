@@ -18,9 +18,41 @@
   },
   "start": {
     "readMore": "Read more",
-    "upcoming": "Upcoming events"
+    "upcoming": "Upcoming events",
+    "moreEvents": "more"
+  },
+  "gallery": {
+    "heading": "Gallery",
+    "category": "Category",
+    "reset": "Reset",
+    "noResults": "No results. Try another filter combination."
+  },
+  "helmet": {
+    "start": {
+      "title": "Custom Wood Creations",
+      "description": "Selected works and latest news from our workshop, as well as an overview of upcoming events."
+    }
   },
   "misc": {
-    "loading": "Loading..."
+    "loading": "Loading...",
+    "months": {
+      "january": "January",
+      "february": "February",
+      "march": "March",
+      "april": "April",
+      "may": "May",
+      "june": "June",
+      "july": "July",
+      "august": "August",
+      "september": "September",
+      "october": "October",
+      "november": "November",
+      "december": "December"
+    },
+    "currencies": {
+      "sek": "SEK",
+      "eur": "EUR"
+    },
+    "all": "All categories"
   }
 }

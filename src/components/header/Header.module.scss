@@ -1,4 +1,4 @@
-@import '../../utils.scss';
+@import 'src/utils.scss';
 
 * {
   padding: 0;
@@ -131,7 +131,7 @@ a {
     @include is-desktop {
       transform: translateX(0);
       transform: translateY(2px);
-      color: var(--color-brown-3);
+      color: var(--color-blue-4);
     }
   }
 

@@ -6,9 +6,9 @@ import React, {
   type Dispatch,
   type SetStateAction,
 } from 'react';
-import { local } from '../utils/storage';
-import { LANGUAGE_CHOSEN } from '../config/constants';
-import { setLanguage } from '../i18n/i18n';
+import { local } from '@utils/storage';
+import { LANGUAGE_CHOSEN } from '@config/constants';
+import { setLanguage } from '@i18n/i18n';
 import { useTranslation } from 'react-i18next';
 
 interface UserContextType {
@@ -18,18 +18,22 @@ interface UserContextType {
   setLocale: Dispatch<SetStateAction<string>>;
 }
 
-const UserContext = createContext<UserContextType | undefined>(undefined);
-
 interface UserProviderProps {
   children: ReactNode;
 }
 
+const UserContext = createContext<UserContextType>({
+  languageChosen: null,
+  setLanguageChosen: () => {},
+  locale: 'sv',
+  setLocale: () => {},
+});
+
 const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
   const { t } = useTranslation();
-  const [languageChosen, setLanguageChosen] = useState<string | null>(() => {
-    const storedLanguage = local.read(LANGUAGE_CHOSEN) as string | null;
-    return storedLanguage ?? t('locales.swedish');
-  });
+  const [languageChosen, setLanguageChosen] = useState<string | null>(
+    local.read(LANGUAGE_CHOSEN) ?? t('locales.swedish'),
+  );
   const [locale, setLocale] = useState<string>('sv');
 
   // Update localStorage whenever languageChosen changes.

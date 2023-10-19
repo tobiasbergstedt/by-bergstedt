@@ -1,19 +1,22 @@
-@import '../../utils.scss';
+@import 'src/utils.scss';
 
 .notFound {
-  min-height: calc(
-    100vh - var(--header-height-mobile) - var(--footer-height) - 2 *
-      var(--main-padding-height-mobile)
-  );
-  padding: var(--main-padding-height-mobile) var(--main-padding-width-mobile);
+  // position: relative;
+  // inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
   color: red;
+  min-height: 100%;
+  text-align: center;
+  // margin-top: var(--header-height-mobile);
+  // padding: 0 var(--main-padding-width-mobile);
 
   @include is-desktop {
-    min-height: calc(
-      100vh - var(--header-height-desktop) - var(--footer-height) - 2 *
-        var(--main-padding-height-desktop)
-    );
-    padding: var(--main-padding-height-desktop)
-      var(--main-padding-width-desktop);
+    // margin-top: 0;
+    // padding: var(--header-height-desktop)
+    //   var(--main-padding-width-desktop) calc(var(--footer-height) + var(--main-padding-height-desktop));
   }
 }

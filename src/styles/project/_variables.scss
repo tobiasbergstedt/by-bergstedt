@@ -17,6 +17,8 @@
   --color-blue-2: #280a73;
   --color-blue-3: #1a0353;
   --color-blue-4: #8EA3F5;
+  --color-blue-5: #391dda;
+  --color-blue-6: #414eff;
   --color-spinner-1: #e4db87;
   --color-spinner-2: #e38935;
 
@@ -81,6 +83,12 @@
   --color-button-secondary-disabled-background: var(
     --button-gradient-primary-disabled
   );
+  --color-button-tertiary: var(--color-white);
+  --color-button-tertiary-background: var(--color-brown-2);
+  --color-button-tertiary-hover: var(--color-grey-1);
+  --color-button-tertiary-hover-background: var(--color-brown-4);
+  // --color-button-tertiary-pressed: var(--color-grey-1);
+  // --color-button-tertiary-pressed-background: var(--color-red);
 
   // Dimensions
   --header-height-mobile: 96px;
@@ -89,8 +97,14 @@
   --insta-feed-width-desktop: 320px;
   --insta-feed-width-mobile: 100%;
 
+  // Border
+  --border-bottom-primary: 2px solid var(--color-brown-1);
+  --border-bottom-secondary: 2px solid var(--color-white);
+
   // Border radius
   --button-border-radius: 6px;
+  --image-border-radius: 18px;
+  --input-radius: 8px;
 
   // Margin
   --main-margin-top: 18px;
@@ -103,6 +117,7 @@
   --main-padding-height-mobile: 1em;
 
   // Box shadow
+  // --box-shadow-focus: 0 0 12px 8px goldenrod;
   // --box-shadow-primary: inset 0 10px 5px -5px #00000080,
   //   inset 0 -10px 5px -5px #00000080;
 

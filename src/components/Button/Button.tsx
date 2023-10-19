@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-
 import clsx from 'clsx';
 
 import styles from './Button.module.scss';
@@ -29,12 +28,16 @@ const Button: React.FC<ButtonProps> = ({
   href,
   isDisabled,
   isSecondary,
+  isTertiary,
+  isQuaternary,
   hasIcon,
   onClick,
 }) => {
   const classNames = clsx(styles.button, className, {
     [styles.isDisabled]: isDisabled,
     [styles.isSecondary]: isSecondary,
+    [styles.isTertiary]: isTertiary,
+    [styles.isQuaternary]: isQuaternary,
   });
 
   const text = (): JSX.Element | null => {

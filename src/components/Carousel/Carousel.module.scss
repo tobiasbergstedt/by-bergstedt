@@ -1,0 +1,68 @@
+@import 'src/utils.scss';
+
+.emblaWrapper {
+  position: relative;
+  overflow: hidden;
+  border-radius: 24px;
+}
+
+.emblaContainer {
+  display: flex;
+  gap: 20px;
+  padding-left: 20px;
+  max-height: 200px;
+
+  @include is-desktop {
+    max-height: 300px;
+  }
+}
+
+.emblaSlide {
+  flex: 0 0 75%;
+  display: flex;
+  min-width: 0;
+  overflow: hidden;
+  border-radius: 24px;
+  user-select: none;
+  background-image: var(--button-gradient-primary-hover);
+
+  &:hover a img {
+    opacity: 0.6;
+  }
+
+  @include is-desktop {
+    flex: 0 0 50%;
+  }
+
+ a {
+  display: flex;
+
+   img {
+     width: 100%; /* Ensure images fit within their containers */
+     height: auto;
+     align-self: center;
+     justify-self: center;
+     border-radius: 24px;
+     transition: opacity Var(--standard-transition);
+    }
+  }
+}
+
+.navigation {
+  position: absolute;
+  bottom: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+  width: 100%;
+
+  @include is-desktop {
+    bottom: 12px;
+  }
+}
+
+.dots {
+  display: flex;
+  gap: 16px;
+}

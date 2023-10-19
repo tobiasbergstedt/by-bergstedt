@@ -1,12 +1,15 @@
-import styles from './LanguagePicker.module.scss';
-import GlobeIcon from '../../../assets/icons/globe.svg';
-import { ReactComponent as ArrowDownIcon } from '../../../assets/icons/arrowdown.svg';
 import { useContext, useEffect, useRef, useState } from 'react';
-import clsx from 'clsx';
-import { UserContext } from '../../../context/UserContext';
-import { i18n } from '../../../i18n/i18n';
-import useBreakpoint, { DESKTOP } from '../../../hooks/useBreakpoint';
 import { useTranslation } from 'react-i18next';
+import clsx from 'clsx';
+
+import useBreakpoint, { DESKTOP } from '@hooks/useBreakpoint';
+import { UserContext } from '@context/UserContext';
+import { i18n } from '@i18n/i18n';
+
+import GlobeIcon from '@assets/icons/globe.svg';
+import { ReactComponent as ArrowDownIcon } from '@assets/icons/arrowdown.svg';
+
+import styles from './LanguagePicker.module.scss';
 
 const LanguagePicker = (): JSX.Element => {
   const { languageChosen, setLanguageChosen, setLocale } =
@@ -72,7 +75,7 @@ const LanguagePicker = (): JSX.Element => {
         />
         <span className={styles.languageChosenWrapper}>
           <span className={styles.languageChosen}>
-            {isDesktop ? languageChosen : languageChosen.slice(0, 2)}
+            {isDesktop ? languageChosen : languageChosen?.slice(0, 2)}
           </span>
           <span
             className={clsx(styles.arrowDown, {

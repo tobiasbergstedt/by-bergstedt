@@ -1,14 +1,18 @@
+import { useContext, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { Link } from 'react-router-dom';
 
-import useBreakpoint, { DESKTOP } from '../../hooks/useBreakpoint';
+import useBreakpoint, { DESKTOP } from '@hooks/useBreakpoint';
+import fixUrl from '@utils/fix-url';
 
-import styles from './Start.module.scss';
 import Article from './Article/Article';
 import Event from './Event/Event';
-import { useContext, useEffect, useState } from 'react';
-import fixUrl from '../../utils/fix-url';
-import Spinner from '../../components/Spinner/Spinner';
-import { UserContext } from '../../context/UserContext';
+import Spinner from '@components/Spinner/Spinner';
+import { UserContext } from '@context/UserContext';
+import SEOHelmet from '@components/SEOHelmet/SEOHelmet';
+import ImageCarousel from '@components/Carousel/Carousel';
+
+import styles from './Start.module.scss';
 
 interface Image {
   data: {
@@ -30,6 +34,14 @@ interface NewsItem {
     description: string;
     linkTo: string;
     image: Image;
+  };
+}
+
+interface EventItem {
+  attributes: {
+    date: string;
+    title: string;
+    linkTo: string;
   };
 }
 
@@ -56,12 +68,48 @@ const Start = (): JSX.Element => {
       },
     },
   ]);
+  const [events, setEvents] = useState<EventItem[]>([
+    {
+      attributes: {
+        date: '',
+        title: '',
+        linkTo: '',
+      },
+    },
+  ]);
   const { locale } = useContext(UserContext);
 
   const { t } = useTranslation();
 
   const breakpoint = useBreakpoint();
   const isDesktop = breakpoint === DESKTOP;
+
+  const slides = [
+    {
+      image:
+        'https://static.demilked.com/wp-content/uploads/2023/03/cool-woodworking-projects-9.jpeg',
+      linkTo: 'https://google.se',
+      alt: 'Alt 1',
+    },
+    {
+      image:
+        'https://i.pinimg.com/736x/20/e4/cd/20e4cd22c8abf76905ef76c0b2b4b40a.jpg',
+      linkTo: 'https://google.se',
+      alt: 'Alt 2',
+    },
+    {
+      image:
+        'https://www.boredpanda.com/blog/wp-content/uploads/2022/06/62b99899c4904_5wspvk7gun091__700.jpg',
+      linkTo: 'https://google.se',
+      alt: 'Alt 3',
+    },
+    {
+      image:
+        'https://121clicks.com/wp-content/uploads/2022/04/impressive-diy-woodworking-projects-10.jpg',
+      linkTo: 'https://google.se',
+      alt: 'Alt 4',
+    },
+  ];
 
   useEffect(() => {
     const getNewsItems = async (): Promise<void> => {
@@ -73,11 +121,25 @@ const Start = (): JSX.Element => {
       const apiData = await response.json();
       setNewsItems(apiData.data);
     };
+    const getEvents = async (): Promise<void> => {
+      const response = await fetch(
+        fixUrl(
+          `/api/events?populate=*&pagination[page]=1&pagination[pageSize]=3&sort[date]=ASC&locale=${locale}`,
+        ),
+      );
+      const apiData = await response.json();
+      setEvents(apiData.data);
+    };
     void getNewsItems();
+    void getEvents();
   }, [locale]);
 
   return (
     <div className={styles.startContainer}>
+      <SEOHelmet
+        title={t('helmet.start.title')}
+        description={t('helmet.start.description')}
+      />
       {newsItems.length === 1 ? (
         <div className={styles.loading}>
           <p>{t('misc.loading')}</p>
@@ -95,50 +157,7 @@ const Start = (): JSX.Element => {
             )}
           />
           <div className={styles.contentContainer}>
-            <div className={styles.articlesContainer}>
-              <div className={styles.articlesGrid}>
-                {newsItems.slice(1, 4).map(({ attributes }, index) => (
-                  <Article
-                    key={index}
-                    title={attributes.title}
-                    description={attributes.description}
-                    linkTo={attributes.linkTo}
-                  />
-                ))}
-              </div>
-              {!isDesktop && (
-                <div className={styles.instaWrapper}>
-                  <div
-                    style={{
-                      width: '250px',
-                      height: '250px',
-                      backgroundColor: 'red',
-                    }}
-                  ></div>
-                </div>
-              )}
-              <div className={styles.eventsContainer}>
-                <h3>{t('start.upcoming')}</h3>
-                <div className={styles.eventsGrid}>
-                  <Event
-                    title={'Händelse 1'}
-                    description={'Beskrivning av händelse 1'}
-                    linkTo={'länkTillHändelse1'}
-                  />
-                  <Event
-                    title={'Händelse 2'}
-                    description={'Beskrivning av händelse 2'}
-                    linkTo={'länkTillHändelse2'}
-                  />
-                  <Event
-                    title={'Händelse 3'}
-                    description={'Beskrivning av händelse 3'}
-                    linkTo={'länkTillHändelse3'}
-                  />
-                </div>
-              </div>
-            </div>
-            {isDesktop && (
+            {!isDesktop && (
               <div className={styles.instaWrapper}>
                 <div
                   style={{
@@ -149,9 +168,39 @@ const Start = (): JSX.Element => {
                 ></div>
               </div>
             )}
-          </div>
-          <div>
-            <p>Carousel</p>
+            <div className={styles.eventsContainer}>
+              <h3 className={styles.upcomingHeader}>
+                {t('start.upcoming')}
+                {' ('}
+                <Link to={'/gallery'} className={styles.moreEvents}>
+                  {t('start.moreEvents')}...
+                </Link>
+                {')'}
+              </h3>
+              <div className={styles.eventsGrid}>
+                {events.map(({ attributes }, index) => (
+                  <Event
+                    key={index}
+                    date={attributes.date}
+                    title={attributes.title}
+                    linkTo={attributes.linkTo}
+                  />
+                ))}
+              </div>
+            </div>
+            <div>
+              <ImageCarousel slides={slides} />
+            </div>
+            <div className={styles.articlesGrid}>
+              {newsItems.slice(1, 4).map(({ attributes }, index) => (
+                <Article
+                  key={index}
+                  title={attributes.title}
+                  description={attributes.description}
+                  linkTo={attributes.linkTo}
+                />
+              ))}
+            </div>
           </div>
         </>
       )}

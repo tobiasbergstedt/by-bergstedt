@@ -1,0 +1,65 @@
+.rangeContainer {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  flex-grow: 1;
+  height: 40px;
+  margin: 0 20px;
+}
+
+.rangeSlider {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.rangeWrapper {
+  height: fit-content;
+  display: flex;
+  width: 100%;
+}
+
+.rangeTrack {
+  height: 5px;
+  width: 100%;
+  border-radius: 4px;
+  align-self: center;
+}
+
+.thumb {
+  display: flex;
+  height: 40px;
+  width: 40px;
+  border-radius: var(--input-radius);
+  background-color: var(--color-white);
+  justify-content: center;
+  align-items: center;
+  border-bottom: var(--border-bottom-primary);
+
+  // &:focus {
+  //   box-shadow: var(--box-shadow-focus);
+  // }
+}
+
+.thumbMarker {
+  height: 24px;
+  width: 8px;
+  border-radius: var(--input-radius);
+  background-color: var(--color-grey-4);
+  transition: background-color var(--standard-transition);
+}
+
+.thumbIsDragged {
+  background-color: var(--color-brown-4);
+}
+
+.valuesOutput {
+  position: absolute;
+  bottom: -24px;
+  left: 0;
+  right: 0;
+  top: auto;
+  text-align: center;
+}

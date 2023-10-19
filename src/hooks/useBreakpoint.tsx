@@ -1,10 +1,10 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect } from 'react';
 // import throttle from "lodash.throttle";
 
-export const MOBILE = "mobile";
-export const TABLET_PORTRAIT = "tablet-portrait";
-export const TABLET_LANDSCAPE = "tablet-landscape";
-export const DESKTOP = "desktop";
+export const MOBILE = 'mobile';
+export const TABLET_PORTRAIT = 'tablet-portrait';
+export const TABLET_LANDSCAPE = 'tablet-landscape';
+export const DESKTOP = 'desktop';
 
 const tabletPortrait = 768;
 const desktop = 1024;
@@ -31,7 +31,7 @@ export const getBreakpointsConfig = (
 
 const useBreakpoint = (): any => {
   const [breakpoint, setBreakpoint] = useState<any>(() => {
-    if (typeof window !== "undefined") {
+    if (typeof window !== 'undefined') {
       getBreakpointsConfig(window.innerWidth, window.innerHeight);
     }
   });
@@ -44,10 +44,10 @@ const useBreakpoint = (): any => {
         getBreakpointsConfig(window.innerWidth, window.innerHeight),
       );
     };
-    window.addEventListener("resize", onResize);
+    window.addEventListener('resize', onResize);
 
     return () => {
-      window.removeEventListener("resize", onResize);
+      window.removeEventListener('resize', onResize);
     };
   }, []);
 

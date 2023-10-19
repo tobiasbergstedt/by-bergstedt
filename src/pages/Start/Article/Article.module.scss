@@ -1,4 +1,4 @@
-@import '../../../utils.scss';
+@import 'src/utils.scss';
 
 .mainArticle {
   width: 100%;
@@ -58,20 +58,26 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-bottom: 12px;
 
   @include is-desktop {
-    width: 55%;
-    justify-content: flex-end;
+    margin-bottom: 24px;
   }
 }
 
 .mainImage {
   width: 100%;
   height: auto;
+  border-radius: var(--image-border-radius);
   transition: opacity var(--standard-transition), scale var(--standard-transition);
 
   &:hover {
     // opacity: 0.7;
     scale: 1.025;
   }
+}
+
+.instaWrapper {
+  @include flex-centered;
+  width: 55%;
 }

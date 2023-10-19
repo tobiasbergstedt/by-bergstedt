@@ -1,18 +1,25 @@
-import styles from './Header.module.scss';
-// import { fixUrl } from '../../utils'
-import ByBergstedtLogo from '../../assets/icons/logo2.svg';
-
 import { useState } from 'react';
-import useBreakpoint, { DESKTOP } from '../../hooks/useBreakpoint';
-import { NavLink } from 'react-router-dom';
-import SocialMedia from '../SocialMedia/SocialMedia';
-import LanguagePicker from './LanguagePicker/LanguagePicker';
-import { useTranslation } from 'react-i18next';
 import clsx from 'clsx';
+import { useTranslation } from 'react-i18next';
+import { NavLink } from 'react-router-dom';
+
+// import { fixUrl } from '@utils'
+import useBreakpoint, { DESKTOP } from '@hooks/useBreakpoint';
+
+import ByBergstedtLogo from '@assets/icons/logo2.svg';
+
+import SocialMedia from '@components/SocialMedia/SocialMedia';
+import LanguagePicker from './LanguagePicker/LanguagePicker';
+
+import styles from './Header.module.scss';
 
 interface NavLinkItem {
   title: string;
   link: string;
+}
+
+interface ItemComponentProps {
+  item: NavLinkItem;
 }
 
 const Header = (): JSX.Element => {
@@ -58,10 +65,6 @@ const Header = (): JSX.Element => {
   const closeMenu = (): void => {
     setIsNavExpanded(false);
   };
-
-  interface ItemComponentProps {
-    item: NavLinkItem;
-  }
 
   const ItemComponent: React.FC<ItemComponentProps> = ({ item }) => {
     return (

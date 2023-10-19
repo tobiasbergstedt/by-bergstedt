@@ -1,4 +1,4 @@
-@import '../../utils.scss';
+@import 'src/utils.scss';
 
 .button {
   z-index: 0;
@@ -29,6 +29,8 @@
   outline: 0 none;
 
   pointer-events: auto;
+  transform: scale(1);
+  transition: transform 0.2s;
 
   // transition: background-color 0.15s, color 0.15s;
   -webkit-tap-highlight-color: transparent;
@@ -54,6 +56,14 @@
     opacity: 1;
   }
 
+  &:active {
+    transform: scale(0.95);
+  }
+
+  // &:focus {
+  //   box-shadow: var(--box-shadow-focus);
+  // }
+
   &.isDisabled {
     background: var(--color-button-primary-disabled-background);
 
@@ -77,6 +87,21 @@
       background: var(--color-button-secondary-disabled-background);
 
       color: var(--color-button-secondary-disabled);
+    }
+  }
+
+  &.isTertiary {
+    background: var(--color-button-tertiary-background);
+    max-width: fit-content;
+    padding: 0 12px;
+    height: 40px;
+
+    border-bottom: var(--border-bottom-secondary);
+
+    color: var(--color-button-tertiary);
+
+    &::before {
+      background: var(--color-button-tertiary-hover-background);
     }
   }
 

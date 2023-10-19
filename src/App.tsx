@@ -1,13 +1,19 @@
 import { useEffect } from 'react';
-import './App.scss';
+import { HelmetProvider } from 'react-helmet-async';
 import { Navigate, Routes, Route } from 'react-router-dom';
-import Start from './pages/Start/Start';
-import NotFound from './pages/NotFound/NotFound';
-import Header from './components/Header/Header';
-import MyFooter from './components/Footer/Footer';
-import useBreakpoint, { DESKTOP } from './hooks/useBreakpoint';
-import SocialMedia from './components/SocialMedia/SocialMedia';
-import { UserProvider } from './context/UserContext';
+
+import useBreakpoint, { DESKTOP } from '@hooks/useBreakpoint';
+import { UserProvider } from '@context/UserContext';
+
+import Start from '@pages/Start/Start';
+import NotFound from '@pages/NotFound/NotFound';
+import Gallery from '@pages/Gallery/Gallery';
+
+import Header from '@components/Header/Header';
+import MyFooter from '@components/Footer/Footer';
+import SocialMedia from '@components/SocialMedia/SocialMedia';
+
+import './App.scss';
 // import { useRecoilState } from 'recoil'
 // import allHamstersAtom from './atoms/Hamsters'
 // import { fixUrl } from './utils'
@@ -29,18 +35,21 @@ const App = (): JSX.Element => {
 
   return (
     <UserProvider>
-      <div className="app">
-        {isDesktop && <SocialMedia isDesktop={isDesktop} />}
-        <Header />
-        <main>
-          <Routes>
-            <Route path="/" element={<Start />} />
-            <Route path="*" element={<Navigate to="/404" />} />
-            <Route path="/404" element={<NotFound />} />
-          </Routes>
-        </main>
-        <footer>{isDesktop && <MyFooter />}</footer>
-      </div>
+      <HelmetProvider>
+        <div className="app">
+          {isDesktop && <SocialMedia isDesktop={isDesktop} />}
+          <Header />
+          <main>
+            <Routes>
+              <Route path="/" element={<Start />} />
+              <Route path="/gallery" element={<Gallery />} />
+              <Route path="*" element={<Navigate to="/404" />} />
+              <Route path="/404" element={<NotFound />} />
+            </Routes>
+          </main>
+          <footer>{isDesktop && <MyFooter />}</footer>
+        </div>
+      </HelmetProvider>
     </UserProvider>
   );
 };

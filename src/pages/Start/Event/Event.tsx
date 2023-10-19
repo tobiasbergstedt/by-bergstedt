@@ -1,23 +1,26 @@
 import { useTranslation } from 'react-i18next';
 
-import Button from '../../../components/Button/Button';
+import formatDate, { FormatType } from '@utils/format-date';
+
+import Button from '@components/Button/Button';
 
 import styles from './Event.module.scss';
 
 interface EventProps {
+  date: string;
   title: string;
-  description: string;
   linkTo: string;
 }
 
-const Event = ({ title, description, linkTo }: EventProps): JSX.Element => {
+const Event = ({ date, title, linkTo }: EventProps): JSX.Element => {
   const { t } = useTranslation();
+  const formattedDateAndTime = formatDate(date, FormatType.DATE_AND_TIME);
 
   return (
     <article className={styles.eventContainer}>
-      <h4 className={styles.heading}>{title}</h4>
+      <h4 className={styles.heading}>{formattedDateAndTime}</h4>
 
-      <p className={styles.paragraph}>{description}</p>
+      <p className={styles.paragraph}>{title}</p>
       <Button to={linkTo}>{t('start.readMore')}</Button>
     </article>
   );

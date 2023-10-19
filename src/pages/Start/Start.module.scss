@@ -1,11 +1,12 @@
-@import '../../utils.scss';
+@import 'src/utils.scss';
 
 .startContainer {
   width: 100%;
   // background-color: red;
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  flex-grow: 1;
+  gap: 32px;
 }
 
 .loading {
@@ -13,27 +14,28 @@
 
   width: 100%;
   height: 100%;
+  flex-grow: 1;
 }
+
+// .contentWrapper {
+//   display: flex;
+//   flex-direction: column;
+//   gap: 48px;
+
+//   @include is-desktop {
+//     flex-direction: row;
+//   }
+// }
 
 .contentContainer {
-  display: flex;
-  flex-direction: column;
-  gap: 48px;
-
-  @include is-desktop {
-    flex-direction: row;
-  }
-}
-
-.articlesContainer {
   min-width: calc(100% - var(--insta-feed-width-desktop));
   display: flex;
-  flex-direction: column-reverse;
-  gap: 24px;
+  flex-direction: column;
+    // flex-direction: column-reverse;
+  gap: 32px;
 
   @include is-desktop {
-    flex-direction: column;
-    gap: 0;
+    // gap: 0;
   }
 }
 
@@ -41,21 +43,35 @@
   display: grid;
   grid-template-columns: 1fr;
   gap: 32px;
+  margin-bottom: 24px;
 
   @include is-desktop {
     grid-template-columns: 1fr 1fr 1fr;
-    margin-top: 48px;
     gap: 48px;
   }
 }
 
 .eventsContainer {
-  margin-top: 32px;
-  h3 {
-    @include font-20;
+  @include is-desktop {
+    margin-top: 12px;
+  }
+}
 
-    margin-bottom: 12px;
-    font-weight: 700;
+.upcomingHeader {
+  @include font-20;
+
+  margin-bottom: 12px;
+  font-weight: 700;
+  border-bottom: 1px solid var(--color-white);
+}
+
+.moreEvents {
+  color: var(--color-brown-1);
+  font-size: 1em;
+  transition: color var(--standard-transition);
+
+  &:hover {
+    color: var(--color-blue-4);
   }
 }
 

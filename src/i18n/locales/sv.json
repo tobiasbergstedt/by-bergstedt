@@ -18,9 +18,41 @@
   },
   "start": {
     "readMore": "Läs mer",
-    "upcoming": "Kommande händelser"
+    "upcoming": "Kommande händelser",
+    "moreEvents": "fler"
+  },
+  "gallery": {
+    "heading": "Galleri",
+    "category": "Kategori",
+    "reset": "Återställ",
+    "noResults": "Inga resultat. Försök med en annan filterkombination."
+  },
+  "helmet": {
+    "start": {
+      "title": "Unikt trähantverk",
+      "description": "Utvalda skapelser och senaste nyheter från vårt snickeri, samt en översikt över kommande händelser."
+    }
   },
   "misc": {
-    "loading": "Laddar..."
+    "loading": "Laddar...",
+    "months": {
+      "january": "januari",
+      "february": "februari",
+      "march": "mars",
+      "april": "april",
+      "may": "maj",
+      "june": "juni",
+      "july": "juli",
+      "august": "augusti",
+      "september": "september",
+      "october": "oktober",
+      "november": "november",
+      "december": "december"
+    },
+    "currencies": {
+      "sek": "SEK",
+      "eur": "EUR"
+    },
+    "all": "Alla kategorier"
   }
 }
