@@ -1,7 +1,11 @@
 @import 'src/utils.scss';
 
 .imageContainer {
-  width: 60%;
+  width: 100%;
+
+  @include is-desktop {
+    width: 60%;
+  }
 }
 
 .mainImageWrapper {

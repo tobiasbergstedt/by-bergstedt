@@ -3,10 +3,16 @@
 .productContainer {
   position: relative;
   display: flex;
-  gap: 50px;
+  flex-direction: column;
+  gap: 24px;
 
   flex-grow: 1;
   padding-top: 40px;
+
+  @include is-desktop {
+    flex-direction: row;
+    gap: 50px;
+  }
 }
 
 .arrowWrapper {
@@ -26,7 +32,13 @@
 
 .infoContainer {
   flex-grow: 1;
-  max-width: 40%;
+  max-width: 100%;
+  margin-bottom: 24px;
+
+  @include is-desktop {
+    max-width: 40%;
+    margin-bottom: 0;
+  }
 }
 
 .productHeading {
