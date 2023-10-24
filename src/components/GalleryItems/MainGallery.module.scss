@@ -1,0 +1,28 @@
+@import 'src/utils.scss';
+
+.galleryContainer {
+  display: flex;
+  flex-direction: column;
+  // justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+}
+
+.heading {
+  margin-bottom: 32px;
+
+  @include is-desktop {
+    // margin-bottom: rem(12);
+  }
+}
+
+.paragraph {
+  margin: 0;
+}
+
+.noResults {
+  @include flex-centered;
+
+  flex-grow: 1;
+  width: 100%;
+}

@@ -25,7 +25,13 @@
     "heading": "Galleri",
     "category": "Kategori",
     "reset": "Återställ",
-    "noResults": "Inga resultat. Försök med en annan filterkombination."
+    "noResults": "Inga resultat. Försök med en annan filterkombination.",
+    "soldOut": "Slutsåld",
+    "inStock": "Antal i lager",
+    "addToCart": "Lägg i korgen"
+  },
+  "shop": {
+    "heading": "Butik"
   },
   "helmet": {
     "start": {

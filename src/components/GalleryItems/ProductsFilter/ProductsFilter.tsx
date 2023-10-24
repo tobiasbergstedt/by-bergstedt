@@ -27,6 +27,7 @@ const ProductsFilter = ({
   products,
 }: PassedProps): JSX.Element => {
   const [minMaxRange, setMinMaxRange] = useState<number[]>([0, 10000]);
+
   const { t } = useTranslation();
 
   const selectRef = useRef<HTMLSelectElement>(null);
@@ -54,6 +55,7 @@ const ProductsFilter = ({
         ref={selectRef}
       />
       <div className={styles.priceRangeContainer}>
+        {/* <p>Pris:</p> */}
         <RangeSlider
           min={minMaxRange[0]}
           max={minMaxRange[1]}

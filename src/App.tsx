@@ -8,10 +8,12 @@ import { UserProvider } from '@context/UserContext';
 import Start from '@pages/Start/Start';
 import NotFound from '@pages/NotFound/NotFound';
 import Gallery from '@pages/Gallery/Gallery';
+import ForSale from '@pages/ForSale/ForSale';
 
 import Header from '@components/Header/Header';
 import MyFooter from '@components/Footer/Footer';
 import SocialMedia from '@components/SocialMedia/SocialMedia';
+import SingleItem from '@components/SingleItem/SingleItem';
 
 import './App.scss';
 // import { useRecoilState } from 'recoil'
@@ -43,6 +45,8 @@ const App = (): JSX.Element => {
             <Routes>
               <Route path="/" element={<Start />} />
               <Route path="/gallery" element={<Gallery />} />
+              <Route path="/product/:uuid" element={<SingleItem />} />
+              <Route path="/shop" element={<ForSale />} />
               <Route path="*" element={<Navigate to="/404" />} />
               <Route path="/404" element={<NotFound />} />
             </Routes>

@@ -1,75 +1,105 @@
-import { Fragment, useEffect, useState } from 'react';
+import { Fragment, useContext, useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import clsx from 'clsx';
 
+import { UserContext } from '@context/UserContext';
 import { type Product, type GroupedItems } from '@interfaces/interfaces';
 import { fixUrl } from '@utils';
+
+import SoldOut from '@components/GalleryItems/SoldOut/Soldout';
 
 import styles from './GalleryItems.module.scss';
 
 interface GalleryProps {
   filteredItems: Product[];
   products: Product[];
+  isShop?: boolean;
 }
 
 const GalleryItems = ({
   filteredItems,
   products,
+  isShop,
 }: GalleryProps): JSX.Element => {
   const [groupedItems, setGroupedItems] = useState<GroupedItems>({});
+  const [shopItems, setShopItems] = useState<Product[]>([]);
+
+  const { locale } = useContext(UserContext);
+  const { t } = useTranslation();
 
   useEffect(() => {
-    const newGroupedItems: Record<number, Product[]> = {};
-    const itemsToGroup = filteredItems.length > 0 ? filteredItems : products;
+    if (isShop === true) {
+      setShopItems(filteredItems);
+    } else {
+      const newGroupedItems: Record<number, Product[]> = {};
+      const itemsToGroup = filteredItems.length > 0 ? filteredItems : products;
 
-    itemsToGroup.forEach((item) => {
-      const year = new Date(item.attributes.createdAt).getFullYear();
-      if (newGroupedItems[year] == null) {
-        newGroupedItems[year] = [];
-      }
-      newGroupedItems[year].push(item);
-    });
+      itemsToGroup.forEach((item) => {
+        const year = new Date(item.attributes.createdAt).getFullYear();
+        if (newGroupedItems[year] == null) {
+          newGroupedItems[year] = [];
+        }
+        newGroupedItems[year].push(item);
+      });
 
-    setGroupedItems(newGroupedItems);
+      setGroupedItems(newGroupedItems);
+    }
   }, [filteredItems, products]);
+
+  const renderProducts = (productList: Product[]): JSX.Element => {
+    return (
+      <div
+        className={clsx(styles.galleryWrapper, {
+          [styles.shopWrapper]: isShop,
+        })}
+      >
+        {productList.map(({ attributes }, itemIndex) => (
+          <Link to={`/product/${attributes.uuid}`} key={itemIndex}>
+            <div className={styles.galleryItemContainer}>
+              <img
+                className={styles.galleryImage}
+                src={fixUrl(
+                  attributes.images.data[0].attributes.formats.small.url,
+                )}
+                alt={
+                  locale === 'sv'
+                    ? attributes.title
+                    : attributes.localizations.data[0].attributes.title
+                }
+              />
+              <div className={styles.itemDescription}>
+                <h3 className={styles.itemHeading}>
+                  {locale === 'sv'
+                    ? attributes.title
+                    : attributes.localizations.data[0].attributes.title}
+                </h3>
+                <p
+                  className={clsx(styles.itemPrice, {
+                    [styles.priceSoldOut]: attributes.amount === 0,
+                  })}
+                >
+                  {attributes.price} {t('misc.currencies.sek')}
+                </p>
+              </div>
+              {attributes.amount === 0 && <SoldOut />}
+            </div>
+          </Link>
+        ))}
+      </div>
+    );
+  };
 
   return (
     <>
-      {Object.entries(groupedItems).map(([year, yearItems]) => {
-        const chunkedYearItems = [];
-
-        // Split yearItems into subarrays of 11 items each
-        for (let i = 0; i < yearItems.length; i += 11) {
-          chunkedYearItems.push(yearItems.slice(i, i + 11));
-        }
-
-        return (
-          <Fragment key={year}>
-            <h2 className={styles.yearHeading}>{year}</h2>
-            <div className={styles.galleryWrapper}>
-              {chunkedYearItems.map((chunk, chunkIndex) => (
-                <div
-                  key={chunkIndex}
-                  className={clsx(styles.gallery, {
-                    [styles.gallerySimple]: chunk.length <= 4,
-                  })}
-                >
-                  {chunk.map((item, itemIndex) => (
-                    <img
-                      key={itemIndex}
-                      className={styles.galleryImage}
-                      src={fixUrl(
-                        item.attributes.images.data[0].attributes.formats.small
-                          .url,
-                      )}
-                      alt={item.attributes.title}
-                    />
-                  ))}
-                </div>
-              ))}
-            </div>
-          </Fragment>
-        );
-      })}
+      {isShop === true
+        ? renderProducts(shopItems)
+        : Object.entries(groupedItems).map(([year, yearItems]) => (
+            <Fragment key={year}>
+              <h2 className={styles.yearHeading}>{year}</h2>
+              {renderProducts(yearItems)}
+            </Fragment>
+          ))}
     </>
   );
 };

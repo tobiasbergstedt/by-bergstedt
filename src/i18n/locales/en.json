@@ -25,7 +25,13 @@
     "heading": "Gallery",
     "category": "Category",
     "reset": "Reset",
-    "noResults": "No results. Try another filter combination."
+    "noResults": "No results. Try another filter combination.",
+    "soldOut": "Sold out",
+    "inStock": "Amount in stock",
+    "addToCart": "Add to cart"
+  },
+  "shop": {
+    "heading": "Shop"
   },
   "helmet": {
     "start": {

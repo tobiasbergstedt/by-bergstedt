@@ -3,16 +3,16 @@ import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 
 import useBreakpoint, { DESKTOP } from '@hooks/useBreakpoint';
-import fixUrl from '@utils/fix-url';
+import { fixUrl } from '@utils';
 
 import Article from './Article/Article';
 import Event from './Event/Event';
-import Spinner from '@components/Spinner/Spinner';
 import { UserContext } from '@context/UserContext';
 import SEOHelmet from '@components/SEOHelmet/SEOHelmet';
 import ImageCarousel from '@components/Carousel/Carousel';
 
 import styles from './Start.module.scss';
+import Loading from '@components/Spinner/Loading/Loading';
 
 interface Image {
   data: {
@@ -141,10 +141,7 @@ const Start = (): JSX.Element => {
         description={t('helmet.start.description')}
       />
       {newsItems.length === 1 ? (
-        <div className={styles.loading}>
-          <p>{t('misc.loading')}</p>
-          <Spinner isLarge />
-        </div>
+        <Loading />
       ) : (
         <>
           <Article
