@@ -127,27 +127,6 @@ a {
   left: 0;
 }
 
-.navLink {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 50px;
-  transition:
-    color var(--standard-transition),
-    transform var(--standard-transition);
-
-  &:hover {
-    color: var(--color-brown-2);
-    transform: translateX(2px);
-
-    @include is-desktop {
-      transform: translateX(0);
-      transform: translateY(2px);
-      color: var(--color-blue-4);
-    }
-  }
-}
-
 .hamburger {
   display: block;
   cursor: pointer;

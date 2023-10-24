@@ -3,24 +3,15 @@ import clsx from 'clsx';
 import { useTranslation } from 'react-i18next';
 import { NavLink } from 'react-router-dom';
 
-// import { fixUrl } from '@utils'
 import useBreakpoint, { DESKTOP } from '@hooks/useBreakpoint';
 
 import ByBergstedtLogo from '@assets/icons/logo2.svg';
 
 import SocialMedia from '@components/SocialMedia/SocialMedia';
-import LanguagePicker from './LanguagePicker/LanguagePicker';
+import LanguagePicker from '@components/Header/LanguagePicker/LanguagePicker';
+import NavItem from '@components/Header/NavItem/NavItem';
 
 import styles from './Header.module.scss';
-
-interface NavLinkItem {
-  title: string;
-  link: string;
-}
-
-interface ItemComponentProps {
-  item: NavLinkItem;
-}
 
 const Header = (): JSX.Element => {
   const [isNavExpanded, setIsNavExpanded] = useState<boolean>(false);
@@ -45,16 +36,16 @@ const Header = (): JSX.Element => {
       link: 'shop',
     },
     {
+      title: t('menu.custom'),
+      link: 'custom',
+    },
+    {
       title: t('menu.about'),
       link: 'about',
     },
     {
       title: t('menu.contact'),
       link: 'contact',
-    },
-    {
-      title: t('menu.links'),
-      link: 'links',
     },
   ];
 
@@ -64,30 +55,6 @@ const Header = (): JSX.Element => {
 
   const closeMenu = (): void => {
     setIsNavExpanded(false);
-  };
-
-  const ItemComponent: React.FC<ItemComponentProps> = ({ item }) => {
-    return (
-      <li onClick={closeMenu}>
-        <NavLink
-          to={item.link}
-          className={styles.navLink}
-          style={({ isActive }) =>
-            isActive
-              ? {
-                  textDecoration: 'underline',
-                  textDecorationColor: isDesktop
-                    ? 'var(--color-blue-4)'
-                    : 'var(--color-brown-2)',
-                  textUnderlineOffset: isDesktop ? '6px' : '4px',
-                }
-              : {}
-          }
-        >
-          {item.title}
-        </NavLink>
-      </li>
-    );
   };
 
   return (
@@ -107,7 +74,7 @@ const Header = (): JSX.Element => {
           })}
         >
           {navLinks.map((item, index) => (
-            <ItemComponent key={index} item={item} />
+            <NavItem key={index} item={item} onClick={closeMenu} />
           ))}
           {!isDesktop && (
             <>
