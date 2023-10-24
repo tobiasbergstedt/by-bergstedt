@@ -10,6 +10,7 @@ import NotFound from '@pages/NotFound/NotFound';
 import Gallery from '@pages/Gallery/Gallery';
 import ForSale from '@pages/ForSale/ForSale';
 import Custom from '@pages/Custom/Custom';
+import About from '@pages/About/About';
 
 import Header from '@components/Header/Header';
 import MyFooter from '@components/Footer/Footer';
@@ -49,6 +50,7 @@ const App = (): JSX.Element => {
               <Route path="/product/:uuid" element={<SingleItem />} />
               <Route path="/shop" element={<ForSale />} />
               <Route path="/custom" element={<Custom />} />
+              <Route path="/about" element={<About />} />
               <Route path="*" element={<Navigate to="/404" />} />
               <Route path="/404" element={<NotFound />} />
             </Routes>
