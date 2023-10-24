@@ -9,6 +9,7 @@ import Start from '@pages/Start/Start';
 import NotFound from '@pages/NotFound/NotFound';
 import Gallery from '@pages/Gallery/Gallery';
 import ForSale from '@pages/ForSale/ForSale';
+import Custom from '@pages/Custom/Custom';
 
 import Header from '@components/Header/Header';
 import MyFooter from '@components/Footer/Footer';
@@ -47,6 +48,7 @@ const App = (): JSX.Element => {
               <Route path="/gallery" element={<Gallery />} />
               <Route path="/product/:uuid" element={<SingleItem />} />
               <Route path="/shop" element={<ForSale />} />
+              <Route path="/custom" element={<Custom />} />
               <Route path="*" element={<Navigate to="/404" />} />
               <Route path="/404" element={<NotFound />} />
             </Routes>
