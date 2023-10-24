@@ -69,7 +69,21 @@ const Header = (): JSX.Element => {
   const ItemComponent: React.FC<ItemComponentProps> = ({ item }) => {
     return (
       <li onClick={closeMenu}>
-        <NavLink to={item.link} className={styles.navLink}>
+        <NavLink
+          to={item.link}
+          className={styles.navLink}
+          style={({ isActive }) =>
+            isActive
+              ? {
+                  textDecoration: 'underline',
+                  textDecorationColor: isDesktop
+                    ? 'var(--color-blue-4)'
+                    : 'var(--color-brown-2)',
+                  textUnderlineOffset: isDesktop ? '6px' : '4px',
+                }
+              : {}
+          }
+        >
           {item.title}
         </NavLink>
       </li>
