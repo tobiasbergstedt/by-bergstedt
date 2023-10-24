@@ -69,11 +69,13 @@ const Button: React.FC<ButtonProps> = ({
         type={type === 'submit' ? 'submit' : 'button'}
         onClick={onClick}
         disabled={isDisabled}
-        className={classNames}
+        className={clsx(classNames, {
+          [styles.hasIconButton]: hasIcon,
+        })}
         onTouchStart={noop} // Otherwise :active won't work.
       >
-        {hasIcon != null && <img src={hasIcon} className={styles.hasIcon} />}
         {text()}
+        {hasIcon != null && <img src={hasIcon} className={styles.hasIcon} />}
       </button>
     </>
   );

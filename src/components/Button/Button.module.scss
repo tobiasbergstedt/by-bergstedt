@@ -72,6 +72,10 @@
     cursor: not-allowed;
 
     pointer-events: none;
+
+    .hasIcon {
+      opacity: 0.4;
+    }
   }
 
   &.isSecondary {
@@ -105,11 +109,14 @@
     }
   }
 
+  &.hasIconButton {
+    max-width: fit-content;
+    padding: 0 24px;
+    gap: 24px;
+  }
+
   .hasIcon {
-    width: 26px;
-    margin-top: -4px;
-    margin-right: 22px;
-    margin-bottom: -4px;
+    width: 28px;
   }
 
   > span {
