@@ -11,6 +11,7 @@ import Gallery from '@pages/Gallery/Gallery';
 import ForSale from '@pages/ForSale/ForSale';
 import Custom from '@pages/Custom/Custom';
 import About from '@pages/About/About';
+import Contact from '@pages/Contact/Contact';
 
 import Header from '@components/Header/Header';
 import MyFooter from '@components/Footer/Footer';
@@ -51,6 +52,7 @@ const App = (): JSX.Element => {
               <Route path="/shop" element={<ForSale />} />
               <Route path="/custom" element={<Custom />} />
               <Route path="/about" element={<About />} />
+              <Route path="/contact" element={<Contact />} />
               <Route path="*" element={<Navigate to="/404" />} />
               <Route path="/404" element={<NotFound />} />
             </Routes>
