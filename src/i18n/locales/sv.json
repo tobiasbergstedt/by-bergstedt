@@ -8,10 +8,10 @@
   "menu": {
     "start": "Startsida",
     "gallery": "Galleri",
-    "shop": "Till salu",
-    "about": "Om mig",
-    "contact": "Kontakt",
-    "links": "Länkar"
+    "shop": "Butik",
+    "custom": "3D Designer",
+    "about": "Om",
+    "contact": "Kontakt"
   },
   "header": {
     "copyright": "Copyright © 2009-{{thisYear}}\n Tobias Bergstedt (Handmade by Bergstedt)"
