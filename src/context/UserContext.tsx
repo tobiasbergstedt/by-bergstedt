@@ -34,7 +34,7 @@ const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
   const [languageChosen, setLanguageChosen] = useState<string | null>(
     local.read(LANGUAGE_CHOSEN) ?? t('locales.swedish'),
   );
-  const [locale, setLocale] = useState<string>('sv');
+  const [locale, setLocale] = useState<string>(t('locales.sv'));
 
   // Update localStorage whenever languageChosen changes.
   useEffect(() => {

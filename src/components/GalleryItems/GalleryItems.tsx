@@ -57,20 +57,24 @@ const GalleryItems = ({
         {productList.map(({ attributes }, itemIndex) => (
           <Link to={`/product/${attributes.uuid}`} key={itemIndex}>
             <div className={styles.galleryItemContainer}>
-              <img
-                className={styles.galleryImage}
-                src={fixUrl(
-                  attributes.images.data[0].attributes.formats.small.url,
-                )}
-                alt={
-                  locale === 'sv'
-                    ? attributes.title
-                    : attributes.localizations.data[0].attributes.title
-                }
-              />
+              <div className={styles.imageWrapper}>
+                <img
+                  className={styles.galleryImage}
+                  src={fixUrl(
+                    attributes.images.data[0].attributes.formats.small.url,
+                  )}
+                  alt={
+                    locale === t('locales.sv')
+                      ? `${t('gallery.coverImage')} ${attributes.title}`
+                      : `${t('gallery.coverImage')} ${
+                          attributes.localizations.data[0].attributes.title
+                        }`
+                  }
+                />
+              </div>
               <div className={styles.itemDescription}>
                 <h3 className={styles.itemHeading}>
-                  {locale === 'sv'
+                  {locale === t('locales.sv')
                     ? attributes.title
                     : attributes.localizations.data[0].attributes.title}
                 </h3>

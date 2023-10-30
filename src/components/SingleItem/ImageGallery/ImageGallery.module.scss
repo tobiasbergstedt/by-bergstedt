@@ -28,6 +28,11 @@
 
 .thumbnailsContainer {
   display: grid;
-  gap: 16px;
-  margin-top: 16px;
+  gap: 8px;
+  margin-top: 8px;
+
+  @include is-desktop {
+    gap: 16px;
+    margin-top: 16px;
+  }
 }
