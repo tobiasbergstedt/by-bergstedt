@@ -28,7 +28,8 @@
     "noResults": "Inga resultat. Försök med en annan filterkombination.",
     "soldOut": "Slutsåld",
     "inStock": "Antal i lager",
-    "addToCart": "Lägg i korgen"
+    "addToCart": "Lägg i korgen",
+    "coverImage": "Omslagsbild till"
   },
   "shop": {
     "heading": "Butik"

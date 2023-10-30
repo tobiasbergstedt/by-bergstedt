@@ -28,7 +28,8 @@
     "noResults": "No results. Try another filter combination.",
     "soldOut": "Sold out",
     "inStock": "Amount in stock",
-    "addToCart": "Add to cart"
+    "addToCart": "Add to cart",
+    "coverImage": "Cover image of"
   },
   "shop": {
     "heading": "Shop"
