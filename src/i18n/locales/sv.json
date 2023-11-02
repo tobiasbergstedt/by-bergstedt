@@ -38,6 +38,26 @@
     "start": {
       "title": "Unikt trähantverk",
       "description": "Utvalda skapelser och senaste nyheter från vårt snickeri, samt en översikt över kommande händelser."
+    },
+    "gallery": {
+      "title": "Våra samtliga skapelser",
+      "description": "Här finns samtliga våra skapelser till beskådning, allt från köksknivar och köksredskap till gunghästar och möbler."
+    },
+    "shop": {
+      "title": "Till salu",
+      "description": "Allt som för tillfället finns till salu från oss på Handmade by Bergstedt. Knivar, köksredskap, skärbrädor, möbler."
+    },
+    "custom": {
+      "title": "3D Skärbrädekonfigurator/designer",
+      "description": "3d-motor för att specialanpassa skärbrädor efter just Dina önskemål och preferenser. Välj mönster, utseende, storlek och materialval utifrån en uppsjö av valmöjligheter."
+    },
+    "about": {
+      "title": "Mer information om oss på",
+      "description": "Läs mer om oss, hur vi började med vårt hantverk och vad våra kunder tycker om oss."
+    },
+    "contact": {
+      "title": "Kontakta oss på",
+      "description": "Kontaktuppgifter och adress till oss samt kontaktformulär för enkel kommunikation."
     }
   },
   "misc": {

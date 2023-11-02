@@ -38,6 +38,26 @@
     "start": {
       "title": "Custom Wood Creations",
       "description": "Selected works and latest news from our workshop, as well as an overview of upcoming events."
+    },
+    "gallery": {
+      "title": "All our creations",
+      "description": "Here you can view all our creations, everything from kitchen knives and kitchen utensils to rocking horses and furniture."
+    },
+    "shop": {
+      "title": "For sale",
+      "description": "Everything currently for sale from us at Handmade by Bergstedt. Knives, kitchen utensils, cutting boards, furniture."
+    },
+    "custom": {
+      "title": "3D Cutting Board Configurator/Designer",
+      "description": "3d engine to customize cutting boards according to your wishes and preferences. Choose pattern, appearance, size and materials from a multitude of options."
+    },
+    "about": {
+      "title": "More information about us at",
+      "description": "Read more about us, how we got started with our craft and what our customers think of us."
+    },
+    "contact": {
+      "title": "Contact us at",
+      "description": "Our contact information and address, as well as a contact form for easy communication."
     }
   },
   "misc": {
