@@ -12,6 +12,7 @@
   border: none;
   border-bottom: var(--border-bottom-primary);
   border-radius: var(--input-radius);
+  box-shadow: var(--box-shadow-primary);
 
   color: var(--color-brown-4);
   font-size: em(16);
@@ -57,7 +58,9 @@
     right: 16px;
 
     color: var(--color-brown-4);
-    font: 11px Consolas, monospace;
+    font:
+      11px Consolas,
+      monospace;
 
     -webkit-transform: scale(3, 2.2) rotate(90deg);
     -moz-transform: scale(3, 2.2) rotate(90deg);

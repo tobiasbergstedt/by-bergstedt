@@ -6,6 +6,7 @@
   transition:
     outline var(--standard-transition),
     transform var(--standard-transition);
+  box-shadow: var(--box-shadow-primary);
 
   &:hover {
     transform: scale(1.1);

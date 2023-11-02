@@ -116,11 +116,14 @@
   --main-padding-width-mobile: 1em;
   --main-padding-height-desktop: 2em;
   --main-padding-height-mobile: 1em;
+  --testimonial-padding-gap: 24px;
 
   // Box shadow
   // --box-shadow-focus: 0 0 12px 8px goldenrod;
-  // --box-shadow-primary: inset 0 10px 5px -5px #00000080,
+  // --box-shadow-standard: inset 0 10px 5px -5px #00000080,
   //   inset 0 -10px 5px -5px #00000080;
+  --box-shadow-primary: 4px 4px 4px 0 rgba(0, 0, 0, 0.5);
+  --box-shadow-secondary: 8px 8px 8px 0 rgba(0, 0, 0, 0.5);
 
   // Animation
   // --animation-speed: 500ms;

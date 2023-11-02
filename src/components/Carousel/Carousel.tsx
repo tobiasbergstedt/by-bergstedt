@@ -16,7 +16,7 @@ interface ImageCarouselProps {
   slides: Slide[];
 }
 
-export const EmblaCarousel = ({ slides }: ImageCarouselProps): JSX.Element => {
+export const ImageCarousel = ({ slides }: ImageCarouselProps): JSX.Element => {
   // const { slides } = slides;
   const [emblaRef, emblaApi] = useEmblaCarousel(
     { dragFree: true, containScroll: 'trimSnaps', loop: true },
@@ -67,4 +67,4 @@ export const EmblaCarousel = ({ slides }: ImageCarouselProps): JSX.Element => {
   );
 };
 
-export default EmblaCarousel;
+export default ImageCarousel;

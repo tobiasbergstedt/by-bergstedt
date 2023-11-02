@@ -2,7 +2,7 @@
 
 .emblaWrapper {
   position: relative;
-  overflow: hidden;
+  // overflow: visible;
   border-radius: 24px;
 }
 
@@ -25,6 +25,7 @@
   border-radius: 24px;
   user-select: none;
   background-image: var(--button-gradient-primary-hover);
+  box-shadow: var(--box-shadow-secondary);
 
   &:hover a img {
     opacity: 0.6;
@@ -34,16 +35,16 @@
     flex: 0 0 50%;
   }
 
- a {
-  display: flex;
+  a {
+    display: flex;
 
-   img {
-     width: 100%; /* Ensure images fit within their containers */
-     height: auto;
-     align-self: center;
-     justify-self: center;
-     border-radius: 24px;
-     transition: opacity Var(--standard-transition);
+    img {
+      width: 100%; /* Ensure images fit within their containers */
+      height: auto;
+      align-self: center;
+      justify-self: center;
+      border-radius: 24px;
+      transition: opacity Var(--standard-transition);
     }
   }
 }

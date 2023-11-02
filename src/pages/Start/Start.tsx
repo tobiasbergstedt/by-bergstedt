@@ -185,7 +185,7 @@ const Start = (): JSX.Element => {
                 ))}
               </div>
             </div>
-            <div>
+            <div className={styles.carouselWrapper}>
               <ImageCarousel slides={slides} />
             </div>
             <div className={styles.articlesGrid}>

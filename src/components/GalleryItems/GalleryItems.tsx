@@ -57,8 +57,16 @@ const GalleryItems = ({
         {productList.map(({ attributes }, itemIndex) => (
           <Link to={`/product/${attributes.uuid}`} key={itemIndex}>
             <div className={styles.galleryItemContainer}>
-              <div className={styles.imageWrapper}>
+              <div
+                className={styles.imageWrapper}
+                style={{
+                  aspectRatio:
+                    attributes.images.data[0].attributes.formats.small.width /
+                    attributes.images.data[0].attributes.formats.small.height,
+                }}
+              >
                 <img
+                  loading="lazy"
                   className={styles.galleryImage}
                   src={fixUrl(
                     attributes.images.data[0].attributes.formats.small.url,
