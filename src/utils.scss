@@ -58,6 +58,12 @@
 }
 
 // Typography
+@mixin font-10 {
+  font-weight: 400;
+  font-size: rem(10);
+  line-height: rem(11);
+}
+
 @mixin font-14 {
   font-weight: 400;
   font-size: rem(14);
