@@ -1,0 +1,29 @@
+@import 'src/utils.scss';
+
+.errorContainer {
+  @include flex-centered(true);
+
+  white-space: pre-line;
+  // color: var(--color-red);
+
+  flex-grow: 1;
+  text-align: center;
+
+  h1 {
+    @include font-24-bold;
+
+    @include is-desktop {
+      @include font-32-bold;
+    }
+  }
+}
+
+.errorIcon {
+  width: 48px;
+  margin-bottom: 8px;
+
+  @include is-desktop {
+    width: 96px;
+    margin-bottom: 16px;
+  }
+}
