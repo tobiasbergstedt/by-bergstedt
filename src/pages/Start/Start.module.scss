@@ -86,6 +86,7 @@
 
 .instaWrapper {
   @include flex-centered;
+  align-self: center;
   max-width: 100%;
   width: fit-content;
   // height: 100%;
