@@ -66,7 +66,6 @@ const GalleryItems = ({
                 }}
               >
                 <img
-                  loading="lazy"
                   className={styles.galleryImage}
                   src={fixUrl(
                     attributes.images.data[0].attributes.formats.small.url,

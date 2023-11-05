@@ -42,18 +42,20 @@ const ProductsFilter = ({
 
   return (
     <div className={styles.filterContainer}>
-      <Select
-        all={t('misc.all')}
-        label={t('gallery.category')}
-        options={categories.map(({ attributes }) => ({
-          value: attributes.slug,
-          label: attributes.name,
-        }))}
-        onChange={(selectedValue) => {
-          setFilter({ ...filter, category: selectedValue });
-        }}
-        ref={selectRef}
-      />
+      {categories.length !== 0 && (
+        <Select
+          all={t('misc.all')}
+          label={t('gallery.category')}
+          options={categories.map(({ attributes }) => ({
+            value: attributes.slug,
+            label: attributes.name,
+          }))}
+          onChange={(selectedValue) => {
+            setFilter({ ...filter, category: selectedValue });
+          }}
+          ref={selectRef}
+        />
+      )}
       <div className={styles.priceRangeContainer}>
         {/* <p>Pris:</p> */}
         <RangeSlider

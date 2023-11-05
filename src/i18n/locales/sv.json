@@ -19,6 +19,7 @@
   "start": {
     "readMore": "Läs mer",
     "upcoming": "Kommande händelser",
+    "otherNews": "Andra nyheter",
     "moreEvents": "fler"
   },
   "gallery": {
@@ -29,10 +30,14 @@
     "soldOut": "Slutsåld",
     "inStock": "Antal i lager",
     "addToCart": "Lägg i korgen",
-    "coverImage": "Omslagsbild till"
+    "coverImage": "Omslagsbild till",
+    "notFound": "Ingen produkt med detta id hittades."
   },
   "shop": {
     "heading": "Butik"
+  },
+  "about": {
+    "testimonialsHeading": "Vad våra kunder säger"
   },
   "helmet": {
     "start": {
@@ -80,6 +85,17 @@
       "sek": "SEK",
       "eur": "EUR"
     },
-    "all": "Alla kategorier"
+    "all": "Alla kategorier",
+    "apiErrors": {
+      "errorHeading": "Det gick inte att hämta data.",
+      "filterHeading": "Filtrering ej tillgänglig.",
+      "products": "Inga produkter kunde hittas.",
+      "singleProduct": "Ingen produkt med detta id hittades.",
+      "categories": "Det gick inte att läsa in kategorier.",
+      "category": "Kunde inte hitta kategorin.",
+      "aboutData": "Ingen Om-data kunde hittas.",
+      "newsItems": "Inga nyheter hittades.",
+      "events": "Inga händelser kunde hittas."
+    }
   }
 }

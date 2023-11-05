@@ -13,6 +13,8 @@ import ProductsFilter from '@components/GalleryItems/ProductsFilter/ProductsFilt
 import GalleryItems from '@components/GalleryItems/GalleryItems';
 
 import styles from './MainGallery.module.scss';
+import ErrorMessage from '@components/ErrorMessage/ErrorMessage';
+import Loading from '@components/Spinner/Loading/Loading';
 
 interface Props {
   isShop: boolean;
@@ -28,21 +30,30 @@ const MainGallery = ({ isShop, heading, passedStyles }: Props): JSX.Element => {
     category: null,
     rangeValues: [0, 10000],
   });
+  const [apiError, setApiError] = useState<string>('');
+  const [isLoading, setIsLoading] = useState<boolean>(true);
 
   const { locale } = useContext(UserContext);
   const { t } = useTranslation();
 
   useEffect(() => {
     void fetchData(
-      `/api/items?populate=*&sort[createdAt]=DESC${
-        isShop ? '&filters[$and][0][amount][$gte]=1' : ''
-      }`,
-      setProducts,
-    );
-
-    void fetchData(
-      `/api/categories?sort=name:ASC&locale=${locale}`,
-      setCategories,
+      [
+        {
+          url: `/api/items?populate=*&sort[createdAt]=DESC${
+            isShop ? '&filters[$and][0][amount][$gte]=1' : ''
+          }`,
+          setData: setProducts,
+          errorMessage: t('misc.apiErrors.products'),
+        },
+        {
+          url: `/api/categories?sort=name:ASC&locale=${locale}`,
+          setData: setCategories,
+          errorMessage: t('misc.apiErrors.categories'),
+        },
+      ],
+      setIsLoading,
+      setApiError,
     );
   }, [locale]);
 
@@ -67,22 +78,33 @@ const MainGallery = ({ isShop, heading, passedStyles }: Props): JSX.Element => {
   return (
     <div className={styles.galleryContainer}>
       <h1 className={styles.heading}>{heading}</h1>
-      <ProductsFilter
-        categories={categories}
-        filter={filter}
-        setFilter={setFilter}
-        products={products}
-      />
-      {filteredItems.length > 0 ? (
-        <GalleryItems
-          isShop={isShop}
-          filteredItems={filteredItems}
-          products={products}
+      {isLoading ? (
+        <Loading />
+      ) : apiError.includes(t('misc.apiErrors.products')) ? (
+        <ErrorMessage
+          identifier={t('misc.apiErrors.errorHeading')}
+          errorMessage={apiError}
         />
       ) : (
-        <div className={styles.noResults}>
-          <p>{t('gallery.noResults')}</p>
-        </div>
+        <>
+          <ProductsFilter
+            categories={categories}
+            filter={filter}
+            setFilter={setFilter}
+            products={products}
+          />
+          {filteredItems.length > 0 ? (
+            <GalleryItems
+              isShop={isShop}
+              filteredItems={filteredItems}
+              products={products}
+            />
+          ) : (
+            <div className={styles.noResults}>
+              <p>{t('gallery.noResults')}</p>
+            </div>
+          )}
+        </>
       )}
     </div>
   );

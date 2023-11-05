@@ -19,6 +19,7 @@
   "start": {
     "readMore": "Read more",
     "upcoming": "Upcoming events",
+    "otherNews": "Other news",
     "moreEvents": "more"
   },
   "gallery": {
@@ -29,10 +30,14 @@
     "soldOut": "Sold out",
     "inStock": "Amount in stock",
     "addToCart": "Add to cart",
-    "coverImage": "Cover image of"
+    "coverImage": "Cover image of",
+    "notFound": "No product with this id was found."
   },
   "shop": {
     "heading": "Shop"
+  },
+  "about": {
+    "testimonialsHeading": "What our clients say"
   },
   "helmet": {
     "start": {
@@ -80,6 +85,17 @@
       "sek": "SEK",
       "eur": "EUR"
     },
-    "all": "All categories"
+    "all": "All categories",
+    "apiErrors": {
+      "errorHeading": "Error fetching data.",
+      "filterHeading": "Filtering unavailable.",
+      "products": "No products could be found.",
+      "singleProduct": "No product with this id was found.",
+      "categories": "Categories could not be loaded.",
+      "category": "Category could not be found.",
+      "aboutData": "No About data could be found.",
+      "newsItems": "No news items found.",
+      "events": "No events could be found."
+    }
   }
 }
