@@ -1,32 +1,34 @@
 export interface Image {
-  data: Array<{
-    id: number;
-    attributes: {
-      formats: {
-        thumbnail: {
-          url: string;
-          width: string;
-          height: string;
-        };
-        small: {
-          url: string;
-          width: string;
-          height: string;
-        };
-        medium: {
-          url: string;
-          width: string;
-          height: string;
-        };
-        large: {
-          url: string;
-          width: string;
-          height: string;
-        };
+  data: SingleImage[];
+}
+
+export interface SingleImage {
+  id: number;
+  attributes: {
+    formats: {
+      thumbnail: {
+        url: string;
+        width: number;
+        height: number;
       };
-      url: string;
+      small: {
+        url: string;
+        width: number;
+        height: number;
+      };
+      medium: {
+        url: string;
+        width: number;
+        height: number;
+      };
+      large: {
+        url: string;
+        width: number;
+        height: number;
+      };
     };
-  }>;
+    url: string;
+  };
 }
 
 export interface Category {
@@ -73,4 +75,36 @@ export interface ProductPropsImageGallery {
 export interface ZoomPosition {
   x: number;
   y: number;
+}
+
+export interface AboutData {
+  id: number;
+  attributes: {
+    title: string;
+    aboutText: string;
+    locale: string;
+    profileImage: {
+      data: SingleImage;
+    };
+    testimonials: Testimonials;
+    valuesText: string;
+    valuesTitle: string;
+  };
+}
+
+export interface Testimonial {
+  id: number;
+  attributes: {
+    description: string;
+    image: {
+      data: SingleImage;
+    };
+    locale: string;
+    name: string;
+    testimonial: string;
+  };
+}
+
+export interface Testimonials {
+  data: Testimonial[];
 }

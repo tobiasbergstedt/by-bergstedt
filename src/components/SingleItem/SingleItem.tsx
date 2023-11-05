@@ -5,13 +5,14 @@ import clsx from 'clsx';
 
 import { UserContext } from '@context/UserContext';
 import { type Category, type Product } from '@interfaces/interfaces';
-import { fetchData, fetchSingleItem } from '@utils/api';
+import { fetchData } from '@utils/api';
 
 import CartIcon from '@assets/icons/cart-white.svg';
 import { ReactComponent as ArrowBack } from '@assets/icons/arrow-back.svg';
 import Loading from '@components/Spinner/Loading/Loading';
 import Button from '@components/Button/Button';
 import ImageGallery from '@components/SingleItem/ImageGallery/ImageGallery';
+import ErrorMessage from '@components/ErrorMessage/ErrorMessage';
 
 import styles from './SingleItem.module.scss';
 
@@ -21,14 +22,28 @@ const SingleItem = (): JSX.Element => {
   const [categories, setCategories] = useState<Category[]>([]);
   const [category, setCategory] = useState<Category | undefined>();
   const [product, setProduct] = useState<Product | null>(null);
+  const [apiError, setApiError] = useState<string>('');
 
   const { t } = useTranslation();
   const { uuid } = useParams<{ uuid: string }>();
 
   useEffect(() => {
     void fetchData(
-      `/api/categories?sort=name:ASC&locale=${locale}`,
-      setCategories,
+      [
+        {
+          url: `/api/items?populate=*&filters[$and][0][uuid][$eq]=${uuid}`,
+          setData: setProduct,
+          errorMessage: t('misc.apiErrors.singleProduct'),
+          fetchSingleItem: true,
+        },
+        {
+          url: `/api/categories?sort=name:ASC&locale=${locale}`,
+          setData: setCategories,
+          errorMessage: t('misc.apiErrors.categories'),
+        },
+      ],
+      setIsLoading,
+      setApiError,
     );
   }, [locale]);
 
@@ -42,18 +57,18 @@ const SingleItem = (): JSX.Element => {
     setCategory(categorySlug);
   }, [categories]);
 
-  useEffect(() => {
-    void fetchSingleItem(
-      `/api/items?populate=*&filters[$and][0][uuid][$eq]=${uuid}`,
-      setProduct,
-    );
-    setIsLoading(false);
-  }, []);
+  console.log(apiError);
 
   return (
     <>
-      {isLoading || product == null ? (
+      {isLoading ? (
         <Loading />
+      ) : product === null ||
+        apiError.includes(t('misc.apiErrors.singleProduct')) ? (
+        <ErrorMessage
+          identifier={t('misc.apiErrors.errorHeading')}
+          errorMessage={apiError}
+        />
       ) : (
         <div className={styles.productContainer}>
           <div className={styles.arrowWrapper}>
@@ -68,7 +83,11 @@ const SingleItem = (): JSX.Element => {
                 ? product?.attributes.title
                 : product?.attributes.localizations.data[0].attributes.title}
             </h1>
-            <p>{category?.attributes.singleName}</p>
+            <p>
+              {apiError.includes(t('misc.apiErrors.categories'))
+                ? t('misc.apiErrors.category')
+                : category?.attributes.singleName}
+            </p>
             <div className={styles.priceContainer}>
               <p
                 className={clsx(styles.priceParagraph, {
