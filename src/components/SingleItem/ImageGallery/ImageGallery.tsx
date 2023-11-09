@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-import { fixUrl } from '@utils';
+import fixUrl from '@utils/fix-url';
 import {
   type ZoomPosition,
   type ProductPropsImageGallery,

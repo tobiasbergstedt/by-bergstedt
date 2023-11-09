@@ -57,8 +57,6 @@ const SingleItem = (): JSX.Element => {
     setCategory(categorySlug);
   }, [categories]);
 
-  console.log(apiError);
-
   return (
     <>
       {isLoading ? (

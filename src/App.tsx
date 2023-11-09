@@ -21,7 +21,7 @@ import SingleItem from '@components/SingleItem/SingleItem';
 import './App.scss';
 // import { useRecoilState } from 'recoil'
 // import allHamstersAtom from './atoms/Hamsters'
-// import { fixUrl } from './utils'
+// import fixUrl from '@utils/fix-url';
 
 const App = (): JSX.Element => {
   // const [allHamstersData, setAllHamstersData] = useRecoilState<Hamster[]>(allHamstersAtom)

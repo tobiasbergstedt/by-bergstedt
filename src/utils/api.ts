@@ -1,4 +1,4 @@
-import { fixUrl } from '@utils';
+import fixUrl from '@utils/fix-url';
 
 export const fetchData = async (
   setStateArrays: Array<{

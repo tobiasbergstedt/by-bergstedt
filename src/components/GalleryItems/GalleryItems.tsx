@@ -5,7 +5,7 @@ import clsx from 'clsx';
 
 import { UserContext } from '@context/UserContext';
 import { type Product, type GroupedItems } from '@interfaces/interfaces';
-import { fixUrl } from '@utils';
+import fixUrl from '@utils/fix-url';
 
 import SoldOut from '@components/GalleryItems/SoldOut/Soldout';
 

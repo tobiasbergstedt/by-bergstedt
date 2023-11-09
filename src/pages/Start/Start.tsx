@@ -14,7 +14,7 @@ import Loading from '@components/Spinner/Loading/Loading';
 import ErrorMessage from '@components/ErrorMessage/ErrorMessage';
 
 import styles from './Start.module.scss';
-import { fixUrl } from '@utils';
+import fixUrl from '@utils/fix-url';
 
 interface Image {
   data: {
@@ -104,10 +104,6 @@ const Start = (): JSX.Element => {
       setApiError,
     );
   }, [locale]);
-
-  console.log('News items:', newsItems);
-
-  console.log('Error: ', apiError);
 
   return (
     <div className={styles.startContainer}>

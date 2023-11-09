@@ -252,7 +252,9 @@ button {
 }
 
 img {
-  display: block;
+  // display: block;
+  vertical-align: middle;
+  font-style: italic;
 
   width: auto;
   max-width: 100%;

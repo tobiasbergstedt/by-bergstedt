@@ -1,4 +1,4 @@
-import { fixUrl } from '@utils';
+import fixUrl from '@utils/fix-url';
 
 import styles from './Thumbnail.module.scss';
 import clsx from 'clsx';

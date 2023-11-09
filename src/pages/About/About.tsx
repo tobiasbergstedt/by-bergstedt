@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { UserContext } from '@context/UserContext';
 import { type AboutData } from '@interfaces/interfaces';
 import { fetchData } from '@utils/api';
-import { fixUrl } from '@utils';
+import fixUrl from '@utils/fix-url';
 
 import SEOHelmet from '@components/SEOHelmet/SEOHelmet';
 
