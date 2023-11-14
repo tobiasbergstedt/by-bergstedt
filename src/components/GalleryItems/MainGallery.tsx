@@ -47,7 +47,7 @@ const MainGallery = ({ isShop, heading, passedStyles }: Props): JSX.Element => {
           errorMessage: t('misc.apiErrors.products'),
         },
         {
-          url: `/api/categories?sort=name:ASC&locale=${locale}`,
+          url: `/api/categories?sort=slug:ASC&locale=${locale}`,
           setData: setCategories,
           errorMessage: t('misc.apiErrors.categories'),
         },

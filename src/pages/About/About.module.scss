@@ -78,6 +78,8 @@
   grid-template-columns: repeat(1, 1fr);
   // display: flex;
   gap: var(--testimonial-padding-gap);
+  padding-left: 24px;
+  padding-right: 24px;
 
   @include is-tablet {
     grid-template-columns: repeat(2, 1fr);
@@ -85,6 +87,8 @@
 
   @include is-desktop {
     grid-template-columns: repeat(3, 1fr);
+    padding-left: 0;
+    padding-right: 0;
   }
 }
 

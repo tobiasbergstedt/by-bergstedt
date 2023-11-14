@@ -2,7 +2,6 @@
 
 .emblaWrapper {
   position: relative;
-  // overflow: visible;
   border-radius: 24px;
 }
 
@@ -20,6 +19,8 @@
 .emblaSlide {
   flex: 0 0 75%;
   display: flex;
+  justify-content: center;
+  align-items: center;
   min-width: 0;
   overflow: hidden;
   border-radius: 24px;
@@ -27,25 +28,19 @@
   background-image: var(--button-gradient-primary-hover);
   box-shadow: var(--box-shadow-secondary);
 
-  &:hover a img {
+  &:hover img {
     opacity: 0.6;
+  }
+
+  img {
+    width: 100%;
+    height: auto;
+    border-radius: 24px;
+    transition: opacity Var(--standard-transition);
   }
 
   @include is-desktop {
     flex: 0 0 50%;
-  }
-
-  a {
-    display: flex;
-
-    img {
-      width: 100%; /* Ensure images fit within their containers */
-      height: auto;
-      align-self: center;
-      justify-self: center;
-      border-radius: 24px;
-      transition: opacity Var(--standard-transition);
-    }
   }
 }
 

@@ -43,11 +43,14 @@ export const ImageCarousel = ({ slides }: ImageCarouselProps): JSX.Element => {
     <div className={styles.emblaWrapper} ref={emblaRef}>
       <div className={styles.emblaContainer}>
         {slides.map(({ image, alt, linkTo }, index) => (
-          <div className={styles.emblaSlide} key={index}>
-            <a href={linkTo} target="blank">
-              <img src={image} alt={alt} />
-            </a>
-          </div>
+          <a
+            href={linkTo}
+            target="blank"
+            className={styles.emblaSlide}
+            key={index}
+          >
+            <img src={image} alt={alt} />
+          </a>
         ))}
       </div>
       <div className={styles.navigation}>
