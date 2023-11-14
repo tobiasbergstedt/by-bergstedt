@@ -1,0 +1,35 @@
+@import 'src/utils.scss';
+
+.input {
+  display: flex;
+
+  width: 100%;
+  max-width: 150px;
+  height: 60px;
+  padding-top: 19px;
+  padding-left: 18px;
+
+  background-color: var(--color-grey-1);
+  border: none;
+  border-bottom: 0 solid var(--color-gold);
+  border-radius: 10px 0;
+
+  color: var(--color-white);
+  font-size: em(18);
+
+  outline: none;
+
+  appearance: textfield;
+  -moz-appearance: textfield;
+
+  transition: border 0.25s;
+
+  caret-color: var(--color-brown-1);
+
+  &::-webkit-outer-spin-button,
+  &::-webkit-inner-spin-button {
+    margin: 0;
+
+    -webkit-appearance: none;
+  }
+}
