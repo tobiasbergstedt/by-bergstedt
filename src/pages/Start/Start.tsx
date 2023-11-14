@@ -131,17 +131,6 @@ const Start = (): JSX.Element => {
             apiError={apiError}
           />
           <div className={styles.contentContainer}>
-            {!isDesktop && (
-              <div className={styles.instaWrapper}>
-                <div
-                  style={{
-                    width: '250px',
-                    height: '250px',
-                    backgroundColor: 'red',
-                  }}
-                ></div>
-              </div>
-            )}
             {!apiError.includes(t('misc.apiErrors.events')) && (
               <div className={styles.eventsContainer}>
                 <h3 className={styles.upcomingHeader}>
@@ -187,6 +176,13 @@ const Start = (): JSX.Element => {
                         description={attributes.description}
                         linkTo={attributes.linkTo}
                         apiError={apiError}
+                        isMainArticle={false}
+                        imageUrl={fixUrl(
+                          newsItems !== null
+                            ? newsItems[index + 1].attributes.image.data
+                                .attributes.formats.medium.url
+                            : '',
+                        )}
                       />
                     ))}
                 </div>
