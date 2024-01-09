@@ -1,31 +1,82 @@
 import { useContext, useEffect, useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import clsx from 'clsx';
 
 import { UserContext } from '@context/UserContext';
 import { type Category, type Product } from '@interfaces/interfaces';
 import { fetchData } from '@utils/api';
+import formatPrice from '@utils/format-price';
 
 import CartIcon from '@assets/icons/cart-white.svg';
-import { ReactComponent as ArrowBack } from '@assets/icons/arrow-back.svg';
 import Loading from '@components/Spinner/Loading/Loading';
 import Button from '@components/Button/Button';
 import ImageGallery from '@components/SingleItem/ImageGallery/ImageGallery';
 import ErrorMessage from '@components/ErrorMessage/ErrorMessage';
+import Modal from '@components/Modal/Modal';
+
+import { ReactComponent as CartErrorIcon } from '@assets/icons/cart-error.svg';
 
 import styles from './SingleItem.module.scss';
 
 const SingleItem = (): JSX.Element => {
-  const { locale } = useContext(UserContext);
+  const { locale, shoppingCart, setShoppingCart } = useContext(UserContext);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [categories, setCategories] = useState<Category[]>([]);
   const [category, setCategory] = useState<Category | undefined>();
   const [product, setProduct] = useState<Product | null>(null);
   const [apiError, setApiError] = useState<string>('');
+  const [showModal, setShowModal] = useState<boolean>(false);
 
   const { t } = useTranslation();
   const { uuid } = useParams<{ uuid: string }>();
+
+  const updateCart = (product: Product): void => {
+    const itemToAdd = {
+      id: product.attributes.uuid,
+      name: {
+        sv: product.attributes.title,
+        en: product.attributes.localizations.data[0].attributes.title,
+      },
+      amount: 1,
+      image: product.attributes.images.data[0].attributes.formats.thumbnail.url,
+      price: product.attributes.price,
+    };
+
+    if (shoppingCart !== null) {
+      // Check if the item already exists in the cart
+      const existingItemIndex = shoppingCart.findIndex(
+        (item) => item.id === itemToAdd.id,
+      );
+
+      if (existingItemIndex !== -1) {
+        // Item exists, update the amount if it doesn't exceed the max amount
+        const existingItem = shoppingCart[existingItemIndex];
+        if (existingItem.amount < product.attributes.amount) {
+          // Clone the shoppingCart array and update the amount of the existing item
+          const updatedCart = [...shoppingCart];
+          updatedCart[existingItemIndex] = {
+            ...existingItem,
+            amount: existingItem.amount + 1,
+          };
+          setShoppingCart(updatedCart);
+        } else {
+          // Amount + 1 is too large, show an alert
+          // alert(
+          //   'You have added all available items of this type to your cart already.',
+          // );
+          setShowModal(true);
+        }
+        // If the existing amount is already at max, handle accordingly (e.g., show a message)
+      } else {
+        // Item does not exist, add it to the cart
+        setShoppingCart([...shoppingCart, itemToAdd]);
+      }
+    } else {
+      // ShoppingCart is empty, initialize it with the new item
+      setShoppingCart([itemToAdd]);
+    }
+  };
 
   useEffect(() => {
     void fetchData(
@@ -69,11 +120,11 @@ const SingleItem = (): JSX.Element => {
         />
       ) : (
         <div className={styles.productContainer}>
-          <div className={styles.arrowWrapper}>
+          {/* <div className={styles.arrowWrapper}>
             <Link to={'/gallery'}>
               <ArrowBack />
             </Link>
-          </div>
+          </div> */}
           <ImageGallery product={product} />
           <div className={styles.infoContainer}>
             <h1 className={styles.productHeading}>
@@ -92,7 +143,8 @@ const SingleItem = (): JSX.Element => {
                   [styles.strikeThrough]: product.attributes.amount === 0,
                 })}
               >
-                {product?.attributes.price} {t('misc.currencies.sek')}
+                {formatPrice(product?.attributes.price)}{' '}
+                {t('misc.currencies.sek')}
               </p>
               {product.attributes.amount === 0 ? (
                 <p className={styles.productAmount}>{t('gallery.soldOut')}</p>
@@ -114,11 +166,31 @@ const SingleItem = (): JSX.Element => {
             <Button
               isDisabled={product.attributes.amount === 0}
               hasIcon={CartIcon}
+              onClick={() => {
+                updateCart(product);
+              }}
             >
               {t('gallery.addToCart')}
             </Button>
           </div>
         </div>
+      )}
+      {showModal && (
+        <Modal
+          hasCloseButton
+          canClose
+          onClick={() => {
+            setShowModal(false);
+          }}
+        >
+          <>
+            <CartErrorIcon className={styles.failIcon} />
+            <p className={styles.messageParagraph}>
+              You have added all available items of this type to your cart
+              already.
+            </p>
+          </>
+        </Modal>
       )}
     </>
   );

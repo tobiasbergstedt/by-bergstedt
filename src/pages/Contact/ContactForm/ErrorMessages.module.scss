@@ -1,0 +1,58 @@
+@import 'src/utils.scss';
+
+.errorMessagesContainer {
+  // background-color: var(--color-white);
+  // padding: 8px;
+  // border-radius: 8px;
+  // animation: fadeIn 0.5s ease-out;
+}
+
+.animateError {
+  animation: fadeIn 0.5s ease-out;
+}
+
+.errorMessage {
+  color: var(--color-red-1);
+  margin: 0;
+
+  font-size: 16px;
+}
+
+@for $i from 1 through 8 {
+  .errorContainer:nth-child(#{$i}) {
+    animation-delay: $i * 0.03s;
+  }
+}
+
+.errorContainer {
+  display: flex;
+  gap: 8px;
+  transform-origin: left;
+}
+
+.errorIcon {
+  width: 16px;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateX(-12px);
+  }
+  20% {
+    transform: translateX(8px);
+  }
+  40% {
+    transform: translateX(-4px);
+  }
+  60% {
+    transform: translateX(2px);
+  }
+  80% {
+    transform: translateX(-1px);
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}

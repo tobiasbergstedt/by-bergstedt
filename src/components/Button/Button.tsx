@@ -11,6 +11,7 @@ interface ButtonProps {
   to?: string;
   href?: string;
   isDisabled?: boolean;
+  isFullWidth?: boolean;
   isSecondary?: boolean;
   isTertiary?: boolean;
   isQuaternary?: boolean;
@@ -27,6 +28,7 @@ const Button: React.FC<ButtonProps> = ({
   to,
   href,
   isDisabled,
+  isFullWidth,
   isSecondary,
   isTertiary,
   isQuaternary,
@@ -38,7 +40,14 @@ const Button: React.FC<ButtonProps> = ({
     [styles.isSecondary]: isSecondary,
     [styles.isTertiary]: isTertiary,
     [styles.isQuaternary]: isQuaternary,
+    [styles.isFullWidth]: isFullWidth,
   });
+
+  const handleClick = (event: React.MouseEvent<HTMLButtonElement>): void => {
+    console.log('Button clicked');
+
+    onClick != null && onClick(event);
+  };
 
   const text = (): JSX.Element | null => {
     if (React.Children.count(children) > 0) {
@@ -57,7 +66,7 @@ const Button: React.FC<ButtonProps> = ({
 
   if (to != null) {
     return (
-      <Link to={to} className={classNames}>
+      <Link to={to} className={classNames} onClick={() => handleClick}>
         {text()}
       </Link>
     );

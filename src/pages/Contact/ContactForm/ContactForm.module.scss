@@ -1,0 +1,76 @@
+@import 'src/utils.scss';
+
+.form {
+  // position: relative;
+  display: flex;
+  flex-direction: column;
+  // @include flex-centered(true);
+  background-color: var(--color-grey-5);
+  border-radius: var(--gallery-item-border-radius);
+
+  padding: 32px 24px;
+
+  gap: 16px;
+  width: 100%;
+  min-width: 65%;
+}
+
+.formHeading {
+  @include font-28-bold;
+
+  color: var(--color-black);
+  border-bottom: var(--heading-border-bottom-brown);
+}
+
+.textArea {
+  display: flex;
+
+  width: 100%;
+  height: 200px;
+  padding-top: 12px;
+  padding-left: 12px;
+
+  resize: none;
+
+  background-color: var(--color-white);
+  border: none;
+  border-bottom: var(--border-bottom-primary);
+  border-radius: var(--input-radius);
+  box-shadow: var(--box-shadow-primary);
+
+  color: var(--color-brown-5);
+  font-size: em(16);
+
+  outline: none;
+
+  -webkit-appearance: textfield;
+  appearance: textfield;
+  -moz-appearance: textfield;
+
+  transition:
+    color var(--standard-transition),
+    background-color var(--standard-transition),
+    border var(--standard-transition);
+
+  caret-color: var(--color-brown-1);
+
+  &:hover,
+  &:focus {
+    background-color: var(--color-grey-7);
+    border-color: var(--color-brown-2);
+  }
+}
+
+.honeypot {
+  display: none;
+}
+
+.successIcon,
+.failIcon {
+  width: 32px;
+  margin-bottom: 12px;
+}
+
+.messageParagraph {
+  margin: 0;
+}

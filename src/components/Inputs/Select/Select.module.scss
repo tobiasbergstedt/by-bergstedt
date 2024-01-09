@@ -17,16 +17,25 @@
   color: var(--color-brown-4);
   font-size: em(16);
 
+  cursor: pointer;
   outline: none;
 
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
 
-  transition: border 0.25s;
+  transition:
+    color var(--standard-transition),
+    background-color var(--standard-transition),
+    border var(--standard-transition);
 
   caret-color: var(--color-gold);
 
+  &:hover {
+    background-color: var(--color-grey-7);
+    color: var(--color-brown-5);
+    border-color: var(--color-brown-2);
+  }
   // &:focus {
   //   box-shadow: var(--box-shadow-focus);
   // }
@@ -49,6 +58,7 @@
 .label {
   position: relative;
   display: flex;
+  width: fit-content;
 
   &::after {
     content: '>';

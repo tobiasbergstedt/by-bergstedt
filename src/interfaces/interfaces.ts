@@ -1,3 +1,5 @@
+import { type RefObject, type MutableRefObject } from 'react';
+
 export interface Image {
   data: SingleImage[];
 }
@@ -107,4 +109,82 @@ export interface Testimonial {
 
 export interface Testimonials {
   data: Testimonial[];
+}
+
+export interface Material {
+  attributes: {
+    name: string;
+    slug: string;
+  };
+}
+
+export interface Texture {
+  data: SingleImage;
+}
+
+export interface CuttingBoardProps {
+  width: number | string | null;
+  depth: number | string | null;
+  height: number | string | null;
+  edgeStyle: string | null;
+  edgeSize: number | string | null;
+  handleIndent: number;
+  pattern: string;
+  materials: Material[];
+}
+
+export interface ContactFormData {
+  name: string;
+  email: string;
+  message: string;
+  honeypot: string;
+}
+
+export interface ContactRefsProps {
+  name: MutableRefObject<null>;
+  email: MutableRefObject<null>;
+  message: MutableRefObject<null>;
+  honeypot: MutableRefObject<null>;
+}
+
+export interface ShoppingCartItem {
+  id: string;
+  name: {
+    sv: string;
+    en: string;
+  };
+  amount: number;
+  image: string;
+  price: number;
+}
+
+export interface InputProps {
+  inputRef: RefObject<HTMLInputElement>;
+  inputValue: number | string | null;
+  propertyName: string;
+  placeholder: string;
+}
+
+export interface OrderDetailsRefs {
+  surname: MutableRefObject<null>;
+  lastName: MutableRefObject<null>;
+  companyName: MutableRefObject<null>;
+  streetName: MutableRefObject<null>;
+  areaCode: MutableRefObject<null>;
+  cityName: MutableRefObject<null>;
+  phoneNumber: MutableRefObject<null>;
+  email: MutableRefObject<null>;
+  message: MutableRefObject<null>;
+}
+
+export interface OrderDetails {
+  surname: string;
+  lastName: string;
+  companyName: string;
+  streetName: string;
+  areaCode: string;
+  cityName: string;
+  phoneNumber: string;
+  email: string;
+  message: string;
 }

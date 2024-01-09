@@ -10,6 +10,8 @@
 	},
 	"dependencies": {
 		"@react-three/drei": "^9.88.12",
+		"@react-three/fiber": "^8.15.11",
+		"@types/three": "^0.159.0",
 		"clsx": "^2.0.0",
 		"embla-carousel-autoplay": "^8.0.0-rc14",
 		"embla-carousel-react": "^8.0.0-rc14",
@@ -25,7 +27,8 @@
 		"react-range": "^1.8.14",
 		"react-three-fiber": "^6.0.13",
 		"recoil": "^0.7.3-alpha.2",
-		"sass": "^1.67.0"
+		"sass": "^1.67.0",
+		"three": "^0.159.0"
 	},
 	"devDependencies": {
 		"@rollup/plugin-typescript": "^11.1.5",

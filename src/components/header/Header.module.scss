@@ -51,6 +51,21 @@ a {
   gap: 40px;
   height: 100%;
 
+  &.scrolled {
+    position: fixed;
+    width: 100%;
+    // width: calc(100% - calc(2 * var(--main-padding-width-desktop)));
+    background-color: var(--primary-bg-color);
+    box-shadow: 0 6px 6px rgba(0, 0, 0, 0.5);
+    height: fit-content;
+    top: 0;
+    z-index: var(--index-nav-menu);
+
+    .logo {
+      height: 76px;
+    }
+  }
+
   @include is-desktop {
     padding: 10px var(--main-padding-width-desktop);
   }
@@ -99,7 +114,9 @@ a {
   left: -100%;
   text-align: start;
   width: 100%;
-  height: calc(100% - var(--header-height-mobile));
+  // height: calc(100% - var(--header-height-mobile));
+  height: 100vh;
+  // height: fit-content;
   transition:
     left 0.7s ease-in-out,
     transform var(--standard-transition);

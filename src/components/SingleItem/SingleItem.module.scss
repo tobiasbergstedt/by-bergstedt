@@ -4,7 +4,7 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: var(--main-padding-gap);
 
   flex-grow: 1;
   padding-top: 40px;
@@ -12,21 +12,6 @@
   @include is-desktop {
     flex-direction: row;
     gap: 50px;
-  }
-}
-
-.arrowWrapper {
-  position: absolute;
-  top: 0;
-  right: 0;
-
-  width: 32px;
-
-  fill: var(--color-white);
-  transition: fill var(--standard-transition);
-
-  &:hover {
-    fill: var(--color-brown-3);
   }
 }
 
@@ -42,7 +27,7 @@
 }
 
 .productHeading {
-  border-bottom: 1px solid var(--color-white);
+  border-bottom: var(--heading-border-bottom-brown);
 }
 
 .priceContainer {
@@ -76,4 +61,9 @@
   margin-bottom: 40px;
 
   white-space: pre-line;
+}
+
+.failIcon {
+  width: 40px;
+  margin-bottom: 12px;
 }

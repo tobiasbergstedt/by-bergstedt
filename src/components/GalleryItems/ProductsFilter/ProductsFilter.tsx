@@ -69,9 +69,9 @@ const ProductsFilter = ({
       <Button
         isTertiary
         onClick={() => {
-          setFilter({ category: null, rangeValues: minMaxRange });
+          setFilter({ category: t('misc.all'), rangeValues: minMaxRange });
           if (selectRef?.current != null) {
-            selectRef.current.value = 'default';
+            selectRef.current.value = t('misc.all');
           }
         }}
       >

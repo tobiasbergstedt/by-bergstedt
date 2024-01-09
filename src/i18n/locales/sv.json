@@ -39,6 +39,99 @@
   "about": {
     "testimonialsHeading": "Vad våra kunder säger"
   },
+  "shoppingCart": {
+    "item": "Produkt",
+    "amount": "Antal",
+    "total": "Totalt",
+    "toCheckout": "Fortsätt till kassan",
+    "empty": "Varukorgen är tom."
+  },
+  "custom": {
+    "edges": "Kanter",
+    "edgeStyle": "Kantutformning",
+    "edgeSize": "Storlek (mm)",
+    "beveled": "Fasad",
+    "beveledInternal": "beveled",
+    "rounded": "Rundad",
+    "roundedInternal": "rounded",
+    "pattern": "Mönster",
+    "patterns": {
+      "chessboard": "Schack",
+      "chevron": "Chevron",
+      "chaos": "Kaos",
+      "stripes": "Randig",
+      "raceCar": "Racerbil",
+      "doppler": "Dopplereffekt",
+      "brickWall": "Tegel",
+      "squares": "Rutor"
+    },
+    "material": "Material",
+    "materials": {
+      "oak": "Ek",
+      "walnut": "Valnöt",
+      "maple": "Lönn",
+      "ash": "Ask",
+      "cherry": "Körsbär",
+      "zebrano": "Zebrano",
+      "redBeech": "Rödbok",
+      "beech": "Bok"
+    },
+    "handle": "Handtag",
+    "dimensions": "Mått"
+  },
+  "contact": {
+    "heading": "Kontakt",
+    "messageMe": "Prata med mig",
+    "messageMeText": "Vill du snacka lite om en skräddarsydd skärbräda eller kökskniv? Skicka ett mail eller ring mig, så pratar vi!",
+    "form": {
+      "getInTouch": "Hör av dig",
+      "yourName": "Ditt namn",
+      "yourEmail": "Din epostadress",
+      "yourMessage": "Ditt meddelande",
+      "subject": "Nytt meddelande från {{name}} via formulär på tobiasbergstedt.se",
+      "text": "Namn: {{name}}, Email: {{email}}, Meddelande: {{message}}",
+      "send": "Skicka"
+    },
+    "sentSuccessfully": "Ditt meddelande har skickats!",
+    "failedToSend": "Det gick inte att skicka meddelandet. Försök igen senare."
+  },
+  "errorMessages": {
+    "surnameRequired": "Förnamn måste fyllas i.",
+    "lastNameRequired": "Efternamn måste fyllas i.",
+    "nameRequired": "Namn krävs.",
+    "streetNameRequired": "Gatuadress krävs.",
+    "areaCodeRequired": "Postnummer krävs.",
+    "cityNameRequired": "Stad/ort krävs.",
+    "phoneNumberRequired": "Du måste fylla i ett telefonnummer.",
+    "emailRequired": "Du måste ange en epostadress.",
+    "emailInvalid": "Epostadressen är felaktig.",
+    "messageRequired": "Du måste skriva ett meddelande.",
+    "honeypot": "Fältet får inte fyllas i."
+  },
+  "cartItem": {
+    "imgAlt": "Miniatyrbild av "
+  },
+  "checkout": {
+    "heading": "Kassa",
+    "orderInfo1": "För att fastställa fraktkostnader, lägg din beställning, så kommer vi snarast att förse dig med en totalsumma för både produkt(er) och frakt via mail. Om du föredrar att hämta din beställning i vår verkstad, skriver du detta i fältet 'Meddelande' här i kassan. Vi meddelar dig då när din beställning är klar för avhämtning.",
+    "orderInfo2": "Betalning är möjlig via Swish (standard) eller kort (endast tillgängligt vid avhämtning). När du har granskat och accepterat fraktkostnaderna skickar vi en betalningsförfrågan till ditt registrerade telefonnummer. För de som väljer upphämtning, går det utmärkt att betala vid leveranstillfället.",
+    "orderInfo3": "Har du frågor eller behöver hjälp? Ring oss eller skicka ett mail, så hjälper vi dig så snart vi kan.",
+    "personalDetailsHeading": "Uppgifter",
+    "orderHeading": "Beställning",
+    "placeOrderButton": "Lägg beställning",
+    "cartEmpty": "Lägg till produkter i varukorgen innan du går till kassan.",
+    "form": {
+      "firstName": "Förnamn",
+      "lastName": "Efternamn",
+      "companyName": "Företag (valfritt)",
+      "streetName": "Gatuadress",
+      "areaCode": "Postnummer",
+      "cityName": "Postort",
+      "phoneNumber": "Telefonnummer",
+      "email": "Epost",
+      "message": "Meddelande (valfritt)"
+    }
+  },
   "helmet": {
     "start": {
       "title": "Unikt trähantverk",
@@ -63,9 +156,15 @@
     "contact": {
       "title": "Kontakta oss på",
       "description": "Kontaktuppgifter och adress till oss samt kontaktformulär för enkel kommunikation."
+    },
+    "checkout": {
+      "title": "Kassa",
+      "description": "Bekräfta din beställning, och få dina varor hemskickade inom kort."
     }
   },
   "misc": {
+    "yes": "Ja",
+    "no": "Nej",
     "loading": "Laddar...",
     "months": {
       "january": "januari",
@@ -95,7 +194,9 @@
       "category": "Kunde inte hitta kategorin.",
       "aboutData": "Ingen Om-data kunde hittas.",
       "newsItems": "Inga nyheter hittades.",
-      "events": "Inga händelser kunde hittas."
+      "events": "Inga händelser kunde hittas.",
+      "materials": "Materialvalen kunde inte hittas.",
+      "patterns": "Inga mönster hittades."
     }
   }
 }

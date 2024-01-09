@@ -1,7 +1,7 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import clsx from 'clsx';
 import { useTranslation } from 'react-i18next';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 
 import useBreakpoint, { DESKTOP } from '@hooks/useBreakpoint';
 
@@ -12,13 +12,17 @@ import LanguagePicker from '@components/Header/LanguagePicker/LanguagePicker';
 import NavItem from '@components/Header/NavItem/NavItem';
 
 import styles from './Header.module.scss';
+import ShoppingCart from './ShoppingCart/ShoppingCart';
 
 const Header = (): JSX.Element => {
+  const [isScrolled, setIsScrolled] = useState<boolean>(false);
   const [isNavExpanded, setIsNavExpanded] = useState<boolean>(false);
 
   const { t } = useTranslation();
   const breakpoint = useBreakpoint();
   const isDesktop = breakpoint === DESKTOP;
+
+  const location = useLocation();
 
   const currentYear = new Date().getFullYear();
 
@@ -57,9 +61,32 @@ const Header = (): JSX.Element => {
     setIsNavExpanded(false);
   };
 
+  useEffect(() => {
+    const handleScroll = (): void => {
+      const scrollPosition = window.scrollY;
+      setIsScrolled(scrollPosition > 0);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (isNavExpanded) {
+      closeMenu();
+    }
+  }, [location]);
+
   return (
     <header className={styles.header}>
-      <nav className={styles.navbar}>
+      <nav
+        className={clsx(styles.navbar, {
+          [styles.scrolled]: isScrolled && !isDesktop,
+        })}
+      >
         <NavLink to="/" className={styles.logo}>
           <img
             src={ByBergstedtLogo}
@@ -68,6 +95,7 @@ const Header = (): JSX.Element => {
           />
         </NavLink>
         <LanguagePicker />
+        <ShoppingCart />
         <ul
           className={clsx(styles.navMenu, {
             [styles.active]: isNavExpanded,

@@ -4,7 +4,7 @@ import { forwardRef } from 'react';
 import styles from './Select.module.scss';
 
 interface Options {
-  value: string;
+  value: string | number;
   label: string;
 }
 
@@ -15,13 +15,24 @@ interface PropTypes {
   onBlur?: () => void;
   label: string;
   all?: string;
+  defaultValue?: string | number | null;
   options: Options[];
   isSmall?: boolean;
 }
 
 const Select = forwardRef<HTMLSelectElement | null, PropTypes>(
   (
-    { className, onChange, onFocus, onBlur, label, all, options, isSmall },
+    {
+      className,
+      onChange,
+      onFocus,
+      onBlur,
+      label,
+      all,
+      options,
+      isSmall,
+      defaultValue,
+    },
     ref,
   ): JSX.Element => {
     const selectRef = ref as React.MutableRefObject<HTMLSelectElement | null>;
@@ -33,33 +44,29 @@ const Select = forwardRef<HTMLSelectElement | null, PropTypes>(
         })}
       >
         <select
-          ref={ref}
+          ref={selectRef}
           className={clsx(styles.select, className, {
             [styles.isSmall]: isSmall,
           })}
           onChange={() => {
             if (selectRef.current != null) {
               onChange(selectRef.current.value);
-            } // Pass the selected value to onChange
+            }
           }}
           onFocus={onFocus}
           onBlur={onBlur}
           name={label}
-          defaultValue={'default'}
+          defaultValue={defaultValue ?? options[0].value}
         >
-          <option value="default" disabled hidden>
+          <option value={options[0].value} disabled hidden>
             {label}
           </option>
           {all != null && <option>{all}</option>}
-          {options.map(
-            (
-              option, // Map over the 'options' array
-            ) => (
-              <option key={option.value} value={option.value}>
-                {option.label}
-              </option>
-            ),
-          )}
+          {options.map((option) => (
+            <option key={option.value} value={option.value}>
+              {option.label}
+            </option>
+          ))}
         </select>
       </label>
     );

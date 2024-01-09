@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 
-import useBreakpoint, { DESKTOP } from '@hooks/useBreakpoint';
+// import useBreakpoint, { DESKTOP } from '@hooks/useBreakpoint';
 import { fetchData } from '@utils/api';
 
 import Article from './Article/Article';
@@ -56,8 +56,8 @@ const Start = (): JSX.Element => {
 
   const { t } = useTranslation();
 
-  const breakpoint = useBreakpoint();
-  const isDesktop = breakpoint === DESKTOP;
+  // const breakpoint = useBreakpoint();
+  // const isDesktop = breakpoint === DESKTOP;
 
   const slides = [
     {

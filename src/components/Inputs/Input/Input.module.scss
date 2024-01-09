@@ -5,26 +5,37 @@
 
   width: 100%;
   max-width: 150px;
-  height: 60px;
-  padding-top: 19px;
-  padding-left: 18px;
+  height: 40px;
+  padding-top: 0;
+  padding-left: 12px;
 
-  background-color: var(--color-grey-1);
+  background-color: var(--color-white);
   border: none;
-  border-bottom: 0 solid var(--color-gold);
-  border-radius: 10px 0;
+  border-bottom: var(--border-bottom-primary);
+  border-radius: var(--input-radius);
+  box-shadow: var(--box-shadow-primary);
 
-  color: var(--color-white);
-  font-size: em(18);
+  color: var(--color-brown-5);
+  font-size: em(16);
 
   outline: none;
 
+  -webkit-appearance: textfield;
   appearance: textfield;
   -moz-appearance: textfield;
 
-  transition: border 0.25s;
+  transition:
+    color var(--standard-transition),
+    background-color var(--standard-transition),
+    border var(--standard-transition);
 
   caret-color: var(--color-brown-1);
+
+  &:hover,
+  &:focus {
+    background-color: var(--color-grey-7);
+    border-color: var(--color-brown-2);
+  }
 
   &::-webkit-outer-spin-button,
   &::-webkit-inner-spin-button {

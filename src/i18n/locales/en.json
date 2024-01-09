@@ -39,6 +39,97 @@
   "about": {
     "testimonialsHeading": "What our clients say"
   },
+  "shoppingCart": {
+    "item": "Item",
+    "amount": "Amount",
+    "total": "Subtotal",
+    "toCheckout": "Proceed to checkout",
+    "empty": "Cart is empty."
+  },
+  "custom": {
+    "edges": "Edges",
+    "edgeStyle": "Edge style",
+    "edgeSize": "Size (mm)",
+    "beveled": "Beveled",
+    "rounded": "Rounded",
+    "pattern": "Pattern",
+    "patterns": {
+      "chessboard": "Chess",
+      "chevron": "Chevron",
+      "chaos": "Chaos",
+      "stripes": "Stripes",
+      "raceCar": "Racing car",
+      "doppler": "Doppler effect",
+      "brickWall": "Bricks",
+      "squares": "Rectangles"
+    },
+    "material": "Materials",
+    "materials": {
+      "oak": "Oak",
+      "walnut": "Walnut",
+      "maple": "Maple",
+      "ash": "Ash",
+      "cherry": "Cherry",
+      "zebrano": "Zebrano",
+      "redBeech": "Red beech",
+      "beech": "Beech"
+    },
+    "handle": "Handle",
+    "dimensions": "Dimensions"
+  },
+  "contact": {
+    "heading": "Contact",
+    "messageMe": "Message me",
+    "messageMeText": "Want to discuss your custom cutting board or kitchen knife project? Shoot me an email or give me a call, and let's chat!",
+    "form": {
+      "getInTouch": "Get in touch",
+      "yourName": "Your name",
+      "yourEmail": "Your email",
+      "yourMessage": "Your message",
+      "subject": "New message from {{name}} via contact form on tobiasbergstedt.se",
+      "text": "Name: {{name}}, Email: {{email}}, Message: {{message}}",
+      "send": "Send"
+    },
+    "sentSuccessfully": "Your message has been sent successfully!",
+    "failedToSend": "Failed to send the message. Please try again later."
+  },
+  "errorMessages": {
+    "surnameRequired": "First name is required.",
+    "lastNameRequired": "Last name is required.",
+    "nameRequired": "Name is required.",
+    "streetNameRequired": "Street name is required.",
+    "areaCodeRequired": "Area code is required.",
+    "cityNameRequired": "City name is required.",
+    "phoneNumberRequired": "You must enter your phone number.",
+    "emailRequired": "Email must be provided.",
+    "emailInvalid": "Email is invalid.",
+    "messageRequired": "You have to write a message.",
+    "honeypot": "This field should not be filled."
+  },
+  "cartItem": {
+    "imgAlt": "Thumbnail image of "
+  },
+  "checkout": {
+    "heading": "Checkout",
+    "orderInfo1": "To determine shipping costs, please place your order, and we will promptly provide you with a total for both the product(s) and shipping via email. If you prefer to pick up your order at our shop, simply mention this in the 'Message' field during checkout. We will then notify you when your order is ready for pickup.",
+    "orderInfo2": "Payment is available through Swish (default) or card (only available on pickup). Once you review and accept the shipping costs, we'll promptly send a payment request to your registered phone number. For those opting for pickup orders, feel free to pay at the time of delivery.",
+    "orderInfo3": "Got questions or need assistance? Call us or send an email our way, we're happy to help.",
+    "personalDetailsHeading": "Details",
+    "orderHeading": "Order",
+    "placeOrderButton": "Place order",
+    "cartEmpty": "Add items to your cart before proceeding to checkout.",
+    "form": {
+      "firstName": "First name",
+      "lastName": "Last name",
+      "companyName": "Company name (optional)",
+      "streetName": "Street name",
+      "areaCode": "Area code",
+      "cityName": "City name",
+      "phoneNumber": "Phone number",
+      "email": "Email",
+      "message": "Message (optional)"
+    }
+  },
   "helmet": {
     "start": {
       "title": "Custom Wood Creations",
@@ -63,9 +154,15 @@
     "contact": {
       "title": "Contact us at",
       "description": "Our contact information and address, as well as a contact form for easy communication."
+    },
+    "checkout": {
+      "title": "Checkout",
+      "description": "Confirm your order, and have the products delivered shortly."
     }
   },
   "misc": {
+    "yes": "Yes",
+    "no": "No",
     "loading": "Loading...",
     "months": {
       "january": "January",
@@ -95,7 +192,9 @@
       "category": "Category could not be found.",
       "aboutData": "No About data could be found.",
       "newsItems": "No news items found.",
-      "events": "No events could be found."
+      "events": "No events could be found.",
+      "materials": "Materials choices could not be found.",
+      "patterns": "No patterns were found."
     }
   }
 }

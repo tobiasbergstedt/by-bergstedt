@@ -7,15 +7,18 @@ import React, {
   type SetStateAction,
 } from 'react';
 import { local } from '@utils/storage';
-import { LANGUAGE_CHOSEN } from '@config/constants';
+import { LANGUAGE_CHOSEN, SHOPPING_CART } from '@config/constants';
 import { setLanguage } from '@i18n/i18n';
 import { useTranslation } from 'react-i18next';
+import { type ShoppingCartItem } from '@interfaces/interfaces';
 
 interface UserContextType {
   languageChosen: string | null;
   setLanguageChosen: Dispatch<SetStateAction<string | null>>;
   locale: string;
   setLocale: Dispatch<SetStateAction<string>>;
+  shoppingCart: ShoppingCartItem[] | null;
+  setShoppingCart: Dispatch<SetStateAction<ShoppingCartItem[] | null>>;
 }
 
 interface UserProviderProps {
@@ -27,6 +30,8 @@ const UserContext = createContext<UserContextType>({
   setLanguageChosen: () => {},
   locale: 'sv',
   setLocale: () => {},
+  shoppingCart: null,
+  setShoppingCart: () => {},
 });
 
 const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
@@ -35,6 +40,9 @@ const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
     local.read(LANGUAGE_CHOSEN) ?? t('locales.swedish'),
   );
   const [locale, setLocale] = useState<string>(t('locales.sv'));
+  const [shoppingCart, setShoppingCart] = useState<ShoppingCartItem[] | null>(
+    local.read(SHOPPING_CART) ?? null,
+  );
 
   // Update localStorage whenever languageChosen changes.
   useEffect(() => {
@@ -42,6 +50,14 @@ const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
       local.write(LANGUAGE_CHOSEN, languageChosen);
     }
   }, [languageChosen]);
+
+  useEffect(() => {
+    // if (shoppingCart != null && shoppingCart.length > 0) {
+    local.write(SHOPPING_CART, shoppingCart);
+    // } else {
+    //   local.write(SHOPPING_CART, null);
+    // }
+  }, [shoppingCart]);
 
   useEffect(() => {
     if (
@@ -63,6 +79,8 @@ const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
         setLanguageChosen,
         locale,
         setLocale,
+        shoppingCart,
+        setShoppingCart,
       }}
     >
       {children}

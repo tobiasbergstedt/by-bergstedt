@@ -113,7 +113,7 @@
   &.hasIconButton {
     max-width: fit-content;
     padding: 0 24px;
-    gap: 24px;
+    gap: var(--main-padding-gap);
   }
 
   .hasIcon {
@@ -126,5 +126,10 @@
 
     align-items: center;
     justify-content: center;
+  }
+
+  &.isFullWidth {
+    max-width: 100%;
+    padding: 0 16px;
   }
 }

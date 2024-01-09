@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { HelmetProvider } from 'react-helmet-async';
-import { Navigate, Routes, Route } from 'react-router-dom';
+import { Navigate, Routes, Route, useLocation } from 'react-router-dom';
 
 import useBreakpoint, { DESKTOP } from '@hooks/useBreakpoint';
 import { UserProvider } from '@context/UserContext';
@@ -12,6 +12,8 @@ import ForSale from '@pages/ForSale/ForSale';
 import Custom from '@pages/Custom/Custom';
 import About from '@pages/About/About';
 import Contact from '@pages/Contact/Contact';
+import Checkout from '@pages/Checkout/Checkout';
+import OrderConfirmation from '@pages/Checkout/OrderConfirmation/OrderConfirmation';
 
 import Header from '@components/Header/Header';
 import MyFooter from '@components/Footer/Footer';
@@ -25,6 +27,8 @@ import './App.scss';
 
 const App = (): JSX.Element => {
   // const [allHamstersData, setAllHamstersData] = useRecoilState<Hamster[]>(allHamstersAtom)
+
+  const location = useLocation();
 
   const breakpoint = useBreakpoint();
   const isDesktop = breakpoint === DESKTOP;
@@ -48,11 +52,16 @@ const App = (): JSX.Element => {
             <Routes>
               <Route path="/" element={<Start />} />
               <Route path="/gallery" element={<Gallery />} />
-              <Route path="/product/:uuid" element={<SingleItem />} />
+              <Route
+                path="/product/:uuid"
+                element={<SingleItem key={location.pathname} />}
+              />
               <Route path="/shop" element={<ForSale />} />
               <Route path="/custom" element={<Custom />} />
               <Route path="/about" element={<About />} />
               <Route path="/contact" element={<Contact />} />
+              <Route path="/checkout" element={<Checkout />} />
+              <Route path="/confirmation" element={<OrderConfirmation />} />
               <Route path="*" element={<Navigate to="/404" />} />
               <Route path="/404" element={<NotFound />} />
             </Routes>

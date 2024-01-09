@@ -40,6 +40,20 @@
 
   box-shadow: var(--box-shadow-primary);
 
+  transition:
+    color var(--standard-transition),
+    background-color var(--standard-transition),
+    border var(--standard-transition);
+
+  &:hover {
+    background-color: var(--color-grey-7);
+    color: var(--color-brown-5);
+    border-color: var(--color-brown-2);
+
+    .thumbMarker {
+      background-color: var(--color-grey-3);
+    }
+  }
   // &:focus {
   //   box-shadow: var(--box-shadow-focus);
   // }

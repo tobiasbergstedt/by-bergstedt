@@ -1,8 +1,8 @@
 :root {
-  // Fonts
-  --font-family-body: 'RadioCanada', sans-serif;
-  --font-family-secondary: 'Poppins', sans-serif;
-  --font-family-title: var(--font-family-body);
+  // // Fonts
+  // --font-family-body: 'RadioCanada', sans-serif;
+  // --font-family-secondary: 'Poppins', sans-serif;
+  // --font-family-title: var(--font-family-body);
 
   // Color
   --color-html-bg: #6f7688;
@@ -20,7 +20,8 @@
   --color-blue-5: #391dda;
   --color-blue-6: #414eff;
   --color-blue-7: #6133d3;
-  --color-red: rgb(255, 39, 39);
+  --color-red-1: #ff2727;
+  --color-red-2: #e95151;
   --color-spinner-1: #e4db87;
   --color-spinner-2: #e38935;
 
@@ -28,12 +29,32 @@
   --color-white: #fff;
   --color-black: #000;
   --color-grey: #535353;
+  --color-grey-50: rgba(84, 84, 84, 40%);
   --color-grey-1: #404042;
   --color-grey-2: #5b5b5b;
   --color-grey-3: #979797;
   --color-grey-4: #b7b7b7;
   --color-grey-5: #eaeaea;
   --color-grey-6: #f3f3f3;
+  --color-grey-7: #fafafa;
+
+  // Modal colors
+  --modal-bg-color: #24252c;
+  --modal-text-color: var(--color-white);
+  --color-beige: #ebba8d;
+  --theme-gradient-color-1: #cecece;
+  --theme-gradient-color-2: var(--color-white);
+  --theme-gradient-color: linear-gradient(
+    90deg,
+    var(--theme-gradient-color-1) 0%,
+    var(--theme-gradient-color-2) 50%,
+    var(--theme-gradient-color-1) 100%
+  );
+  --theme-gradient-color-hover: linear-gradient(
+    to top left,
+    var(--theme-gradient-hover-color-1) 0%,
+    var(--theme-gradient-hover-color-2) 100%
+  );
 
   // Gradients
   --button-gradient-primary: linear-gradient(
@@ -80,7 +101,7 @@
     --button-gradient-secondary-hover
   );
   // --color-button-secondary-pressed: var(--color-grey-1);
-  // --color-button-secondary-pressed-background: var(--color-red);
+  // --color-button-secondary-pressed-background: var(--color-red-1);
   --color-button-secondary-disabled: var(--color-grey-4);
   --color-button-secondary-disabled-background: var(
     --button-gradient-primary-disabled
@@ -90,7 +111,7 @@
   --color-button-tertiary-hover: var(--color-grey-1);
   --color-button-tertiary-hover-background: var(--color-brown-4);
   // --color-button-tertiary-pressed: var(--color-grey-1);
-  // --color-button-tertiary-pressed-background: var(--color-red);
+  // --color-button-tertiary-pressed-background: var(--color-red-1);
 
   // Dimensions
   --header-height-mobile: 96px;
@@ -102,6 +123,8 @@
   // Border
   --border-bottom-primary: 2px solid var(--color-brown-1);
   --border-bottom-secondary: 2px solid var(--color-white);
+  --heading-border-bottom-white: 1px solid var(--color-white);
+  --heading-border-bottom-brown: 1px solid var(--color-brown-2);
 
   // Border radius
   --button-border-radius: 6px;
@@ -118,7 +141,8 @@
   --main-padding-width-mobile: 1em;
   --main-padding-height-desktop: 2em;
   --main-padding-height-mobile: 1em;
-  --testimonial-padding-gap: 24px;
+  --main-padding-gap: 24px;
+  --contact-card-padding: 24px 40px;
 
   // Box shadow
   // --box-shadow-focus: 0 0 12px 8px goldenrod;
@@ -137,11 +161,12 @@
   --index-header: 3;
   --index-back-button: 4;
   --index-menu: 5;
+  --index-nav-menu: 10;
   --index-chat: var(--index-menu);
   --index-count-down: 5;
   --index-language-selector: 6;
-  --index-modal: 7;
   --index-splash-screen: 7;
   --index-loader-spinner: 5;
   --index-notifications: 10;
+  --index-modal: 20;
 }

@@ -1,0 +1,144 @@
+@import 'src/utils.scss';
+
+.contactContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-grow: 1;
+}
+
+.heading {
+  margin-bottom: 32px;
+}
+
+.contactCardsContainer {
+  display: grid;
+  width: 100%;
+
+  place-items: center;
+  grid-template-columns: repeat(1, 1fr);
+  // grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: var(--main-padding-gap);
+
+  @include is-tablet {
+    grid-template-columns:
+      1fr var(--main-padding-gap) 1fr var(--main-padding-gap)
+      1fr var(--main-padding-gap) 1fr;
+    column-gap: 0;
+  }
+
+  @include is-desktop {
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--main-padding-gap);
+  }
+}
+
+.card {
+  @include flex-centered(true);
+  gap: 16px;
+
+  background-color: var(--color-grey-5);
+  color: var(--color-black);
+
+  width: 100%;
+  max-width: 350px;
+  height: 100%;
+  min-height: 160px;
+
+  text-align: center;
+  padding: var(--contact-card-padding);
+  border-radius: var(--gallery-item-border-radius);
+  fill: var(--color-brown-2);
+
+  &:first-child {
+    grid-column-start: auto;
+    grid-column-end: auto;
+
+    @include is-tablet {
+      grid-column-start: 1;
+      grid-column-end: 4;
+    }
+
+    @include is-desktop {
+      grid-column-start: auto;
+      grid-column-end: auto;
+    }
+  }
+
+  &:nth-child(2) {
+    fill: var(--color-brown-4);
+    grid-column-start: auto;
+    grid-column-end: auto;
+
+    @include is-tablet {
+      grid-column-start: 5;
+      grid-column-end: 8;
+    }
+
+    @include is-desktop {
+      grid-column-start: auto;
+      grid-column-end: auto;
+    }
+  }
+
+  &:nth-child(3) {
+    fill: var(--color-brown-5);
+    grid-column-start: auto;
+    grid-column-end: auto;
+
+    @include is-tablet {
+      grid-column-start: 3;
+      grid-column-end: 6;
+    }
+
+    @include is-desktop {
+      grid-column-start: auto;
+      grid-column-end: auto;
+    }
+  }
+
+  p {
+    margin: 0;
+  }
+}
+
+.icon {
+  max-width: 48px;
+}
+
+.formAndTextContainer {
+  @include flex-centered(true);
+
+  flex-direction: column-reverse;
+  gap: 40px;
+  width: 100%;
+  margin-top: 40px;
+
+  @include is-desktop {
+    flex-direction: row;
+    margin-top: 64px;
+  }
+}
+
+.contactMeContainer {
+  // width: 100%;
+  padding: 0 32px;
+  align-self: flex-start;
+
+  @include is-desktop {
+    padding: 32px;
+  }
+}
+
+.messageMeHeading {
+  @include font-28-bold;
+
+  margin-bottom: 16px;
+  border-bottom: var(--heading-border-bottom-brown);
+}
+
+.messageMeText {
+  @include font-16;
+
+  margin: 0;
+}

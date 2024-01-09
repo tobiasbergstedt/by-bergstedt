@@ -2,7 +2,7 @@
 
 .yearHeading {
   width: 100%;
-  border-bottom: 1px solid var(--color-white);
+  border-bottom: var(--heading-border-bottom-white);
   margin-bottom: 12px;
 
   @include is-desktop {
