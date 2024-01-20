@@ -31,17 +31,17 @@ const CartItem = ({
 
   return (
     <li
-      key={item.id}
+      key={item.productId}
       className={isOrderItem ? styles.orderItem : styles.cartItem}
     >
       <RemoveCross
         className={styles.removeCross}
         onClick={() => {
-          onRemove(item.id, shoppingCart, setShoppingCart);
+          onRemove(item.productId, shoppingCart, setShoppingCart);
         }}
       />
       <Link
-        to={`/product/${item.id}`}
+        to={`/product/${item.productId}`}
         className={isOrderItem ? styles.orderItemImage : styles.cartItemImage}
       >
         <img
@@ -52,7 +52,7 @@ const CartItem = ({
         />
       </Link>
       <Link
-        to={`/product/${item.id}`}
+        to={`/product/${item.productId}`}
         className={isOrderItem ? styles.orderItemName : styles.cartItemName}
       >
         <div className={styles.productNameAndPrice}>

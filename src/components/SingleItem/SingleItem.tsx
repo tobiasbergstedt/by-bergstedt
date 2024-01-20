@@ -33,20 +33,23 @@ const SingleItem = (): JSX.Element => {
 
   const updateCart = (product: Product): void => {
     const itemToAdd = {
-      id: product.attributes.uuid,
+      productId: product.attributes.uuid,
+      strapiId: product.id,
       name: {
         sv: product.attributes.title,
         en: product.attributes.localizations.data[0].attributes.title,
       },
+      amountAvailable: product.attributes.amount,
       amount: 1,
       image: product.attributes.images.data[0].attributes.formats.thumbnail.url,
       price: product.attributes.price,
+      weight: product.attributes.weight,
     };
 
     if (shoppingCart !== null) {
       // Check if the item already exists in the cart
       const existingItemIndex = shoppingCart.findIndex(
-        (item) => item.id === itemToAdd.id,
+        (item) => item.productId === itemToAdd.productId,
       );
 
       if (existingItemIndex !== -1) {
@@ -88,7 +91,7 @@ const SingleItem = (): JSX.Element => {
           fetchSingleItem: true,
         },
         {
-          url: `/api/categories?sort=name:ASC&locale=${locale}`,
+          url: `/api/product-categories?sort=name:ASC&locale=${locale}`,
           setData: setCategories,
           errorMessage: t('misc.apiErrors.categories'),
         },
@@ -100,7 +103,7 @@ const SingleItem = (): JSX.Element => {
 
   useEffect(() => {
     const desiredCategorySlug =
-      product?.attributes.categories.data[0].attributes.slug;
+      product?.attributes.product_category.data[0].attributes.slug;
     const categorySlug = categories.find(
       (category) => category.attributes.slug === desiredCategorySlug,
     );

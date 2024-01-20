@@ -39,7 +39,7 @@ const Select = forwardRef<HTMLSelectElement | null, PropTypes>(
 
     return (
       <label
-        className={clsx(styles.label, {
+        className={clsx(styles.label, className, {
           [styles.labelIsSmall]: isSmall,
         })}
       >

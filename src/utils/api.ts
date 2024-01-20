@@ -1,3 +1,4 @@
+import { type ShoppingCartItem } from '@interfaces/interfaces';
 import fixUrl from '@utils/fix-url';
 
 export const fetchData = async (
@@ -14,12 +15,16 @@ export const fetchData = async (
 
   try {
     setIsLoading(true); // Set isLoading to true before making API calls
-    // let hasError = false;
 
-    // Create an array of Promises for fetching and setting data
     const fetchPromises = setStateArrays.map(async (stateArray) => {
       try {
         const response = await fetch(fixUrl(stateArray.url));
+
+        if (!response.ok) {
+          // Throw an error if response status is not ok
+          throw new Error(`Error ${response.status}: ${response.statusText}`);
+        }
+
         const apiData = await response.json();
 
         if (apiData.data !== null && apiData.data.length !== 0) {
@@ -30,12 +35,17 @@ export const fetchData = async (
           );
         } else {
           // hasError = true; // Set the hasError flag if no data is available
-          errorMessages.push(stateArray.errorMessage);
+          errorMessages.push(stateArray.errorMessage + ' - No data available');
         }
       } catch (error) {
         console.error('Error fetching data:', error);
-        // hasError = true; // Set the hasError flag on error
-        errorMessages.push(stateArray.errorMessage);
+        // Type guard to check if error is an instance of Error
+        if (error instanceof Error) {
+          errorMessages.push(stateArray.errorMessage + ' - ' + error.message);
+        } else {
+          // Handle cases where the error is not an instance of Error
+          errorMessages.push(stateArray.errorMessage + ' - Unexpected error');
+        }
       }
     });
 
@@ -49,11 +59,11 @@ export const fetchData = async (
     } else {
       setApiError('');
     }
-
-    setIsLoading(false); // Set isLoading to false after all API calls are done
   } catch (error) {
-    console.error('Error in fetchData:', error);
-    setApiError(errorMessages.join('\n'));
+    console.error('Global error in fetchData:', error);
+    setApiError('An unexpected error occurred');
+  } finally {
+    setIsLoading(false);
   }
 };
 
@@ -73,5 +83,115 @@ export const fetchSingleItem = async (
     }
   } catch (error) {
     console.error('Error fetching data:', error);
+  }
+};
+
+export const postData = async (
+  url: string,
+  data: {
+    totalSum: number;
+    shipping: number;
+    userData: {
+      name: string;
+      company: string;
+      address: string;
+      phoneNumber: string;
+      email: string;
+      message: string;
+    };
+    orderDetails: ShoppingCartItem[] | null;
+    shippingInfo: string;
+    paymentMethod: string;
+    orderId: string;
+  },
+  setIsLoading: (data: boolean) => void,
+  setApiSuccess: (data: string) => void,
+  setApiError: (data: any) => void,
+): Promise<void> => {
+  try {
+    setIsLoading(true);
+    const apiKey = import.meta.env.VITE_STRAPI_API_KEY;
+
+    const response = await fetch(fixUrl(url), {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `bearer ${apiKey}`,
+      },
+      // eslint-disable-next-line object-shorthand
+      body: JSON.stringify({ data: data }),
+    });
+
+    if (!response.ok) {
+      console.log(response);
+      throw new Error('Network response was not ok');
+    }
+
+    const apiData = await response.json();
+
+    // Handle the API response upon success
+    setApiSuccess(apiData.message);
+
+    setIsLoading(false);
+  } catch (error) {
+    if (error instanceof Error) {
+      console.error('Error posting data:', error);
+      setApiError(error);
+    } else if (error instanceof Response) {
+      await error.json().then((json) => {
+        console.error('Error from API:', json);
+        setApiError(json);
+      });
+    }
+    setIsLoading(false);
+  }
+};
+
+export const updateObjectAmount = async (
+  url: string,
+  newAmount: number,
+  setIsLoading: (data: boolean) => void,
+  setApiSuccess: (data: string) => void,
+  setApiError: (data: string) => void,
+): Promise<void> => {
+  try {
+    const apiKey = import.meta.env.VITE_STRAPI_API_KEY;
+    const data = {
+      amount: newAmount,
+    };
+
+    const response = await fetch(fixUrl(url), {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `bearer ${apiKey}`,
+      },
+      // eslint-disable-next-line object-shorthand
+      body: JSON.stringify({ data: data }),
+    });
+
+    if (!response.ok) {
+      console.log(response);
+
+      throw new Error('Network response was not ok');
+    }
+
+    const apiData = await response.json();
+
+    // Handle the API response upon success
+    setApiSuccess(apiData.message);
+
+    setIsLoading(false);
+  } catch (error) {
+    if (error instanceof Error) {
+      console.error('Error posting data:', error);
+      setApiError(JSON.stringify(error));
+    } else if (error instanceof Response) {
+      await error.json().then((json) => {
+        console.error('Error from API:', json);
+        setApiError(json);
+      });
+    }
+    setIsLoading(false);
   }
 };

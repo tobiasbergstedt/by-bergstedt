@@ -1,4 +1,4 @@
-import { useRef, useContext, useState } from 'react';
+import { useRef, useContext, useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
@@ -7,8 +7,14 @@ import {
   type InputProps,
   type OrderDetailsRefs,
   type OrderDetails,
+  type RadioOption,
 } from '@interfaces/interfaces';
-import { getCartTotal, removeFromCart } from '@utils/cart';
+import {
+  getCartSum,
+  getCartTotal,
+  getShipping,
+  removeFromCart,
+} from '@utils/cart';
 
 import useFormState from '@hooks/useFormState';
 
@@ -23,10 +29,15 @@ import { ReactComponent as CartEmptyIcon } from '@assets/icons/checkout-fail.svg
 import styles from './Checkout.module.scss';
 import Modal from '@components/Modal/Modal';
 import { sendConfirmationData } from './SendConfirmationForm';
-import fixUrl from '@utils/fix-url';
+import Select from '@components/Inputs/Select/Select';
+import formatPrice from '@utils/format-price';
+import Radio from '@components/Inputs/Radio/Radio';
+import { postData, updateObjectAmount } from '@utils/api';
+import { generateUUID } from '@utils/uuid';
 
 const Checkout = (): JSX.Element => {
-  const { shoppingCart } = useContext(UserContext);
+  const { locale, shoppingCart, setShoppingCart, shippingRates } =
+    useContext(UserContext);
   const personalDetailsInitial = {
     surname: '',
     lastName: '',
@@ -34,19 +45,30 @@ const Checkout = (): JSX.Element => {
     streetName: '',
     areaCode: '',
     cityName: '',
+    countryName: '',
     phoneNumber: '',
     email: '',
     message: '',
+    country: '',
+    pickup: 'pickup',
+    payment: 'swish',
   };
 
-  const optionalFields: Array<keyof OrderDetails> = ['companyName', 'message'];
+  const [shippingCost, setShippingCost] = useState<number>(0);
+  const [cartTotal, setCartTotal] = useState<number>(0);
+  const optionalFields: Array<keyof OrderDetails> = [
+    'companyName',
+    'message',
+    'country',
+  ];
   const [isErrorModalVisible, setIsErrorModalVisible] =
     useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [apiSuccess, setApiSuccess] = useState<string>('');
+  const [apiError, setApiError] = useState<string>('');
 
-  const { formState, handleChange, validate, errors } = useFormState(
-    personalDetailsInitial,
-    optionalFields,
-  );
+  const { formState, setFormState, handleChange, validate, errors } =
+    useFormState(personalDetailsInitial, optionalFields);
 
   const { t } = useTranslation();
 
@@ -57,9 +79,13 @@ const Checkout = (): JSX.Element => {
     streetName: useRef(null),
     areaCode: useRef(null),
     cityName: useRef(null),
+    countryName: useRef(null),
     phoneNumber: useRef(null),
     email: useRef(null),
     message: useRef(null),
+    country: useRef(null),
+    pickup: useRef(null),
+    payment: useRef(null),
   };
 
   const companyName = 'companyName';
@@ -102,6 +128,12 @@ const Checkout = (): JSX.Element => {
       placeholder: t('checkout.form.cityName'),
     },
     {
+      inputRef: configRefs.countryName,
+      inputValue: formState.countryName,
+      propertyName: 'countryName',
+      placeholder: t('checkout.form.country'),
+    },
+    {
       inputRef: configRefs.phoneNumber,
       inputValue: formState.phoneNumber,
       propertyName: 'phoneNumber',
@@ -121,26 +153,126 @@ const Checkout = (): JSX.Element => {
     },
   ];
 
+  const countrySelectValues = [
+    {
+      value: t('checkout.countriesSelect.sweden'),
+      label: t('checkout.form.countries.sweden'),
+    },
+    {
+      value: t('checkout.countriesSelect.eu'),
+      label: t('checkout.form.countries.eu'),
+    },
+    {
+      value: t('checkout.countriesSelect.other'),
+      label: t('checkout.form.countries.other'),
+    },
+  ];
+
+  const radioOptions: RadioOption[] = [
+    { value: 'pickup', label: t('checkout.pickup') },
+    { value: 'ship', label: t('checkout.shipTo') },
+    // ... add more options here
+  ];
+
+  const paymentOptions: RadioOption[] = [
+    { value: 'swish', label: t('checkout.swish') },
+    { value: 'card', label: t('checkout.card') },
+    { value: 'cash', label: t('checkout.cash') },
+    // ... add more options here
+  ];
+
   const navigate = useNavigate();
 
   const handleSubmit = async (
     e: React.FormEvent<HTMLFormElement>,
   ): Promise<void> => {
     e.preventDefault();
-    // if (validate()) {
-    await sendConfirmationData(
-      formState,
-      shoppingCart,
-      'info@tobiasbergstedt.se',
-      fixUrl('/api/contacts/send'),
-    );
-    //   if (checkoutSuccessful) {
-    //     navigate('/confirmation');
-    //   }
+    if (validate()) {
+      const data = {
+        totalSum: cartTotal,
+        shipping: shippingCost,
+        userData: {
+          name: `${formState.surname} ${formState.lastName}`,
+          company: formState.companyName,
+          address: `${formState.streetName}, ${formState.areaCode}, ${formState.cityName} ${formState.country}`,
+          phoneNumber: formState.phoneNumber,
+          email: formState.email,
+          message: formState.message,
+        },
+        orderDetails: shoppingCart,
+        shippingInfo: formState.pickup,
+        paymentMethod: formState.payment,
+        orderId: generateUUID(),
+      };
+
+      await sendConfirmationData(
+        formState,
+        shoppingCart,
+        data.orderId,
+        formatPrice(shippingCost),
+        formatPrice(cartTotal),
+        '/api/orders/send',
+        setApiError,
+        locale,
+      );
+
+      await postData(
+        '/api/orders',
+        data,
+        setIsLoading,
+        setApiSuccess,
+        setApiError,
+      );
+
+      if (shoppingCart !== null) {
+        shoppingCart.map(async (product) => {
+          const newAmount =
+            product.amountAvailable - product.amount >= 0
+              ? product.amountAvailable - product.amount
+              : 0;
+          await updateObjectAmount(
+            `/api/items/${product.strapiId}`,
+            newAmount,
+            setIsLoading,
+            setApiSuccess,
+            setApiError,
+          );
+        });
+      }
+
+      setShoppingCart(null);
+
+      navigate(`/orderconfirmation/${data.orderId}`);
+    }
     // } else {
     //   setIsErrorModalVisible(true);
     // }
   };
+
+  useEffect(() => {
+    if (shippingRates !== null) {
+      if (formState.pickup === 'pickup') {
+        setShippingCost(0);
+
+        const total = getCartSum(shoppingCart);
+        setCartTotal(total);
+      } else {
+        const cost = getShipping(
+          shoppingCart,
+          shippingRates,
+          formState.country,
+        );
+        setShippingCost(cost);
+
+        const total = getCartTotal(
+          shoppingCart,
+          shippingRates,
+          formState.country,
+        );
+        setCartTotal(total);
+      }
+    }
+  }, [shippingRates, shoppingCart, formState.country, formState.pickup]);
 
   return (
     <>
@@ -228,10 +360,62 @@ const Checkout = (): JSX.Element => {
                 <h2 className={styles.orderHeading}>
                   {t('checkout.orderHeading')}
                 </h2>
+                <div className={styles.shippingAndPaymentContainer}>
+                  <h3 className={styles.shippingAndPaymentHeading}>
+                    {t('checkout.shippingAndPayment')}
+                  </h3>
+                  <Radio
+                    options={radioOptions}
+                    selectedOption={formState.pickup}
+                    onOptionChange={(e) => {
+                      setFormState({
+                        ...formState,
+                        pickup: e,
+                        payment: e === 'pickup' ? 'card' : 'swish',
+                        country: t('checkout.countriesSelect.sweden'),
+                      });
+                    }}
+                  />
+                  {formState.pickup === 'ship' && (
+                    <>
+                      <p className={styles.shipToHeading}>
+                        {t('checkout.shipToHeading')}:
+                      </p>
+                      <Select
+                        className={styles.countrySelect}
+                        label={t('checkout.form.countries.sweden')}
+                        options={countrySelectValues}
+                        defaultValue={t('checkout.countriesSelect.sweden')}
+                        onChange={(e) => {
+                          setFormState({ ...formState, country: e });
+                        }}
+                        ref={configRefs.country}
+                      />
+                    </>
+                  )}
+                  <p className={styles.shipToHeading}>
+                    {t('checkout.paymentViaHeading')}:
+                  </p>
+                  <Radio
+                    options={
+                      formState.pickup === 'ship'
+                        ? paymentOptions.slice(0, 1)
+                        : paymentOptions
+                    }
+                    selectedOption={formState.payment}
+                    onOptionChange={(e) => {
+                      setFormState({
+                        ...formState,
+                        payment: e,
+                      });
+                    }}
+                  />
+                </div>
+                <h3 className={styles.productsHeading}>Products</h3>
                 <ul className={styles.orderList}>
                   {shoppingCart?.map((orderItem) => (
                     <CartItem
-                      key={orderItem.id}
+                      key={orderItem.productId}
                       item={orderItem}
                       onRemove={removeFromCart}
                       isOrderItem={true}
@@ -239,8 +423,21 @@ const Checkout = (): JSX.Element => {
                   ))}
                 </ul>
                 <div className={styles.checkoutTotal}>
+                  {/* <p>{t('shoppingCart.total')}:</p> */}
+                  <p>{t('checkout.shippingLabel')}:</p>
+                  {shippingCost !== null && (
+                    <p>{`${formatPrice(shippingCost)} ${t(
+                      'misc.currencies.sek',
+                    )}`}</p>
+                  )}
+                </div>
+                <div className={styles.checkoutTotal}>
                   <p>{t('shoppingCart.total')}:</p>
-                  <p>{getCartTotal(shoppingCart, t('misc.currencies.sek'))}</p>
+                  {cartTotal !== null && (
+                    <p>{`${formatPrice(cartTotal)} ${t(
+                      'misc.currencies.sek',
+                    )}`}</p>
+                  )}
                 </div>
                 <Button
                   type="submit"

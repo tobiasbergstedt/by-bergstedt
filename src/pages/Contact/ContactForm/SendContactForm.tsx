@@ -7,17 +7,25 @@ const sendContactData = async (
   url: string,
 ): Promise<void> => {
   const subject = i18n.t('contact.form.subject', { name: formData.name });
-  const text = i18n.t('contact.form.text', {
-    name: formData.name,
-    email: formData.email,
-    message: formData.message,
-  });
+  const html = `
+    <html>
+      <head>
+        <style>
+        </style>
+      </head>
+      <body>
+        <p>${i18n.t('contact.form.name')}: ${formData.name}</p>
+        <p>${i18n.t('contact.form.email')}: ${formData.email}</p>
+        <p>${i18n.t('contact.form.message')}: ${formData.message}</p>
+      </body>
+    </html>
+  `;
 
   const fetchBodyData = new URLSearchParams();
   fetchBodyData.append('to', mailTo);
   fetchBodyData.append('from', mailTo);
   fetchBodyData.append('subject', subject);
-  fetchBodyData.append('text', text);
+  fetchBodyData.append('html', html);
 
   const response = await fetch(url, {
     method: 'POST',

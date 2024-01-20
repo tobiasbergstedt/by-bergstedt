@@ -10,7 +10,11 @@ import { local } from '@utils/storage';
 import { LANGUAGE_CHOSEN, SHOPPING_CART } from '@config/constants';
 import { setLanguage } from '@i18n/i18n';
 import { useTranslation } from 'react-i18next';
-import { type ShoppingCartItem } from '@interfaces/interfaces';
+import {
+  type ShippingRate,
+  type ShoppingCartItem,
+} from '@interfaces/interfaces';
+import fixUrl from '@utils/fix-url';
 
 interface UserContextType {
   languageChosen: string | null;
@@ -19,6 +23,10 @@ interface UserContextType {
   setLocale: Dispatch<SetStateAction<string>>;
   shoppingCart: ShoppingCartItem[] | null;
   setShoppingCart: Dispatch<SetStateAction<ShoppingCartItem[] | null>>;
+  // cartTotal: number | string;
+  // setCartTotal: Dispatch<SetStateAction<number | string>>;
+  shippingRates: ShippingRate[] | null;
+  setShippingRates: Dispatch<SetStateAction<ShippingRate[] | null>>;
 }
 
 interface UserProviderProps {
@@ -32,6 +40,10 @@ const UserContext = createContext<UserContextType>({
   setLocale: () => {},
   shoppingCart: null,
   setShoppingCart: () => {},
+  // cartTotal: 0,
+  // setCartTotal: () => {},
+  shippingRates: null,
+  setShippingRates: () => {},
 });
 
 const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
@@ -42,6 +54,9 @@ const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
   const [locale, setLocale] = useState<string>(t('locales.sv'));
   const [shoppingCart, setShoppingCart] = useState<ShoppingCartItem[] | null>(
     local.read(SHOPPING_CART) ?? null,
+  );
+  const [shippingRates, setShippingRates] = useState<ShippingRate[] | null>(
+    null,
   );
 
   // Update localStorage whenever languageChosen changes.
@@ -60,6 +75,18 @@ const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
   }, [shoppingCart]);
 
   useEffect(() => {
+    const fetchShippingRates = async (): Promise<void> => {
+      try {
+        const response = await fetch(fixUrl('/api/shipping-rates'));
+        const data = await response.json();
+        setShippingRates(data.data);
+      } catch (error) {
+        console.error('Error fetching shipping rates:', error);
+      }
+    };
+
+    void fetchShippingRates();
+
     if (
       local.read(LANGUAGE_CHOSEN) !== null &&
       local.read(LANGUAGE_CHOSEN) === t('locales.english')
@@ -81,6 +108,8 @@ const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
         setLocale,
         shoppingCart,
         setShoppingCart,
+        shippingRates,
+        setShippingRates,
       }}
     >
       {children}

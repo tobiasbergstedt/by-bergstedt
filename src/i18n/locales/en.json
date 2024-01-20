@@ -87,7 +87,9 @@
       "yourEmail": "Your email",
       "yourMessage": "Your message",
       "subject": "New message from {{name}} via contact form on tobiasbergstedt.se",
-      "text": "Name: {{name}}, Email: {{email}}, Message: {{message}}",
+      "name": "Name",
+      "email": "Email",
+      "message": "Message",
       "send": "Send"
     },
     "sentSuccessfully": "Your message has been sent successfully!",
@@ -100,6 +102,7 @@
     "streetNameRequired": "Street name is required.",
     "areaCodeRequired": "Area code is required.",
     "cityNameRequired": "City name is required.",
+    "countryNameRequired": "Country is required.",
     "phoneNumberRequired": "You must enter your phone number.",
     "emailRequired": "Email must be provided.",
     "emailInvalid": "Email is invalid.",
@@ -125,9 +128,54 @@
       "streetName": "Street name",
       "areaCode": "Area code",
       "cityName": "City name",
+      "country": "Country",
+      "countries": {
+        "sweden": "Sweden",
+        "eu": "Europe",
+        "other": "Other part of the world"
+      },
       "phoneNumber": "Phone number",
       "email": "Email",
-      "message": "Message (optional)"
+      "message": "Message (optional)",
+      "subject": "New message from {{name}} via contact form on tobiasbergstedt.se",
+      "text": "Name: {{name}}, Email: {{email}}, Message: {{message}}"
+    },
+    "countriesSelect": {
+      "sweden": "Sweden",
+      "eu": "EU",
+      "other": "Other"
+    },
+    "shippingLabel": "Shipping",
+    "shippingAndPayment": "Shipping and payment",
+    "pickup": "Pick up at the shop",
+    "viaShipping": "Postal package",
+    "shipTo": "Send to my address",
+    "shipToHeading": "Ship to",
+    "paymentViaHeading": "Payment via",
+    "swish": "Swish",
+    "card": "Card",
+    "cash": "Cash",
+    "confirmationMail": {
+      "subject": "Order confirmation from Handmade by Bergstedt",
+      "confirmation": "Order confirmation",
+      "thankCustomer": "Hi {{name}}, thanks for your purchase",
+      "deliveryOrderReceived": "We have received your order, and will send a mail your way as soon as it's been packed and is on it's way to you. Please review the information below, and contact us as soon as possible if you have any questions or if something is wrong.",
+      "pickupOrderReceived": "We have received your order, and will send a mail your way as soon as it's ready for pickup. Please review the information below, and contact us as soon as possible if you have any questions or if something is wrong.",
+      "customerDetails": "Personal details",
+      "order": "Order",
+      "orderNumber": "Reference number",
+      "orderDate": "Order date",
+      "payment": "Payment method",
+      "pickup": "Delivery method",
+      "message": "Message",
+      "product": "Product",
+      "amount": "Amount",
+      "price": "Price",
+      "sum": "Sum",
+      "shipping": "Shipping",
+      "total": "Subtotal",
+      "rightOfWithdrawalHeading": "Right of withdrawal",
+      "rightOfWithdrawalText": "If you regret your purchase, you always have a 14-day right of withdrawal. The cancellation period starts from the day you receive the item, and the item needs to be unused or in an unchanged condition for us to issue a full credit."
     }
   },
   "helmet": {
@@ -158,6 +206,10 @@
     "checkout": {
       "title": "Checkout",
       "description": "Confirm your order, and have the products delivered shortly."
+    },
+    "orderConfirmation": {
+      "title": "Order confirmation",
+      "description": "Your order has been successfully registered, and an order confirmation has been sent to your email. Thank you for supporting our business."
     }
   },
   "misc": {
@@ -182,6 +234,10 @@
       "sek": "SEK",
       "eur": "EUR"
     },
+    "countries": {
+      "sweden": "SE",
+      "eu": "EU"
+    },
     "all": "All categories",
     "apiErrors": {
       "errorHeading": "Error fetching data.",
@@ -194,7 +250,8 @@
       "newsItems": "No news items found.",
       "events": "No events could be found.",
       "materials": "Materials choices could not be found.",
-      "patterns": "No patterns were found."
+      "patterns": "No patterns were found.",
+      "orderConfirmation": "Order with reference number {{id}} could not be found."
     }
   }
 }

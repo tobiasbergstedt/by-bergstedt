@@ -1,0 +1,107 @@
+@import 'src/utils.scss';
+.confirmationWrapper {
+  @include flex-centered(true);
+  padding-top: 8px;
+
+  @include is-tablet {
+    padding-top: 32px;
+  }
+}
+
+.confirmationContainer {
+  @include flex-centered(true);
+  max-width: 700px;
+
+  p {
+    @include font-14;
+
+    @include is-tablet {
+      @include font-16;
+    }
+  }
+
+  * {
+    width: 100%;
+  }
+}
+
+.confirmationIcon {
+  max-width: 100px;
+  margin-bottom: 16px;
+
+  @include is-tablet {
+    max-width: 150px;
+    margin-bottom: 32px;
+  }
+}
+
+.orderConfirmationHeading {
+  @include font-28;
+  font-weight: 600;
+  margin-bottom: 16px;
+
+  @include is-tablet {
+    @include font-32;
+    font-weight: 600;
+  }
+}
+
+.orderConfirmationsubHeading {
+  @include font-20;
+  font-weight: 600;
+
+  @include is-tablet {
+    @include font-24;
+    font-weight: 600;
+  }
+}
+
+.marginTop,
+.orderDetails {
+  margin-top: 8px;
+
+  @include is-tablet {
+    margin-top: 24px;
+  }
+}
+
+.gridMarginTop {
+  margin-top: 24px;
+
+  p {
+    font-weight: 600;
+  }
+}
+
+.marginZero {
+  margin: 0;
+}
+
+.message {
+  margin-top: 8px;
+  margin-bottom: 0;
+}
+
+.userDataGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.productsGrid {
+  display: grid;
+  grid-template-columns: 50% 1fr 1fr 1fr;
+  gap: 4px;
+
+  .boldParagraph {
+    font-weight: 600;
+  }
+}
+
+.divider {
+  border-bottom: 1px solid var(--color-brown-1);
+  padding-bottom: 4px;
+  margin-bottom: 12px;
+  p {
+    margin-bottom: 0px;
+  }
+}

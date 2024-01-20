@@ -5,7 +5,7 @@ import clsx from 'clsx';
 
 import useBreakpoint, { TABLET_PORTRAIT, DESKTOP } from '@hooks/useBreakpoint';
 import { UserContext } from '@context/UserContext';
-import { getCartTotal, removeFromCart } from '@utils/cart';
+import { getCartSum, removeFromCart } from '@utils/cart';
 
 import Button from '@components/Button/Button';
 
@@ -14,6 +14,7 @@ import { ReactComponent as ArrowDownIcon } from '@assets/icons/arrowdown.svg';
 
 import styles from './ShoppingCart.module.scss';
 import CartItem from '@components/CartItem/CartItem';
+import formatPrice from '@utils/format-price';
 
 const ShoppingCart = (): JSX.Element => {
   const { shoppingCart } = useContext(UserContext);
@@ -115,7 +116,7 @@ const ShoppingCart = (): JSX.Element => {
             </li>
             {shoppingCart?.map((cartItem) => (
               <CartItem
-                key={cartItem.id}
+                key={cartItem.productId}
                 item={cartItem}
                 onRemove={removeFromCart}
                 isOrderItem={false}
@@ -123,7 +124,9 @@ const ShoppingCart = (): JSX.Element => {
             ))}
             <div className={styles.cartTotal}>
               <p>{t('shoppingCart.total')}:</p>
-              <p>{getCartTotal(shoppingCart, t('misc.currencies.sek'))}</p>
+              <p>{`${formatPrice(getCartSum(shoppingCart))} ${t(
+                'misc.currencies.sek',
+              )}`}</p>
             </div>
             <div
               onClick={() => {

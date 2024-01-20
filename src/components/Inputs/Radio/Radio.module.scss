@@ -1,0 +1,43 @@
+@import 'src/utils.scss';
+
+.radioContainer {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+  text-align: center;
+}
+
+.radioLabel {
+  display: inline-block;
+  flex-grow: 1;
+  background-color: var(--color-grey-6);
+  color: var(--color-brown-5);
+  padding: 8px 16px;
+  border-bottom: var(--border-bottom-primary);
+  border-radius: var(--button-border-radius); /* Rounded corners */
+  cursor: pointer;
+  user-select: none;
+  box-shadow: var(--box-shadow-primary);
+  transition:
+    background-color var(--standard-transition),
+    color var(--standard-transition),
+    border-color var(--standard-transition);
+
+  &:hover {
+    background-color: var(--color-grey-5);
+  }
+}
+
+.radioLabel.selected {
+  background-color: var(--color-brown-2);
+  color: white;
+  border-color: var(--color-brown-5);
+
+  &:hover {
+    background-color: var(--color-brown-4);
+  }
+}
+
+.radioInput {
+  display: none; /* Hide the actual radio input */
+}

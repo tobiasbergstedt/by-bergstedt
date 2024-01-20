@@ -1,7 +1,8 @@
-import { useState } from 'react';
+import { type Dispatch, type SetStateAction, useState } from 'react';
 
 interface FormProps<T> {
   formState: T;
+  setFormState: Dispatch<SetStateAction<T>>;
   handleChange: (e: any) => void;
   validate: () => boolean;
   errors: FormErrors<T>;
@@ -31,6 +32,7 @@ const useFormState = <T extends Record<string, unknown>>(
 
   const handleChange = (e: any): void => {
     const { name, value } = e.target;
+
     setFormState({ ...formState, [name]: value });
   };
 
@@ -71,7 +73,7 @@ const useFormState = <T extends Record<string, unknown>>(
     setErrors(initialState as any);
   };
 
-  return { formState, handleChange, validate, errors, resetForm };
+  return { formState, setFormState, handleChange, validate, errors, resetForm };
 };
 
 export default useFormState;

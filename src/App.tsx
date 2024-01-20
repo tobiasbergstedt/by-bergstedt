@@ -13,7 +13,7 @@ import Custom from '@pages/Custom/Custom';
 import About from '@pages/About/About';
 import Contact from '@pages/Contact/Contact';
 import Checkout from '@pages/Checkout/Checkout';
-import OrderConfirmation from '@pages/Checkout/OrderConfirmation/OrderConfirmation';
+import OrderConfirmation from '@pages/OrderConfirmation/OrderConfirmation';
 
 import Header from '@components/Header/Header';
 import MyFooter from '@components/Footer/Footer';
@@ -61,7 +61,11 @@ const App = (): JSX.Element => {
               <Route path="/about" element={<About />} />
               <Route path="/contact" element={<Contact />} />
               <Route path="/checkout" element={<Checkout />} />
-              <Route path="/confirmation" element={<OrderConfirmation />} />
+              <Route
+                path="/orderconfirmation/:uuid"
+                element={<OrderConfirmation />}
+              />
+
               <Route path="*" element={<Navigate to="/404" />} />
               <Route path="/404" element={<NotFound />} />
             </Routes>

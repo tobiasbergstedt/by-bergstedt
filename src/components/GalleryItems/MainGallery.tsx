@@ -47,7 +47,7 @@ const MainGallery = ({ isShop, heading, passedStyles }: Props): JSX.Element => {
           errorMessage: t('misc.apiErrors.products'),
         },
         {
-          url: `/api/categories?sort=slug:ASC&locale=${locale}`,
+          url: `/api/product-categories?sort=slug:ASC&locale=${locale}`,
           setData: setCategories,
           errorMessage: t('misc.apiErrors.categories'),
         },
@@ -63,7 +63,7 @@ const MainGallery = ({ isShop, heading, passedStyles }: Props): JSX.Element => {
       const categoryMatch =
         filter.category === null ||
         filter.category === t('misc.all') ||
-        product.attributes.categories.data.some(
+        product.attributes.product_category.data.some(
           (category) => category.attributes.slug === filter.category,
         );
       return (

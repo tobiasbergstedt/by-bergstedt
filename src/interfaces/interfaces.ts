@@ -55,11 +55,12 @@ export interface Product {
     price: number;
     locale: string;
     images: Image;
-    categories: {
+    product_category: {
       data: Category[];
     };
     createdAt: string;
     amount: number;
+    weight: number;
   };
 }
 
@@ -148,14 +149,17 @@ export interface ContactRefsProps {
 }
 
 export interface ShoppingCartItem {
-  id: string;
+  productId: string;
+  strapiId: number;
   name: {
     sv: string;
     en: string;
   };
+  amountAvailable: number;
   amount: number;
   image: string;
   price: number;
+  weight: number;
 }
 
 export interface InputProps {
@@ -172,9 +176,13 @@ export interface OrderDetailsRefs {
   streetName: MutableRefObject<null>;
   areaCode: MutableRefObject<null>;
   cityName: MutableRefObject<null>;
+  countryName: MutableRefObject<null>;
   phoneNumber: MutableRefObject<null>;
   email: MutableRefObject<null>;
   message: MutableRefObject<null>;
+  country: MutableRefObject<null>;
+  pickup: MutableRefObject<null>;
+  payment: MutableRefObject<null>;
 }
 
 export interface OrderDetails {
@@ -187,4 +195,50 @@ export interface OrderDetails {
   phoneNumber: string;
   email: string;
   message: string;
+  country: string;
+  pickup: string;
+  payment: string;
+}
+
+export interface ShippingRate {
+  id: number;
+  attributes: {
+    name: string;
+    priceSE: number;
+    priceEU: number;
+    priceOther: number;
+    maxWeight: number;
+  };
+}
+
+export interface RadioOption {
+  value: string;
+  label: string;
+}
+
+export interface RadioComponentProps {
+  options: RadioOption[];
+  selectedOption: string;
+  onOptionChange: (value: string) => void;
+}
+
+export interface OrderData {
+  id: number;
+  attributes: {
+    createdAt: string;
+    totalSum: number;
+    shipping: number;
+    userData: {
+      name: string;
+      company: string;
+      address: string;
+      phoneNumber: string;
+      email: string;
+      message: string;
+    };
+    orderDetails: ShoppingCartItem[] | null;
+    shippingInfo: string;
+    paymentMethod: string;
+    orderId: string;
+  };
 }

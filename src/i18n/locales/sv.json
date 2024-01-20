@@ -89,7 +89,9 @@
       "yourEmail": "Din epostadress",
       "yourMessage": "Ditt meddelande",
       "subject": "Nytt meddelande från {{name}} via formulär på tobiasbergstedt.se",
-      "text": "Namn: {{name}}, Email: {{email}}, Meddelande: {{message}}",
+      "name": "Namn",
+      "email": "Email",
+      "message": "Meddelande",
       "send": "Skicka"
     },
     "sentSuccessfully": "Ditt meddelande har skickats!",
@@ -102,6 +104,7 @@
     "streetNameRequired": "Gatuadress krävs.",
     "areaCodeRequired": "Postnummer krävs.",
     "cityNameRequired": "Stad/ort krävs.",
+    "countryNameRequired": "Land krävs.",
     "phoneNumberRequired": "Du måste fylla i ett telefonnummer.",
     "emailRequired": "Du måste ange en epostadress.",
     "emailInvalid": "Epostadressen är felaktig.",
@@ -127,9 +130,52 @@
       "streetName": "Gatuadress",
       "areaCode": "Postnummer",
       "cityName": "Postort",
+      "country": "Land",
+      "countries": {
+        "sweden": "Sverige",
+        "eu": "Europa",
+        "other": "Annan del av världen"
+      },
       "phoneNumber": "Telefonnummer",
       "email": "Epost",
       "message": "Meddelande (valfritt)"
+    },
+    "countriesSelect": {
+      "sweden": "Sweden",
+      "eu": "EU",
+      "other": "Other"
+    },
+    "shippingLabel": "Frakt",
+    "shippingAndPayment": "Leverans och betalning",
+    "pickup": "Hämta på plats",
+    "viaShipping": "Postpaket",
+    "shipTo": "Skicka till mig",
+    "shipToHeading": "Leverans till",
+    "paymentViaHeading": "Betalning via",
+    "swish": "Swish",
+    "card": "Kort",
+    "cash": "Kontant",
+    "confirmationMail": {
+      "subject": "Orderbekräftelse från Handmade by Bergstedt",
+      "confirmation": "Orderbekräftelse",
+      "thankCustomer": "Hej {{name}}, tack för ditt köp",
+      "deliveryOrderReceived": "Vi har tagit emot din order, och kommer att skicka iväg ett mail så fort den är packad och på väg till dig. Kolla gärna igenom informationen nedan, och kontakta oss snarast om du har frågor eller om något skulle vara fel.",
+      "pickupOrderReceived": "Vi har tagit emot din order, och kommer att skicka iväg ett mail så fort den är tillgänglig för avhämtning. Kolla gärna igenom informationen nedan, och kontakta oss snarast om du har frågor eller om något skulle vara fel.",
+      "customerDetails": "Kunduppgifter",
+      "order": "Beställning",
+      "orderNumber": "Referensnummer",
+      "orderDate": "Beställningsdatum",
+      "payment": "Betalsätt",
+      "pickup": "Leveransmetod",
+      "message": "Meddelande",
+      "product": "Produkt",
+      "amount": "Antal",
+      "price": "Pris",
+      "sum": "Summa",
+      "shipping": "Frakt",
+      "total": "Totalt",
+      "rightOfWithdrawalHeading": "Ångerrätt",
+      "rightOfWithdrawalText": "Om du ångrar ditt köp har du alltid 14 dagars ångerrätt. Ångerfristen börjar gälla från den dag du mottagit varan, och varan behöver vara oanvänd eller i ett oförändrat skick för att vi ska kunna ge en fullständig kreditering."
     }
   },
   "helmet": {
@@ -160,6 +206,10 @@
     "checkout": {
       "title": "Kassa",
       "description": "Bekräfta din beställning, och få dina varor hemskickade inom kort."
+    },
+    "orderConfirmation": {
+      "title": "Orderbekräftelse",
+      "description": "Din beställning har registrerats, och en orderbekräftelse har skickats till din e-post. Tack för att du stöttar vår verksamhet."
     }
   },
   "misc": {
@@ -184,6 +234,10 @@
       "sek": "SEK",
       "eur": "EUR"
     },
+    "countries": {
+      "sweden": "SE",
+      "eu": "EU"
+    },
     "all": "Alla kategorier",
     "apiErrors": {
       "errorHeading": "Det gick inte att hämta data.",
@@ -196,7 +250,8 @@
       "newsItems": "Inga nyheter hittades.",
       "events": "Inga händelser kunde hittas.",
       "materials": "Materialvalen kunde inte hittas.",
-      "patterns": "Inga mönster hittades."
+      "patterns": "Inga mönster hittades.",
+      "orderConfirmation": "Order med referensnummer {{id}} kunde inte hittas."
     }
   }
 }
