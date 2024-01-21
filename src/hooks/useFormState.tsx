@@ -1,3 +1,4 @@
+import { type FormErrors } from '@interfaces/interfaces';
 import { type Dispatch, type SetStateAction, useState } from 'react';
 
 interface FormProps<T> {
@@ -8,10 +9,6 @@ interface FormProps<T> {
   errors: FormErrors<T>;
   resetForm: () => void;
 }
-
-type FormErrors<T> = {
-  [P in keyof T]: string;
-};
 
 const useFormState = <T extends Record<string, unknown>>(
   initialState: T,

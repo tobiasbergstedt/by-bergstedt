@@ -242,3 +242,23 @@ export interface OrderData {
     orderId: string;
   };
 }
+
+export interface FormState {
+  surname: string;
+  lastName: string;
+  companyName: string;
+  streetName: string;
+  areaCode: string;
+  cityName: string;
+  countryName: string;
+  phoneNumber: string;
+  email: string;
+  message: string;
+  country: string;
+  pickup: string;
+  payment: string;
+}
+
+export type FormErrors<T> = {
+  [P in keyof T]: string;
+};
