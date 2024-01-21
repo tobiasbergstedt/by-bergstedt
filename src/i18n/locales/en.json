@@ -114,8 +114,8 @@
   },
   "checkout": {
     "heading": "Checkout",
-    "orderInfo1": "To determine shipping costs, please place your order, and we will promptly provide you with a total for both the product(s) and shipping via email. If you prefer to pick up your order at our shop, simply mention this in the 'Message' field during checkout. We will then notify you when your order is ready for pickup.",
-    "orderInfo2": "Payment is available through Swish (default) or card (only available on pickup). Once you review and accept the shipping costs, we'll promptly send a payment request to your registered phone number. For those opting for pickup orders, feel free to pay at the time of delivery.",
+    "orderInfo1": "Below you can choose whether you want to have your order sent to you, or if you prefer to pick it up at our workshop, and which payment method you prefer. We will notify you by email when your order has been shipped or is available for pickup. If you have any comments or requests on the order, enter this in the 'Message' field during checkout.",
+    "orderInfo2": "Payment is available via Swish, card and cash (card and cash payment is only available for pickup orders). In case of delivery via postal package, we will manually send a payment request via Swish to the phone number you specified when ordering. For those who choose pickup, it is perfectly fine to pay with your preferred payment method at the time of delivery.",
     "orderInfo3": "Got questions or need assistance? Call us or send an email our way, we're happy to help.",
     "personalDetailsHeading": "Details",
     "orderHeading": "Order",

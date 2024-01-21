@@ -116,8 +116,8 @@
   },
   "checkout": {
     "heading": "Kassa",
-    "orderInfo1": "För att fastställa fraktkostnader, lägg din beställning, så kommer vi snarast att förse dig med en totalsumma för både produkt(er) och frakt via mail. Om du föredrar att hämta din beställning i vår verkstad, skriver du detta i fältet 'Meddelande' här i kassan. Vi meddelar dig då när din beställning är klar för avhämtning.",
-    "orderInfo2": "Betalning är möjlig via Swish (standard) eller kort (endast tillgängligt vid avhämtning). När du har granskat och accepterat fraktkostnaderna skickar vi en betalningsförfrågan till ditt registrerade telefonnummer. För de som väljer upphämtning, går det utmärkt att betala vid leveranstillfället.",
+    "orderInfo1": "Nedan kan du välja om du vill få din beställning skickad till dig, eller om du hellre hämtar den i vår verkstad, samt vilket betalsätt du föredrar. Vi meddelar dig via mail när din beställning har skickats eller är tillgänglig för avhämtning. Har du några kommentarer eller önskemål på beställningen, anger du detta i fältet 'Meddelande' här i kassan.",
+    "orderInfo2": "Betalning är möjlig via Swish, kort och kontanter (kort- och kontantbetalning är endast tillgängligt vid avhämtning). Vid leverans via postpaket skickar vi manuellt en betalningsförfrågan via Swish till det telefonnummer du angett vid beställning. För de som väljer upphämtning, går det utmärkt att betala med valfritt betalsätt vid leveranstillfället.",
     "orderInfo3": "Har du frågor eller behöver hjälp? Ring oss eller skicka ett mail, så hjälper vi dig så snart vi kan.",
     "personalDetailsHeading": "Uppgifter",
     "orderHeading": "Beställning",
