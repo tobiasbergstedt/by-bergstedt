@@ -27,7 +27,6 @@ import ErrorMessages from '@pages/Contact/ContactForm/ErrorMessages';
 import { ReactComponent as CartEmptyIcon } from '@assets/icons/checkout-fail.svg';
 
 import styles from './Checkout.module.scss';
-import Modal from '@components/Modal/Modal';
 import { sendConfirmationData } from './SendConfirmationForm';
 import Select from '@components/Inputs/Select/Select';
 import formatPrice from '@utils/format-price';
@@ -61,8 +60,6 @@ const Checkout = (): JSX.Element => {
     'message',
     'country',
   ];
-  const [isErrorModalVisible, setIsErrorModalVisible] =
-    useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [apiSuccess, setApiSuccess] = useState<string>('');
   const [apiError, setApiError] = useState<string>('');
@@ -244,9 +241,6 @@ const Checkout = (): JSX.Element => {
 
       navigate(`/orderconfirmation/${data.orderId}`);
     }
-    // } else {
-    //   setIsErrorModalVisible(true);
-    // }
   };
 
   useEffect(() => {
@@ -308,14 +302,10 @@ const Checkout = (): JSX.Element => {
                     ) => (
                       <Input
                         type="text"
-                        inputRef={inputRef}
+                        ref={inputRef}
                         inputValue={inputValue}
                         onChange={handleChange}
                         name={propertyName}
-                        // onFocus={}
-                        // onBlur={}
-                        // onKeyDown={}
-                        // maxLength={1}
                         placeholder={placeholder}
                         key={index}
                         isFullWidth
@@ -337,14 +327,10 @@ const Checkout = (): JSX.Element => {
                   ) => (
                     <Input
                       type="text"
-                      inputRef={inputRef}
+                      ref={inputRef}
                       inputValue={inputValue}
                       onChange={handleChange}
                       name={propertyName}
-                      // onFocus={}
-                      // onBlur={}
-                      // onKeyDown={}
-                      // maxLength={1}
                       placeholder={placeholder}
                       key={index}
                       isFullWidth
@@ -459,15 +445,6 @@ const Checkout = (): JSX.Element => {
           </div>
         </form>
       </div>
-      {isErrorModalVisible && (
-        <Modal
-          onClick={() => {
-            setIsErrorModalVisible(false);
-          }}
-        >
-          <p>Hej</p>
-        </Modal>
-      )}
     </>
   );
 };

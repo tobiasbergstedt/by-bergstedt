@@ -398,14 +398,10 @@ const Custom = (): JSX.Element => {
             ) => (
               <Input
                 type="number"
-                inputRef={inputRef}
+                ref={inputRef}
                 inputValue={inputValue}
                 // onChange={handleInputChange}
                 onChange={handleInputChange(propertyName)}
-                // onFocus={}
-                // onBlur={}
-                // onKeyDown={}
-                // maxLength={1}
                 placeholder={placeholder}
                 key={index}
               />
@@ -431,7 +427,7 @@ const Custom = (): JSX.Element => {
           />
           <Input
             type="number"
-            inputRef={configRefs.edgeSize}
+            ref={configRefs.edgeSize}
             inputValue={cuttingBoardConfiguration.edgeSize}
             onChange={(selectedValue) => {
               setCuttingBoardConfiguration({
@@ -443,10 +439,6 @@ const Custom = (): JSX.Element => {
                     : '',
               });
             }}
-            // onFocus={}
-            // onBlur={}
-            // onKeyDown={}
-            // maxLength={1}
             placeholder={t('custom.edgeSize')}
           />
           <p style={{ fontSize: '14px' }}>(Specify dimensions first.)</p>
