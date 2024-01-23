@@ -41,19 +41,17 @@ const Article = ({
                 [styles.gridContent]: !(isMainArticle ?? false),
               })}
             >
-              {isMainArticle === true ? (
-                <a href={linkTo}>
+              <a href={linkTo}>
+                {isMainArticle === true ? (
                   <h1 className={styles.mainHeading}>{title}</h1>
-                </a>
-              ) : (
-                <a href={linkTo}>
+                ) : (
                   <h2
                     className={clsx(styles.mainHeading, styles.smallerHeading)}
                   >
                     {title}
                   </h2>
-                </a>
-              )}
+                )}
+              </a>
 
               <p
                 className={clsx(styles.mainParagraph, {
