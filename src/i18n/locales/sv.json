@@ -31,7 +31,8 @@
     "inStock": "Antal i lager",
     "addToCart": "Lägg i korgen",
     "coverImage": "Omslagsbild till",
-    "notFound": "Ingen produkt med detta id hittades."
+    "notFound": "Ingen produkt med detta id hittades.",
+    "allItemsInCartAlready": "Du har redan lagt till alla tillgängliga artiklar av denna typ i din varukorg."
   },
   "shop": {
     "heading": "Butik"
@@ -249,6 +250,7 @@
       "aboutData": "Ingen Om-data kunde hittas.",
       "newsItems": "Inga nyheter hittades.",
       "events": "Inga händelser kunde hittas.",
+      "instaFeed": "Instagram-flödet kunde inte läsas in.",
       "materials": "Materialvalen kunde inte hittas.",
       "patterns": "Inga mönster hittades.",
       "orderConfirmation": "Order med referensnummer {{id}} kunde inte hittas."

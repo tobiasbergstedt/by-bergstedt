@@ -31,7 +31,8 @@
     "inStock": "Amount in stock",
     "addToCart": "Add to cart",
     "coverImage": "Cover image of",
-    "notFound": "No product with this id was found."
+    "notFound": "No product with this id was found.",
+    "allItemsInCartAlready": "You have added all available items of this type to your cart already."
   },
   "shop": {
     "heading": "Shop"
@@ -249,6 +250,7 @@
       "aboutData": "No About data could be found.",
       "newsItems": "No news items found.",
       "events": "No events could be found.",
+      "instaFeed": "Instagram feed could not be loaded.",
       "materials": "Materials choices could not be found.",
       "patterns": "No patterns were found.",
       "orderConfirmation": "Order with reference number {{id}} could not be found."
