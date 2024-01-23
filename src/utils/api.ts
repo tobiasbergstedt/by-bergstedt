@@ -7,6 +7,7 @@ export const fetchData = async (
     setData: (data: any) => void;
     errorMessage: string;
     fetchSingleItem?: boolean;
+    isExternalApiCall?: boolean;
   }>,
   setIsLoading: (data: boolean) => void,
   setApiError: (data: string) => void,
@@ -18,7 +19,11 @@ export const fetchData = async (
 
     const fetchPromises = setStateArrays.map(async (stateArray) => {
       try {
-        const response = await fetch(fixUrl(stateArray.url));
+        const response = await fetch(
+          stateArray.isExternalApiCall ?? false
+            ? stateArray.url
+            : fixUrl(stateArray.url),
+        );
 
         if (!response.ok) {
           // Throw an error if response status is not ok
