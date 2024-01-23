@@ -262,3 +262,12 @@ export interface FormState {
 export type FormErrors<T> = {
   [P in keyof T]: string;
 };
+
+export interface InstaPost {
+  caption: string;
+  id: string;
+  media_type: string;
+  media_url: string;
+  permalink: string;
+  timestamp: string;
+}

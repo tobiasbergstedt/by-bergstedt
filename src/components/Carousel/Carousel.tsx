@@ -1,23 +1,22 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 import React, { useEffect, useState } from 'react';
 import useEmblaCarousel from 'embla-carousel-react';
 import AutoPlay from 'embla-carousel-autoplay';
 
+import { type InstaPost } from '@interfaces/interfaces';
+
 import DotNavigation from './Dots/DotNavigation';
 
-import styles from './Carousel.module.scss';
+import { ReactComponent as IgIcon } from '@assets/icons/ig.svg';
 
-interface Slide {
-  image: string;
-  linkTo: string;
-  alt: string;
-}
+import styles from './Carousel.module.scss';
+import { Link } from 'react-router-dom';
 
 interface ImageCarouselProps {
-  slides: Slide[];
+  slides: InstaPost[] | undefined;
 }
 
 export const ImageCarousel = ({ slides }: ImageCarouselProps): JSX.Element => {
-  // const { slides } = slides;
   const [emblaRef, emblaApi] = useEmblaCarousel(
     { dragFree: true, containScroll: 'trimSnaps', loop: true },
     [AutoPlay()],
@@ -42,20 +41,22 @@ export const ImageCarousel = ({ slides }: ImageCarouselProps): JSX.Element => {
   return (
     <div className={styles.emblaWrapper} ref={emblaRef}>
       <div className={styles.emblaContainer}>
-        {slides.map(({ image, alt, linkTo }, index) => (
-          <a
-            href={linkTo}
-            target="blank"
-            className={styles.emblaSlide}
-            key={index}
-          >
-            <img src={image} alt={alt} />
-          </a>
-        ))}
+        {slides
+          ?.slice(0, 10)
+          .map(({ media_url, caption, permalink }, index) => (
+            <a
+              href={permalink}
+              target="blank"
+              className={styles.emblaSlide}
+              key={index}
+            >
+              <img src={media_url} alt={caption} />
+            </a>
+          ))}
       </div>
       <div className={styles.navigation}>
         <div className={styles.dots}>
-          {slides.map((_, index) => (
+          {slides?.slice(0, 10).map((_, index) => (
             <DotNavigation
               key={index}
               onClick={() => {
@@ -66,6 +67,11 @@ export const ImageCarousel = ({ slides }: ImageCarouselProps): JSX.Element => {
           ))}
         </div>
       </div>
+      {/* <span className={styles.instaHeading}> */}
+      <Link to={'https://instagram.com/bybergstedt'} target="_blank">
+        <IgIcon className={styles.instaHeading} />
+      </Link>
+      {/* </span> */}
     </div>
   );
 };

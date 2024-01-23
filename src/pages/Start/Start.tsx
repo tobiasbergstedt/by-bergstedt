@@ -15,6 +15,7 @@ import ErrorMessage from '@components/ErrorMessage/ErrorMessage';
 
 import styles from './Start.module.scss';
 import fixUrl from '@utils/fix-url';
+import { type InstaPost } from '@interfaces/interfaces';
 
 interface Image {
   data: {
@@ -52,39 +53,12 @@ const Start = (): JSX.Element => {
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [newsItems, setNewsItems] = useState<NewsItem[] | null>(null);
   const [events, setEvents] = useState<EventItem[]>([]);
+  const [instaFeed, setInstaFeed] = useState<InstaPost[] | undefined>();
   const { locale } = useContext(UserContext);
 
+  const instaToken = import.meta.env.VITE_INSTA_TOKEN;
+
   const { t } = useTranslation();
-
-  // const breakpoint = useBreakpoint();
-  // const isDesktop = breakpoint === DESKTOP;
-
-  const slides = [
-    {
-      image:
-        'https://static.demilked.com/wp-content/uploads/2023/03/cool-woodworking-projects-9.jpeg',
-      linkTo: 'https://google.se',
-      alt: 'Alt 1',
-    },
-    {
-      image:
-        'https://i.pinimg.com/736x/20/e4/cd/20e4cd22c8abf76905ef76c0b2b4b40a.jpg',
-      linkTo: 'https://google.se',
-      alt: 'Alt 2',
-    },
-    {
-      image:
-        'https://www.boredpanda.com/blog/wp-content/uploads/2022/06/62b99899c4904_5wspvk7gun091__700.jpg',
-      linkTo: 'https://google.se',
-      alt: 'Alt 3',
-    },
-    {
-      image:
-        'https://121clicks.com/wp-content/uploads/2022/04/impressive-diy-woodworking-projects-10.jpg',
-      linkTo: 'https://google.se',
-      alt: 'Alt 4',
-    },
-  ];
 
   useEffect(() => {
     void fetchData(
@@ -98,6 +72,12 @@ const Start = (): JSX.Element => {
           url: `/api/events?populate=*&pagination[page]=1&pagination[pageSize]=3&sort[date]=ASC&locale=${locale}`,
           setData: setEvents,
           errorMessage: t('misc.apiErrors.events'),
+        },
+        {
+          url: `https://graph.instagram.com/me/media?fields=id,caption,media_type,media_url,permalink,thumbnail_url,timestamp&access_token=${instaToken}`,
+          setData: setInstaFeed,
+          errorMessage: t('misc.apiErrors.instaFeed'),
+          isExternalApiCall: true,
         },
       ],
       setIsLoading,
@@ -154,7 +134,7 @@ const Start = (): JSX.Element => {
               </div>
             )}
             <div className={styles.carouselWrapper}>
-              <ImageCarousel slides={slides} />
+              <ImageCarousel slides={instaFeed} />
             </div>
             <div className={styles.articlesContainer}>
               <h3 className={styles.upcomingHeader}>
