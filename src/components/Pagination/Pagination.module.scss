@@ -1,0 +1,61 @@
+@import 'src/utils.scss';
+
+.paginationWrapper {
+  @include flex-centered;
+
+  margin-top: 20px;
+}
+
+.pagination {
+  @include flex-centered;
+
+  background-color: var(--color-white);
+
+  border-radius: var(--button-border-radius);
+  overflow: hidden;
+  border-bottom: var(--border-bottom-quaternary);
+}
+
+.button {
+  padding: 12px 24px;
+  background-color: var(--color-white);
+
+  transition:
+    background-color var(--standard-transition),
+    transform calc(var(--standard-transition) * 0.67),
+    padding var(--standard-transition);
+
+  &:hover {
+    background-color: var(--color-grey-6);
+    padding: 14px 24px 10px;
+
+    &:disabled {
+      background-color: var(--color-white);
+    }
+  }
+
+  &:disabled {
+    color: #aaa;
+    fill: #aaa;
+    cursor: default;
+    transform: none;
+  }
+}
+
+.active {
+  font-weight: bold;
+  color: var(--color-brown-2);
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
+}
+
+.arrowIcon {
+  min-width: 16px;
+  height: auto;
+  vertical-align: middle;
+}
+
+.rightArrow {
+  transform: rotate(180deg);
+}
