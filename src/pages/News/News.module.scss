@@ -1,0 +1,22 @@
+@import 'src/utils.scss';
+
+.newsContainer {
+  @include flex-centered(true);
+}
+
+.newsGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 32px;
+  // margin-bottom: 24px;
+
+  @include is-tablet {
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+  }
+
+  @include is-desktop {
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 48px;
+  }
+}

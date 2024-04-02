@@ -1,0 +1,131 @@
+@import 'src/utils.scss';
+
+.singleEvent {
+  @include flex-centered;
+  gap: 16px;
+
+  width: 100%;
+
+  padding-bottom: var(--main-padding-gap);
+
+  border-bottom: var(--heading-border-bottom-white);
+
+  @include is-tablet {
+    gap: 40px;
+  }
+}
+
+.dateAndCoverImage {
+  display: grid;
+  grid-template-columns: var(--date-width-and-height-mobile);
+  grid-template-rows: var(--date-width-and-height-mobile) var(
+      --date-width-and-height-mobile
+    );
+
+  background-color: var(--color-brown-1);
+  border-radius: var(--gallery-item-border-radius);
+
+  &.noImage {
+    grid-template-rows: var(--date-width-and-height-mobile);
+
+    @include is-tablet {
+      grid-template-rows: var(--date-width-and-height);
+    }
+  }
+
+  @include is-tablet {
+    grid-template-columns: var(--date-width-and-height);
+    grid-template-rows: var(--date-width-and-height) var(
+        --date-width-and-height
+      );
+  }
+}
+
+.date {
+  @include flex-centered(true);
+
+  width: var(--date-width-and-height-mobile);
+  height: var(--date-width-and-height-mobile);
+
+  @include is-tablet {
+    width: var(--date-width-and-height);
+    height: var(--date-width-and-height);
+  }
+}
+
+.day {
+  @include font-24;
+  font-weight: 600;
+
+  margin: 0;
+
+  @include is-tablet {
+    @include font-32-bold;
+  }
+}
+
+.month {
+  @include font-14;
+
+  font-weight: 600;
+  text-transform: uppercase;
+
+  margin: 0;
+
+  @include is-tablet {
+    @include font-20;
+    font-weight: 600;
+  }
+}
+
+.imageWrapper {
+  @include flex-centered;
+
+  // flex: 1;
+  border-radius: var(--gallery-item-border-radius);
+  overflow: hidden;
+
+  height: 100%;
+  width: 100%;
+}
+
+.eventImage {
+  object-fit: cover;
+  min-width: 100%;
+  min-height: 100%;
+}
+
+.eventData {
+  @include flex-centered(true);
+  align-items: start;
+
+  flex: 1;
+}
+
+.title {
+  @include font-20;
+  font-weight: 600;
+
+  color: var(--color-white);
+
+  transition: color var(--standard-transition);
+
+  &:hover {
+    color: var(--color-brown-3);
+  }
+
+  @include is-tablet {
+    @include font-28-bold;
+  }
+}
+
+.location {
+  @include font-14;
+  margin: 8px 0 12px;
+}
+
+.description {
+  @include font-16;
+
+  margin: 0;
+}

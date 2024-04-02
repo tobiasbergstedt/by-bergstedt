@@ -16,6 +16,8 @@ import OrderDetailsForm from './OrderDetailsForm/OrderDetailsForm';
 
 import styles from './Checkout.module.scss';
 import useHandleSubmit from '@hooks/useHandleSubmit';
+import Modal from '@components/Modal/Modal';
+import Button from '@components/Button/Button';
 
 const Checkout = (): JSX.Element => {
   const { shoppingCart, setShoppingCart, shippingRates } =
@@ -49,6 +51,7 @@ const Checkout = (): JSX.Element => {
   const [apiSuccess, setApiSuccess] = useState<string>('');
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [apiError, setApiError] = useState<string>('');
+  const [showModal, setShowModal] = useState<boolean>(false);
 
   const { formState, setFormState, handleChange, validate, errors } =
     useFormState(personalDetailsInitial, optionalFields);
@@ -71,7 +74,21 @@ const Checkout = (): JSX.Element => {
     payment: useRef(null),
   };
 
-  const handleSubmit = useHandleSubmit({
+  const handleSubmit = async (
+    e: React.FormEvent<HTMLFormElement>,
+  ): Promise<void> => {
+    e.preventDefault();
+    if (validate()) {
+      setShowModal(true);
+    }
+  };
+
+  const acceptSubmit = async (e: any): Promise<void> => {
+    setShowModal(false);
+    await submitForm(e);
+  };
+
+  const submitForm = useHandleSubmit({
     formState,
     shoppingCart,
     setShoppingCart,
@@ -138,6 +155,37 @@ const Checkout = (): JSX.Element => {
           />
         </form>
       </div>
+      {showModal && (
+        <Modal
+          hasCloseButton
+          canClose
+          onClick={() => {
+            setShowModal(false);
+          }}
+        >
+          <>
+            <p className={styles.messageParagraph}>
+              {t('checkout.confirmOrder')}
+            </p>
+            <div className={styles.buttonsContainer}>
+              <Button
+                onClick={(e) => {
+                  void acceptSubmit(e);
+                }}
+              >
+                {t('misc.yes')}
+              </Button>
+              <Button
+                onClick={() => {
+                  setShowModal(false);
+                }}
+              >
+                {t('misc.no')}
+              </Button>
+            </div>
+          </>
+        </Modal>
+      )}
     </>
   );
 };

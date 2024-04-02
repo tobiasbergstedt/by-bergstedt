@@ -352,8 +352,8 @@ const Custom = (): JSX.Element => {
                   );
                   setChosenPattern(pattern);
 
-                  console.log(pattern?.attributes.materials.data);
-                  console.log(cuttingBoardConfiguration.materials);
+                  // console.log(pattern?.attributes.materials.data);
+                  // console.log(cuttingBoardConfiguration.materials);
 
                   if (pattern !== undefined) {
                     setCuttingBoardConfiguration({

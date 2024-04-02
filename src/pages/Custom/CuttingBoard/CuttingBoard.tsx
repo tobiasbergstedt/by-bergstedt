@@ -18,7 +18,7 @@ const CuttingBoard = ({
   cuttingBoardConfiguration: CuttingBoardProps;
   pattern: any;
 }): JSX.Element => {
-  console.log(pattern.attributes.texture.data.attributes.url);
+  // console.log(pattern.attributes.texture.data.attributes.url);
 
   const texture = new TextureLoader().load(
     fixUrl(pattern.attributes.texture.data.attributes.url),

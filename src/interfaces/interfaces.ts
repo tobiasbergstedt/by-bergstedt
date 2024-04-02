@@ -271,3 +271,76 @@ export interface InstaPost {
   permalink: string;
   timestamp: string;
 }
+
+export interface MetaData {
+  pagination: {
+    page: number;
+    pageSize: number;
+    pageCount: number;
+    total: number;
+  };
+}
+
+export interface NewsImage {
+  data: {
+    id: number;
+    attributes: {
+      formats: {
+        thumbnail: {
+          url: string;
+        };
+        small: {
+          url: string;
+        };
+        medium: {
+          url: string;
+        };
+        large: {
+          url: string;
+        };
+      };
+      url: string;
+    };
+  };
+}
+
+export interface NewsItem {
+  id: number;
+  attributes: {
+    createdAt: string;
+    publishedAt: string;
+    title: string;
+    description: string;
+    image: NewsImage;
+    text: string;
+    uuid: string;
+    localizations: {
+      data: NewsItemLocalization[];
+    };
+  };
+}
+
+export interface NewsItemLocalization {
+  id: number;
+  attributes: {
+    createdAt: string;
+    publishedAt: string;
+    title: string;
+    description: string;
+    text: string;
+    uuid: string;
+  };
+}
+
+export interface EventItem {
+  attributes: {
+    date: string;
+    title: string;
+    linkTo: string;
+    location: string;
+    description: string;
+    image: {
+      data: SingleImage;
+    };
+  };
+}

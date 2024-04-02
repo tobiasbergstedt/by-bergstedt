@@ -17,6 +17,8 @@ const ImageGallery = ({ product }: ProductPropsImageGallery): JSX.Element => {
     y: 0,
   });
 
+  const isSoldOut = product.attributes.amount === 0;
+
   const handleThumbnailClick = (imageUrl: string): void => {
     setSelectedImage(imageUrl);
   };
@@ -63,7 +65,7 @@ const ImageGallery = ({ product }: ProductPropsImageGallery): JSX.Element => {
               }}
               alt={product.attributes.title}
             />
-            {product.attributes.amount === 0 && <SoldOut />}
+            {isSoldOut && <SoldOut />}
           </div>
           <div
             className={styles.thumbnailsContainer}

@@ -26,7 +26,10 @@
 }
 
 .profileImage {
+  @include flex-centered;
   width: 50%;
+  min-height: 200px;
+  background-color: var(--color-brown-2);
   justify-self: flex-start;
   border-radius: var(--image-border-radius);
   box-shadow: var(--box-shadow-secondary);
@@ -107,9 +110,7 @@
   box-shadow: var(--box-shadow-secondary);
 
   &:nth-child(1) .decoration,
-  &:nth-child(1) .testimonialRole,
-  &:nth-child(1) .testimonialName,
-  &:nth-child(1) .backgroundFill {
+  &:nth-child(1) .testimonialRole {
     background-color: var(--color-blue-7);
   }
 
@@ -119,9 +120,7 @@
   }
 
   &:nth-child(2) .decoration,
-  &:nth-child(2) .testimonialRole,
-  &:nth-child(2) .testimonialName,
-  &:nth-child(2) .backgroundFill {
+  &:nth-child(2) .testimonialRole {
     background-color: var(--color-blue-1);
   }
 
@@ -131,9 +130,7 @@
   }
 
   &:nth-child(3) .decoration,
-  &:nth-child(3) .testimonialRole,
-  &:nth-child(3) .testimonialName,
-  &:nth-child(3) .backgroundFill {
+  &:nth-child(3) .testimonialRole {
     background-color: var(--color-blue-2);
   }
 
@@ -154,18 +151,18 @@
 }
 
 .testimonialTop {
-  margin-top: 38px;
-  margin-bottom: 16px;
-  padding: var(--main-padding-gap) 16px;
-  flex-grow: 1;
+  margin-top: auto;
+  margin-bottom: auto;
+  padding: calc(3 * var(--main-padding-gap)) 16px var(--main-padding-gap);
+  max-height: fit-content;
 
   @include is-tablet {
-    margin-bottom: 32px;
-    padding: var(--main-padding-gap) 32px;
+    // margin-bottom: 32px;
+    padding: calc(3 * var(--main-padding-gap)) 32px var(--main-padding-gap);
   }
 
   @include is-desktop {
-    margin-bottom: 48px;
+    // margin-bottom: 48px;
   }
 }
 
@@ -178,7 +175,7 @@
 .quoteStart {
   position: absolute;
   left: 32px;
-  top: calc(var(--main-padding-gap) - 22px);
+  top: calc(2 * var(--main-padding-gap));
   text-align: left;
 }
 
@@ -215,8 +212,7 @@
 }
 
 .testimonialName,
-.testimonialRole,
-.backgroundFill {
+.testimonialRole {
   z-index: 1;
   color: var(--color-white);
   width: 100%;
@@ -236,18 +232,11 @@
   flex-grow: 1;
 }
 
-.backgroundFill {
-  width: 100%;
-  min-height: 24px;
-  flex: 1;
-}
-
 .decoration {
   position: absolute;
-  aspect-ratio: 2/1;
-  top: 0;
-  left: -32px;
-  right: -32px;
+  inset: 0;
+  mask-repeat: no-repeat;
+  mask-size: cover;
 }
 
 .valuesOuterContainer {

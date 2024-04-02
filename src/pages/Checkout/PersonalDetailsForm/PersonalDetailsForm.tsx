@@ -15,7 +15,7 @@ import styles from '../Checkout.module.scss';
 interface PersonalDetailsFormProps {
   configRefs: OrderDetailsRefs;
   formState: FormState;
-  handleChange: (e: any) => void;
+  handleChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
   errors: FormErrors<FormState>;
 }
 
@@ -27,70 +27,41 @@ const PersonalDetailsForm = ({
 }: PersonalDetailsFormProps): JSX.Element => {
   const { t } = useTranslation();
 
-  const companyName = 'companyName';
-
-  const detailsInputs = [
-    {
-      inputRef: configRefs.surname,
-      inputValue: formState.surname,
-      propertyName: 'surname',
-      placeholder: t('checkout.form.firstName'),
-    },
-    {
-      inputRef: configRefs.lastName,
-      inputValue: formState.lastName,
-      propertyName: 'lastName',
-      placeholder: t('checkout.form.lastName'),
-    },
-    {
-      inputRef: configRefs.companyName,
-      inputValue: formState.companyName,
-      propertyName: companyName,
-      placeholder: t('checkout.form.companyName'),
-    },
-    {
-      inputRef: configRefs.streetName,
-      inputValue: formState.streetName,
-      propertyName: 'streetName',
-      placeholder: t('checkout.form.streetName'),
-    },
-    {
-      inputRef: configRefs.areaCode,
-      inputValue: formState.areaCode,
-      propertyName: 'areaCode',
-      placeholder: t('checkout.form.areaCode'),
-    },
-    {
-      inputRef: configRefs.cityName,
-      inputValue: formState.cityName,
-      propertyName: 'cityName',
-      placeholder: t('checkout.form.cityName'),
-    },
-    {
-      inputRef: configRefs.countryName,
-      inputValue: formState.countryName,
-      propertyName: 'countryName',
-      placeholder: t('checkout.form.country'),
-    },
-    {
-      inputRef: configRefs.phoneNumber,
-      inputValue: formState.phoneNumber,
-      propertyName: 'phoneNumber',
-      placeholder: t('checkout.form.phoneNumber'),
-    },
-    {
-      inputRef: configRefs.email,
-      inputValue: formState.email,
-      propertyName: 'email',
-      placeholder: t('checkout.form.email'),
-    },
-    {
-      inputRef: configRefs.message,
-      inputValue: formState.message,
-      propertyName: 'message',
-      placeholder: t('checkout.form.message'),
-    },
+  const inputFields: Array<keyof FormState> = [
+    'surname',
+    'lastName',
+    'companyName',
+    'streetName',
+    'areaCode',
+    'cityName',
+    'countryName',
+    'phoneNumber',
+    'email',
+    'message',
   ];
+
+  const detailsInputs = inputFields.map((field) => ({
+    inputRef: configRefs[field],
+    inputValue: formState[field],
+    propertyName: field,
+    placeholder: t(`checkout.form.${field}`),
+  }));
+
+  const renderInput = (
+    { inputRef, inputValue, propertyName, placeholder }: InputProps,
+    index: number,
+  ): JSX.Element => (
+    <Input
+      type="text"
+      ref={inputRef}
+      inputValue={inputValue}
+      onChange={handleChange}
+      name={propertyName}
+      placeholder={placeholder}
+      key={propertyName}
+      isFullWidth
+    />
+  );
 
   return (
     <div className={styles.personalDetails}>
@@ -99,45 +70,9 @@ const PersonalDetailsForm = ({
       </h2>
       <div className={styles.inputsContainer}>
         <div className={styles.nameInputsContainer}>
-          {detailsInputs
-            .slice(0, 2)
-            .map(
-              (
-                { inputRef, inputValue, propertyName, placeholder }: InputProps,
-                index: number,
-              ) => (
-                <Input
-                  type="text"
-                  ref={inputRef}
-                  inputValue={inputValue}
-                  onChange={handleChange}
-                  name={propertyName}
-                  placeholder={placeholder}
-                  key={index}
-                  isFullWidth
-                />
-              ),
-            )}
+          {detailsInputs.slice(0, 2).map(renderInput)}
         </div>
-        {detailsInputs
-          .slice(2, detailsInputs.length)
-          .map(
-            (
-              { inputRef, inputValue, propertyName, placeholder }: InputProps,
-              index: number,
-            ) => (
-              <Input
-                type="text"
-                ref={inputRef}
-                inputValue={inputValue}
-                onChange={handleChange}
-                name={propertyName}
-                placeholder={placeholder}
-                key={index}
-                isFullWidth
-              />
-            ),
-          )}
+        {detailsInputs.slice(2).map(renderInput)}
         <ErrorMessages errors={errors} />
       </div>
     </div>

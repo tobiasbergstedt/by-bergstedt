@@ -1,9 +1,4 @@
 :root {
-  // // Fonts
-  // --font-family-body: 'RadioCanada', sans-serif;
-  // --font-family-secondary: 'Poppins', sans-serif;
-  // --font-family-title: var(--font-family-body);
-
   // Color
   --color-html-bg: #6f7688;
   --primary-bg-color: #353535;
@@ -22,6 +17,7 @@
   --color-blue-7: #6133d3;
   --color-red-1: #ff2727;
   --color-red-2: #e95151;
+  --color-red-3: #ff7171;
   --color-spinner-1: #e4db87;
   --color-spinner-2: #e38935;
 
@@ -37,11 +33,12 @@
   --color-grey-5: #eaeaea;
   --color-grey-6: #f3f3f3;
   --color-grey-7: #fafafa;
+  --color-grey-8: #dddddd;
 
   // Modal colors
   --modal-bg-color: #24252c;
   --modal-text-color: var(--color-white);
-  --color-beige: #ebba8d;
+  --color-beige: #ecbb8e;
   --theme-gradient-color-1: #cecece;
   --theme-gradient-color-2: var(--color-white);
   --theme-gradient-color: linear-gradient(
@@ -88,8 +85,6 @@
   --color-button-primary-background: var(--button-gradient-primary);
   --color-button-primary-hover: var(--color-white);
   --color-button-primary-hover-background: var(--button-gradient-primary-hover);
-  // --color-button-primary-pressed: var(--color-red-2);
-  // --color-button-primary-pressed-background: var(--color-dark-red);
   --color-button-primary-disabled: var(--color-grey-4);
   --color-button-primary-disabled-background: var(
     --button-gradient-primary-disabled
@@ -100,8 +95,6 @@
   --color-button-secondary-hover-background: var(
     --button-gradient-secondary-hover
   );
-  // --color-button-secondary-pressed: var(--color-grey-1);
-  // --color-button-secondary-pressed-background: var(--color-red-1);
   --color-button-secondary-disabled: var(--color-grey-4);
   --color-button-secondary-disabled-background: var(
     --button-gradient-primary-disabled
@@ -110,8 +103,10 @@
   --color-button-tertiary-background: var(--color-brown-2);
   --color-button-tertiary-hover: var(--color-grey-1);
   --color-button-tertiary-hover-background: var(--color-brown-4);
-  // --color-button-tertiary-pressed: var(--color-grey-1);
-  // --color-button-tertiary-pressed-background: var(--color-red-1);
+  --color-button-quaternary: var(--color-black);
+  --color-button-quaternary-background: var(--color-white);
+  --color-button-quaternary-hover: var(--color-grey-1);
+  --color-button-quaternary-hover-background: var(--color-white);
 
   // Dimensions
   --header-height-mobile: 96px;
@@ -119,10 +114,13 @@
   --footer-height: 50px;
   --insta-feed-width-desktop: 320px;
   --insta-feed-width-mobile: 100%;
+  --date-width-and-height: 80px;
+  --date-width-and-height-mobile: 50px;
 
   // Border
   --border-bottom-primary: 2px solid var(--color-brown-1);
   --border-bottom-secondary: 2px solid var(--color-white);
+  --border-bottom-quaternary: 2px solid var(--color-brown-2);
   --heading-border-bottom-white: 1px solid var(--color-white);
   --heading-border-bottom-brown: 1px solid var(--color-brown-2);
   --heading-border-bottom-blue: 1px solid var(--color-blue-6);
@@ -146,14 +144,8 @@
   --contact-card-padding: 24px 40px;
 
   // Box shadow
-  // --box-shadow-focus: 0 0 12px 8px goldenrod;
-  // --box-shadow-standard: inset 0 10px 5px -5px #00000080,
-  //   inset 0 -10px 5px -5px #00000080;
   --box-shadow-primary: 4px 4px 4px 0 rgba(0, 0, 0, 0.5);
   --box-shadow-secondary: 8px 8px 8px 0 rgba(0, 0, 0, 0.5);
-
-  // Animation
-  // --animation-speed: 500ms;
 
   // Transitions
   --standard-transition: 0.2s;

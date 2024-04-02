@@ -71,6 +71,7 @@ const RangeSlider = ({
           )}
           renderThumb={({ props, isDragged }) => (
             <div
+              // eslint-disable-next-line react/jsx-props-no-spreading
               {...props}
               style={{
                 ...props.style,

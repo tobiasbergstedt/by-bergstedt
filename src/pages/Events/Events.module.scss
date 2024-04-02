@@ -1,0 +1,24 @@
+@import 'src/utils.scss';
+
+.eventsContainer {
+  @include flex-centered(true);
+}
+
+.pastEventsButton {
+  margin-bottom: 24px;
+  align-self: end;
+  max-width: 200px;
+}
+
+.events {
+  @include flex-centered(true);
+
+  gap: var(--main-padding-gap);
+  margin-top: 24px;
+
+  width: 100%;
+}
+
+.noEvents {
+  text-align: center;
+}

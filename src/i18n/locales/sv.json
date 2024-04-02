@@ -20,7 +20,10 @@
     "readMore": "Läs mer",
     "upcoming": "Kommande händelser",
     "otherNews": "Andra nyheter",
-    "moreEvents": "fler"
+    "moreEvents": "arkiv",
+    "noEvents1": "För närvarande har vi inga evenemang planerade, men håll utkik här för framtida uppdateringar! Vi arbetar ständigt med nya möjligheter att visa upp oss och ser fram emot att träffa dig på kommande marknader och mässor. Kolla gärna in våra tidigare evenemang för en försmak av vad som komma skall - vi kanske ses på något av dem igen snart.",
+    "noEvents2": "Tack för ditt stöd! Följ oss på sociala medier för de senaste nyheterna och en unik inblick i vår verksamhet.",
+    "eventImage": "Händelsens bild"
   },
   "gallery": {
     "heading": "Galleri",
@@ -32,13 +35,15 @@
     "addToCart": "Lägg i korgen",
     "coverImage": "Omslagsbild till",
     "notFound": "Ingen produkt med detta id hittades.",
-    "allItemsInCartAlready": "Du har redan lagt till alla tillgängliga artiklar av denna typ i din varukorg."
+    "allItemsInCartAlready": "Du har redan lagt till alla tillgängliga artiklar av denna typ i din varukorg.",
+    "cuttingBoardTreatment": "Alla våra skärbrädor är behandlade med paraffinolja, och har fått ett skyddande lager av skärbrädevax. Vaxet är en blandning av paraffinolja och ekologiskt bivax."
   },
   "shop": {
     "heading": "Butik"
   },
   "about": {
-    "testimonialsHeading": "Vad våra kunder säger"
+    "testimonialsHeading": "Vad våra kunder säger",
+    "profileImgAlt": "Bild på mig, Tobias Bergstedt"
   },
   "shoppingCart": {
     "item": "Produkt",
@@ -83,7 +88,7 @@
   "contact": {
     "heading": "Kontakt",
     "messageMe": "Prata med mig",
-    "messageMeText": "Vill du snacka lite om en skräddarsydd skärbräda eller kökskniv? Skicka ett mail eller ring mig, så pratar vi!",
+    "messageMeText": "Vill du snacka lite om en skräddarsydd skärbräda, kökskniv eller något helt annat? Skicka ett mail eller ring mig, så pratar vi!",
     "form": {
       "getInTouch": "Hör av dig",
       "yourName": "Ditt namn",
@@ -125,13 +130,13 @@
     "placeOrderButton": "Lägg beställning",
     "cartEmpty": "Lägg till produkter i varukorgen innan du går till kassan.",
     "form": {
-      "firstName": "Förnamn",
+      "surname": "Förnamn",
       "lastName": "Efternamn",
       "companyName": "Företag (valfritt)",
       "streetName": "Gatuadress",
       "areaCode": "Postnummer",
       "cityName": "Postort",
-      "country": "Land",
+      "countryName": "Land",
       "countries": {
         "sweden": "Sverige",
         "eu": "Europa",
@@ -177,12 +182,36 @@
       "total": "Totalt",
       "rightOfWithdrawalHeading": "Ångerrätt",
       "rightOfWithdrawalText": "Om du ångrar ditt köp har du alltid 14 dagars ångerrätt. Ångerfristen börjar gälla från den dag du mottagit varan, och varan behöver vara oanvänd eller i ett oförändrat skick för att vi ska kunna ge en fullständig kreditering."
-    }
+    },
+    "confirmOrder": "Är du säker på att du vill lägga din order?"
+  },
+  "news": {
+    "heading": "Nyhetsarkiv"
+  },
+  "events": {
+    "heading": "Kommande mässor och marknader",
+    "pastHeading": "Tidigare mässor och marknader",
+    "past": "Tidigare evenemang",
+    "coming": "Kommande evenemang",
+    "noEventsPlanned": "Inga evenemang är planerade inom överskådlig framtid.",
+    "noPastEvents": "Det finns inga tidigare evenemang."
+  },
+  "newsItem": {
+    "alt": "Huvudbild för {{newsHeading}}",
+    "firstPublished": "Publicerad"
+  },
+  "pagination": {
+    "displaying": "Visar",
+    "of": "av"
   },
   "helmet": {
     "start": {
       "title": "Unikt trähantverk",
       "description": "Utvalda skapelser och senaste nyheter från vårt snickeri, samt en översikt över kommande händelser."
+    },
+    "news": {
+      "title": "Nyheter från",
+      "description": "Alla våra nyheter och uppdateringar hittar du här, i vårt arkiv."
     },
     "gallery": {
       "title": "Våra samtliga skapelser",
@@ -212,6 +241,10 @@
       "title": "Orderbekräftelse",
       "description": "Din beställning har registrerats, och en orderbekräftelse har skickats till din e-post. Tack för att du stöttar vår verksamhet."
     }
+  },
+  "notFound": {
+    "404": "404 - Hittades inte",
+    "errorMessage": "Sidan du försökte komma åt verkar inte existera. Förlåt!"
   },
   "misc": {
     "yes": "Ja",
@@ -249,6 +282,7 @@
       "category": "Kunde inte hitta kategorin.",
       "aboutData": "Ingen Om-data kunde hittas.",
       "newsItems": "Inga nyheter hittades.",
+      "newsItem": "Nyheten kunde inte hittas.",
       "events": "Inga händelser kunde hittas.",
       "instaFeed": "Instagram-flödet kunde inte läsas in.",
       "materials": "Materialvalen kunde inte hittas.",

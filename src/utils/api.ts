@@ -8,6 +8,7 @@ export const fetchData = async (
     errorMessage: string;
     fetchSingleItem?: boolean;
     isExternalApiCall?: boolean;
+    setMetaData?: (data: any) => void;
   }>,
   setIsLoading: (data: boolean) => void,
   setApiError: (data: string) => void,
@@ -41,6 +42,10 @@ export const fetchData = async (
         } else {
           // hasError = true; // Set the hasError flag if no data is available
           errorMessages.push(stateArray.errorMessage + ' - No data available');
+        }
+
+        if (apiData.meta !== null && stateArray.setMetaData != null) {
+          stateArray.setMetaData(apiData.meta);
         }
       } catch (error) {
         console.error('Error fetching data:', error);

@@ -20,7 +20,10 @@
     "readMore": "Read more",
     "upcoming": "Upcoming events",
     "otherNews": "Other news",
-    "moreEvents": "more"
+    "moreEvents": "archive",
+    "noEvents1": "We currently have no events scheduled, but stay tuned here for future updates! We are constantly working on new opportunities to showcase ourselves and look forward to meeting you at upcoming markets and fairs. Please check out our past events for a taste of what's to come - we might see you at one of them again soon.",
+    "noEvents2": "Thanks for your support! Follow us on social media for the latest news and a unique insight into our business.",
+    "eventImage": "Event image"
   },
   "gallery": {
     "heading": "Gallery",
@@ -32,13 +35,15 @@
     "addToCart": "Add to cart",
     "coverImage": "Cover image of",
     "notFound": "No product with this id was found.",
-    "allItemsInCartAlready": "You have added all available items of this type to your cart already."
+    "allItemsInCartAlready": "You have added all available items of this type to your cart already.",
+    "cuttingBoardTreatment": "All our cutting boards are treated with mineral oil, and have been given a protective layer of board wax. The wax is a mixture of mineral oil and organic beeswax."
   },
   "shop": {
     "heading": "Shop"
   },
   "about": {
-    "testimonialsHeading": "What our clients say"
+    "testimonialsHeading": "What our clients say",
+    "profileImgAlt": "Picture of me, Tobias Bergstedt"
   },
   "shoppingCart": {
     "item": "Item",
@@ -81,7 +86,7 @@
   "contact": {
     "heading": "Contact",
     "messageMe": "Message me",
-    "messageMeText": "Want to discuss your custom cutting board or kitchen knife project? Shoot me an email or give me a call, and let's chat!",
+    "messageMeText": "Want to discuss your custom cutting board, kitchen knife project, or somthing else entirely? Shoot me an email or give me a call, and let's talk!",
     "form": {
       "getInTouch": "Get in touch",
       "yourName": "Your name",
@@ -123,13 +128,13 @@
     "placeOrderButton": "Place order",
     "cartEmpty": "Add items to your cart before proceeding to checkout.",
     "form": {
-      "firstName": "First name",
+      "surname": "First name",
       "lastName": "Last name",
       "companyName": "Company name (optional)",
       "streetName": "Street name",
       "areaCode": "Area code",
       "cityName": "City name",
-      "country": "Country",
+      "countryName": "Country",
       "countries": {
         "sweden": "Sweden",
         "eu": "Europe",
@@ -177,12 +182,36 @@
       "total": "Subtotal",
       "rightOfWithdrawalHeading": "Right of withdrawal",
       "rightOfWithdrawalText": "If you regret your purchase, you always have a 14-day right of withdrawal. The cancellation period starts from the day you receive the item, and the item needs to be unused or in an unchanged condition for us to issue a full credit."
-    }
+    },
+    "confirmOrder": "Are you sure you want to place your order?"
+  },
+  "news": {
+    "heading": "News archive"
+  },
+  "events": {
+    "heading": "Upcoming fairs and markets",
+    "pastHeading": "Previous fairs and markets",
+    "past": "Past events",
+    "coming": "Future events",
+    "noEventsPlanned": "No events are planned for the foreseeable future.",
+    "noPastEvents": "There have been no past events."
+  },
+  "newsItem": {
+    "alt": "Header image for {{newsHeading}}",
+    "firstPublished": "Published"
+  },
+  "pagination": {
+    "displaying": "Displaying",
+    "of": "of"
   },
   "helmet": {
     "start": {
       "title": "Custom Wood Creations",
       "description": "Selected works and latest news from our workshop, as well as an overview of upcoming events."
+    },
+    "news": {
+      "title": "News from",
+      "description": "Find all our news and updates, right here in our archive."
     },
     "gallery": {
       "title": "All our creations",
@@ -212,6 +241,10 @@
       "title": "Order confirmation",
       "description": "Your order has been successfully registered, and an order confirmation has been sent to your email. Thank you for supporting our business."
     }
+  },
+  "notFound": {
+    "404": "404 - Not found",
+    "errorMessage": "The page you tried to access does not seem to exist. Sorry!"
   },
   "misc": {
     "yes": "Yes",
@@ -249,6 +282,7 @@
       "category": "Category could not be found.",
       "aboutData": "No About data could be found.",
       "newsItems": "No news items found.",
+      "newsItem": "News item could not be found.",
       "events": "No events could be found.",
       "instaFeed": "Instagram feed could not be loaded.",
       "materials": "Materials choices could not be found.",

@@ -71,6 +71,16 @@
   }
 }
 
+.noEvents {
+  p {
+    @include font-16;
+
+    &:last-child {
+      margin: 0;
+    }
+  }
+}
+
 .eventsGrid {
   display: grid;
   grid-template-columns: 1fr;

@@ -39,10 +39,10 @@ const Header = (): JSX.Element => {
       title: t('menu.shop'),
       link: 'shop',
     },
-    {
-      title: t('menu.custom'),
-      link: 'custom',
-    },
+    // {
+    //   title: t('menu.custom'),
+    //   link: 'custom',
+    // },
     {
       title: t('menu.about'),
       link: 'about',
@@ -105,12 +105,12 @@ const Header = (): JSX.Element => {
             <NavItem key={index} item={item} onClick={closeMenu} />
           ))}
           {!isDesktop && (
-            <>
+            <li className={styles.socialMediaAndCopyright}>
               <SocialMedia isDesktop={false} />
               <div className={styles.copyRight}>
                 {t('header.copyright', { thisYear: currentYear })}
               </div>
-            </>
+            </li>
           )}
         </ul>
 

@@ -1,5 +1,15 @@
 @import 'src/utils.scss';
 
+// .navLinkWrapper {
+//   &:last-of-type {
+//     margin-bottom: 150px;
+
+//     @include is-desktop {
+//       margin-bottom: 0;
+//     }
+//   }
+// }
+
 .navLink {
   display: flex;
   justify-content: center;

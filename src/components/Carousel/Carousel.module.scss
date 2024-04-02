@@ -5,26 +5,6 @@
   border-radius: 24px;
 }
 
-.instaHeading {
-  position: absolute;
-
-  width: 32px;
-
-  outline: 2px solid white;
-  border-radius: 8px;
-
-  top: 8px;
-  left: 8px;
-
-  &:hover {
-    opacity: 0.75;
-  }
-}
-
-.instaIcon {
-  width: 32px;
-}
-
 .emblaContainer {
   display: flex;
   gap: 20px;

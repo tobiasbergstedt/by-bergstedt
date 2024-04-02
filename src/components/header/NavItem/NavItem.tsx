@@ -18,7 +18,7 @@ const NavItem = ({ item, onClick }: ItemComponentProps): JSX.Element => {
   const isDesktop = breakpoint === DESKTOP;
 
   return (
-    <li onClick={onClick}>
+    <li onClick={onClick} className={styles.navLinkWrapper}>
       <NavLink
         to={item.link}
         className={styles.navLink}

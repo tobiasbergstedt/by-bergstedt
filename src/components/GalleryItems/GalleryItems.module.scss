@@ -37,6 +37,10 @@
   margin-top: 32px;
 }
 
+.isGallery {
+  opacity: 0.2;
+}
+
 .galleryItemContainer {
   @include flex-centered(true);
   // max-height: 300px;
@@ -87,8 +91,14 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: var(--color-brown-2);
     color: var(--color-white);
     text-align: center;
+
+    &.isSoldOut {
+      background-color: var(--color-grey);
+      color: var(--color-grey-4);
+    }
   }
 }
 

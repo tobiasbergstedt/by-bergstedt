@@ -67,7 +67,9 @@ const GalleryItems = ({
                 }}
               >
                 <img
-                  className={styles.galleryImage}
+                  className={clsx(styles.galleryImage, {
+                    [styles.isSoldOut]: attributes.amount === 0,
+                  })}
                   src={fixUrl(
                     attributes.images.data[0].attributes.formats.small.url,
                   )}
@@ -106,12 +108,14 @@ const GalleryItems = ({
     <>
       {isShop === true
         ? renderProducts(shopItems)
-        : Object.entries(groupedItems).map(([year, yearItems]) => (
-            <Fragment key={year}>
-              <h2 className={styles.yearHeading}>{year}</h2>
-              {renderProducts(yearItems)}
-            </Fragment>
-          ))}
+        : Object.entries(groupedItems)
+            .reverse() // Reverse the array of key-value pairs
+            .map(([year, yearItems]) => (
+              <Fragment key={year}>
+                <h2 className={styles.yearHeading}>{year}</h2>
+                {renderProducts(yearItems)}
+              </Fragment>
+            ))}
     </>
   );
 };

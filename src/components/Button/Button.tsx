@@ -15,6 +15,7 @@ interface ButtonProps {
   isSecondary?: boolean;
   isTertiary?: boolean;
   isQuaternary?: boolean;
+  isText?: boolean;
   hasIcon?: string;
   onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
 }
@@ -32,6 +33,7 @@ const Button: React.FC<ButtonProps> = ({
   isSecondary,
   isTertiary,
   isQuaternary,
+  isText,
   hasIcon,
   onClick,
 }) => {
@@ -40,12 +42,11 @@ const Button: React.FC<ButtonProps> = ({
     [styles.isSecondary]: isSecondary,
     [styles.isTertiary]: isTertiary,
     [styles.isQuaternary]: isQuaternary,
+    [styles.isText]: isText,
     [styles.isFullWidth]: isFullWidth,
   });
 
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>): void => {
-    console.log('Button clicked');
-
     onClick != null && onClick(event);
   };
 

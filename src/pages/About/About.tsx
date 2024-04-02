@@ -23,7 +23,7 @@ const About = (): JSX.Element => {
       />
       {isLoading ? (
         <Loading />
-      ) : apiError.length !== 0 ? (
+      ) : apiError.length !== 0 || aboutData === null ? (
         <ErrorMessage
           identifier={t('misc.apiErrors.errorHeading')}
           errorMessage={apiError}
@@ -32,15 +32,11 @@ const About = (): JSX.Element => {
         <>
           <div className={styles.introductionContainer}>
             <img
-              src={
-                aboutData != null
-                  ? fixUrl(
-                      aboutData.attributes.profileImage.data.attributes.formats
-                        .large.url,
-                    )
-                  : 'src/assets/images/tobias.png'
-              }
-              alt=""
+              src={fixUrl(
+                aboutData.attributes.profileImage.data.attributes.formats.medium
+                  .url,
+              )}
+              alt={t('about.profileImgAlt')}
               className={styles.profileImage}
             />
             <div className={styles.aboutTextContainer}>

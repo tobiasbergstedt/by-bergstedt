@@ -15,7 +15,11 @@ import ErrorMessage from '@components/ErrorMessage/ErrorMessage';
 
 import styles from './Start.module.scss';
 import fixUrl from '@utils/fix-url';
-import { type InstaPost } from '@interfaces/interfaces';
+import {
+  type NewsItemLocalization,
+  type InstaPost,
+  type EventItem,
+} from '@interfaces/interfaces';
 
 interface Image {
   data: {
@@ -32,19 +36,18 @@ interface Image {
 }
 
 interface NewsItem {
+  id: number;
   attributes: {
+    createdAt: string;
+    publishedAt: string;
     title: string;
     description: string;
-    linkTo: string;
     image: Image;
-  };
-}
-
-interface EventItem {
-  attributes: {
-    date: string;
-    title: string;
-    linkTo: string;
+    text: string;
+    uuid: string;
+    localizations: {
+      data: NewsItemLocalization[];
+    };
   };
 }
 
@@ -60,6 +63,14 @@ const Start = (): JSX.Element => {
 
   const { t } = useTranslation();
 
+  const generateTimestamp = (): string => {
+    const now = new Date();
+    const formattedDate = now.toISOString().split('T')[0];
+    const timestamp = `${formattedDate}T00:00:00.000Z`;
+
+    return timestamp;
+  };
+
   useEffect(() => {
     void fetchData(
       [
@@ -69,7 +80,7 @@ const Start = (): JSX.Element => {
           errorMessage: t('misc.apiErrors.newsItems'),
         },
         {
-          url: `/api/events?populate=*&pagination[page]=1&pagination[pageSize]=3&sort[date]=ASC&locale=${locale}`,
+          url: `/api/events?populate=*&pagination[page]=1&pagination[pageSize]=3&sort[date]=ASC&locale=${locale}&filters[$and][0][date][$gte]=${generateTimestamp()}`,
           setData: setEvents,
           errorMessage: t('misc.apiErrors.events'),
         },
@@ -101,7 +112,16 @@ const Start = (): JSX.Element => {
             description={
               newsItems !== null ? newsItems[0].attributes.description : ''
             }
-            linkTo={newsItems !== null ? newsItems[0].attributes.linkTo : ''}
+            linkTo={
+              newsItems !== null
+                ? `/news/${
+                    locale === 'sv'
+                      ? newsItems[0].attributes.uuid
+                      : newsItems[0].attributes.localizations.data[0].attributes
+                          .uuid
+                  }`
+                : ''
+            }
             imageUrl={fixUrl(
               newsItems !== null
                 ? newsItems[0].attributes.image.data.attributes.formats.medium
@@ -109,18 +129,21 @@ const Start = (): JSX.Element => {
                 : '',
             )}
             apiError={apiError}
+            publishedAt={
+              newsItems !== null ? newsItems[0].attributes.publishedAt : ''
+            }
           />
           <div className={styles.contentContainer}>
-            {!apiError.includes(t('misc.apiErrors.events')) && (
-              <div className={styles.eventsContainer}>
-                <h3 className={styles.upcomingHeader}>
-                  {t('start.upcoming')}
-                  {' ('}
-                  <Link to={'/gallery'} className={styles.moreEvents}>
-                    {t('start.moreEvents')}...
-                  </Link>
-                  {')'}
-                </h3>
+            <div className={styles.eventsContainer}>
+              <h3 className={styles.upcomingHeader}>
+                {t('start.upcoming')}
+                {' ('}
+                <Link to={'/events'} className={styles.moreEvents}>
+                  {t('start.moreEvents')}
+                </Link>
+                {')'}
+              </h3>
+              {!apiError.includes(t('misc.apiErrors.events')) ? (
                 <div className={styles.eventsGrid}>
                   {events.map(({ attributes }, index) => (
                     <Event
@@ -128,11 +151,22 @@ const Start = (): JSX.Element => {
                       date={attributes.date}
                       title={attributes.title}
                       linkTo={attributes.linkTo}
+                      imageUrl={
+                        attributes.image.data != null
+                          ? attributes.image.data.attributes.formats.thumbnail
+                              .url
+                          : ''
+                      }
                     />
                   ))}
                 </div>
-              </div>
-            )}
+              ) : (
+                <div className={styles.noEvents}>
+                  <p>{t('start.noEvents1')}</p>
+                  <p>{t('start.noEvents2')}</p>
+                </div>
+              )}
+            </div>
             <div className={styles.carouselWrapper}>
               <ImageCarousel slides={instaFeed} />
             </div>
@@ -140,8 +174,8 @@ const Start = (): JSX.Element => {
               <h3 className={styles.upcomingHeader}>
                 {t('start.otherNews')}
                 {' ('}
-                <Link to={'/gallery'} className={styles.moreEvents}>
-                  {t('start.moreEvents')}...
+                <Link to={'/news'} className={styles.moreEvents}>
+                  {t('start.moreEvents')}
                 </Link>
                 {')'}
               </h3>
@@ -154,7 +188,11 @@ const Start = (): JSX.Element => {
                         key={index}
                         title={attributes.title}
                         description={attributes.description}
-                        linkTo={attributes.linkTo}
+                        linkTo={`/news/${
+                          locale === 'sv'
+                            ? attributes.uuid
+                            : attributes.localizations.data[0].attributes.uuid
+                        }`}
                         apiError={apiError}
                         isMainArticle={false}
                         imageUrl={fixUrl(
@@ -163,6 +201,7 @@ const Start = (): JSX.Element => {
                                 .attributes.formats.medium.url
                             : '',
                         )}
+                        publishedAt={attributes.publishedAt}
                       />
                     ))}
                 </div>

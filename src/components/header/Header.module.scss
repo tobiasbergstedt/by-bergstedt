@@ -111,14 +111,18 @@ a {
   align-items: center;
   gap: 8px;
   top: var(--header-height-mobile);
+  // top: 0;
   left: -100%;
   text-align: start;
   width: 100%;
   // height: calc(100% - var(--header-height-mobile));
-  height: 100vh;
-  // height: fit-content;
+  // height: 100vh;
+  height: 0;
+  overflow: hidden;
+  // height: max-content;
   transition:
     left 0.7s ease-in-out,
+    height 0.7s 0.7s ease-in-out,
     transform var(--standard-transition);
   background-color: #e4e4e4;
   padding: 36px 0 10px;
@@ -133,6 +137,7 @@ a {
     width: auto;
     background-color: transparent;
     padding: 0;
+    transition: none;
   }
 
   @include is-desktop-large {
@@ -141,12 +146,30 @@ a {
 }
 
 .navMenu.active {
+  height: calc(100vh - var(--header-height-mobile));
+  transition:
+    left 0.7s ease-in-out,
+    height 0s ease-in-out,
+    transform var(--standard-transition);
   left: 0;
+  // overflow: scroll;
+  overflow: auto;
 }
 
 .hamburger {
   display: block;
   cursor: pointer;
+  transition: transform calc(2 * var(--standard-transition));
+
+  &:hover {
+    &.active {
+      transform: scale(1.1);
+    }
+
+    .bar {
+      background-color: var(--color-brown-3);
+    }
+  }
 
   @include is-desktop {
     display: none;
@@ -174,10 +197,16 @@ a {
   transform: translateY(-8px) rotate(-45deg);
 }
 
+.socialMediaAndCopyright {
+  display: block;
+  // justify-self: flex-end;
+  min-height: auto;
+  height: auto;
+  width: auto;
+  margin-top: auto;
+}
+
 .copyRight {
-  // display: flex;
-  // flex-direction: column;
-  // align-items: center;
   font-size: 0.9em;
   text-align: center;
   color: var(--color-black);

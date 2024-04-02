@@ -7,18 +7,18 @@
   width: 100%;
   display: flex;
   flex-direction: column-reverse;
-  gap: 16px;
 
   @include is-desktop {
     flex-direction: column-reverse;
-    gap: 5%;
   }
 
   &.isMainArticle {
     flex-direction: column-reverse;
+    gap: 16px;
 
     @include is-desktop {
       flex-direction: row;
+      gap: 5%;
     }
   }
 }
@@ -51,6 +51,8 @@
   margin-bottom: 24px;
   color: var(--color-white);
   transition: color var(--standard-transition);
+
+  text-wrap: balance;
 
   &:hover {
     color: var(--color-blue-4);

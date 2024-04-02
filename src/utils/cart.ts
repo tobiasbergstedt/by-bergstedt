@@ -13,7 +13,6 @@ export const removeFromCart = (
     const updatedCart = shoppingCart.filter(
       (item) => item.productId !== itemId,
     );
-    console.log(updatedCart);
 
     if (updatedCart.length === 0) {
       setShoppingCart(null);

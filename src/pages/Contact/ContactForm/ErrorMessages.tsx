@@ -5,8 +5,6 @@ import { useEffect, useState } from 'react';
 import clsx from 'clsx';
 
 const ErrorMessages = ({ errors }: { errors: any }): JSX.Element => {
-  // const errorsNoHoneypot = errors.slice(0, 3);
-  // console.log(errors.name);
   const [animate, setAnimate] = useState(false);
 
   const { t } = useTranslation();

@@ -1,0 +1,45 @@
+@import 'src/utils.scss';
+
+.newsItemContainer {
+  @include flex-centered(true);
+  text-align: center;
+}
+
+.newsItemHeader {
+  @include h2;
+  margin-bottom: 12px;
+
+  text-wrap: balance;
+}
+
+.newsImageContainer {
+  @include flex-centered;
+  // display: flex;
+  // max-height: 200px;
+  aspect-ratio: 16 / 9;
+  border-radius: var(--image-border-radius);
+  box-shadow: var(--box-shadow-secondary);
+
+  overflow: hidden;
+}
+
+.newsImage {
+  margin-bottom: 24px;
+}
+
+.datePublished {
+  @include font-16;
+}
+
+.textContent {
+  // @include font-16;
+  margin: 24px 0 0;
+  padding: 0 16px;
+
+  text-align: start;
+  white-space: pre-line;
+
+  @include is-tablet {
+    padding: 0 40px;
+  }
+}

@@ -7,10 +7,7 @@ import { type InstaPost } from '@interfaces/interfaces';
 
 import DotNavigation from './Dots/DotNavigation';
 
-import { ReactComponent as IgIcon } from '@assets/icons/ig.svg';
-
 import styles from './Carousel.module.scss';
-import { Link } from 'react-router-dom';
 
 interface ImageCarouselProps {
   slides: InstaPost[] | undefined;
@@ -67,11 +64,6 @@ export const ImageCarousel = ({ slides }: ImageCarouselProps): JSX.Element => {
           ))}
         </div>
       </div>
-      {/* <span className={styles.instaHeading}> */}
-      <Link to={'https://instagram.com/bybergstedt'} target="_blank">
-        <IgIcon className={styles.instaHeading} />
-      </Link>
-      {/* </span> */}
     </div>
   );
 };

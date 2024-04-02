@@ -6,6 +6,12 @@
   padding: 0;
 }
 
+// *,
+// *::before,
+// *::after {
+//   box-sizing: border-box;
+// }
+
 html {
   background: var(--color-html-bg);
 }
@@ -23,7 +29,7 @@ code {
 }
 
 #root {
-  width: 100vw;
+  width: 100%;
 
   @include is-desktop {
     max-width: 80vw;

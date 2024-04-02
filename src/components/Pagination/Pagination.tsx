@@ -24,6 +24,78 @@ const Pagination = ({
     }
   };
 
+  const renderPageNumbers = (): JSX.Element[] => {
+    const pageNumbers = [];
+    const visiblePages = 1; // Number of pages to display around the current page
+    const startPage = Math.max(2, page - visiblePages);
+    const endPage = Math.min(pageCount - 1, page + visiblePages);
+
+    // Always include the first page
+    pageNumbers.push(
+      <button
+        key={1}
+        className={clsx(styles.button, { [styles.active]: page === 1 })}
+        onClick={() => {
+          handleChangePage(1);
+        }}
+      >
+        1
+      </button>,
+    );
+
+    // Ellipsis for leading pages if needed
+    if (startPage > 2) {
+      pageNumbers.push(
+        <span key="ellipsis-start" className={styles.ellipsis}>
+          ...
+        </span>,
+      );
+    }
+
+    // Current, previous, and next pages
+    for (let pageNum = startPage; pageNum <= endPage; pageNum++) {
+      pageNumbers.push(
+        <button
+          key={pageNum}
+          className={clsx(styles.button, { [styles.active]: pageNum === page })}
+          onClick={() => {
+            handleChangePage(pageNum);
+          }}
+        >
+          {pageNum}
+        </button>,
+      );
+    }
+
+    // Ellipsis for trailing pages if needed
+    if (endPage < pageCount - 1) {
+      pageNumbers.push(
+        <span key="ellipsis-end" className={styles.ellipsis}>
+          ...
+        </span>,
+      );
+    }
+
+    // Always include the last page if pageCount is greater than 1
+    if (pageCount > 1) {
+      pageNumbers.push(
+        <button
+          key={pageCount}
+          className={clsx(styles.button, {
+            [styles.active]: page === pageCount,
+          })}
+          onClick={() => {
+            handleChangePage(pageCount);
+          }}
+        >
+          {pageCount}
+        </button>,
+      );
+    }
+
+    return pageNumbers;
+  };
+
   return (
     <div className={styles.paginationWrapper}>
       <div className={styles.pagination}>
@@ -36,19 +108,9 @@ const Pagination = ({
         >
           <PrevArrowIcon className={styles.arrowIcon} />
         </button>
-        {Array.from({ length: pageCount }, (_, i) => i + 1).map((pageNum) => (
-          <button
-            key={pageNum}
-            className={clsx(styles.button, {
-              [styles.active]: pageNum === page,
-            })}
-            onClick={() => {
-              handleChangePage(pageNum);
-            }}
-          >
-            {pageNum}
-          </button>
-        ))}
+
+        {renderPageNumbers()}
+
         <button
           onClick={() => {
             handleChangePage(page + 1);

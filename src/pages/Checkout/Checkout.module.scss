@@ -160,3 +160,13 @@
 .cartEmptyHeading {
   color: var(--color-black);
 }
+
+.buttonsContainer {
+  @include flex-centered;
+
+  gap: 16px;
+
+  @include is-tablet {
+    gap: 32px;
+  }
+}

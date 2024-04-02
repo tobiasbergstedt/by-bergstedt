@@ -181,8 +181,6 @@ const sendConfirmationData = async (
   }
 
   return await response.json();
-  // console.log(orderData);
-  // console.log(shoppingCart);
 };
 
 export { sendConfirmationData };

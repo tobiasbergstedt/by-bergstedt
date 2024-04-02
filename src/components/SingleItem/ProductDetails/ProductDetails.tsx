@@ -68,6 +68,11 @@ const ProductDetails = ({
             ? product?.attributes.description
             : product?.attributes.localizations.data[0].attributes.description}
         </p>
+        {category?.attributes.slug === 'cuttingboards' && (
+          <p className={styles.cuttingBoardTreatment}>
+            {t('gallery.cuttingBoardTreatment')}
+          </p>
+        )}
         <Button
           isDisabled={product.attributes.amount === 0}
           hasIcon={CartIcon}

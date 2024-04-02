@@ -37,7 +37,7 @@ const Contact = (): JSX.Element => {
       setMyDetails({
         mail: `${user}@${domain}`,
         number: `${country} ${area}-${number}`,
-        address: 'Väröbacka, Varberg',
+        address: 'Väröbacka, Varberg, Sweden',
       });
     };
 

@@ -84,6 +84,8 @@
 
     color: var(--color-button-secondary);
 
+    border-bottom: var(--border-bottom-secondary);
+
     &::before {
       background-image: var(--color-button-secondary-hover-background);
     }
@@ -107,6 +109,50 @@
 
     &::before {
       background: var(--color-button-tertiary-hover-background);
+    }
+  }
+
+  &.isQuaternary {
+    background: var(--color-button-quaternary-background);
+    max-width: fit-content;
+
+    border-bottom: var(--border-bottom-quaternary);
+
+    color: var(--color-button-quaternary);
+
+    transition:
+      color var(--standard-transition),
+      border-color var(--standard-transition);
+
+    &:hover {
+      border-color: var(--color-brown-4);
+      color: var(--color-brown-4);
+    }
+
+    &::before {
+      background: var(--color-button-quaternary-hover-background);
+    }
+  }
+
+  &.isText {
+    background: transparent;
+    color: var(--color-brown-3);
+    text-decoration: underline;
+
+    text-underline-offset: 4px;
+    box-shadow: none;
+    text-decoration-color: var(--color-white);
+
+    max-width: fit-content;
+
+    transition: color var(--standard-transition);
+
+    &:hover {
+      color: var(--color-brown-1);
+    }
+
+    &::before {
+      background: transparent;
     }
   }
 
