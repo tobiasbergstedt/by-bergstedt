@@ -65,8 +65,11 @@ const NewsItem = (): JSX.Element => {
               <div className={styles.newsImageContainer}>
                 <img
                   src={fixUrl(
-                    newsItemData.attributes.image.data.attributes.formats.large
-                      .url,
+                    newsItemData.attributes.image.data.attributes.formats
+                      .large !== undefined
+                      ? newsItemData.attributes.image.data.attributes.formats
+                          .large.url
+                      : newsItemData.attributes.image.data.attributes.url,
                   )}
                   alt={t('newsItem.alt', {
                     newsHeading:

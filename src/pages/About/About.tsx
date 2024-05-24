@@ -3,12 +3,14 @@ import { useTranslation } from 'react-i18next';
 import fixUrl from '@utils/fix-url';
 
 import SEOHelmet from '@components/SEOHelmet/SEOHelmet';
-
-import styles from './About.module.scss';
 import ErrorMessage from '@components/ErrorMessage/ErrorMessage';
 import Loading from '@components/Spinner/Loading/Loading';
 import useFetchAboutData from './UseFetchAboutData/useFetchAboutData';
 import Testimonials from './Testimonials/Testimonials';
+
+import valuesImage from '@assets/images/DSC_0021.jpg';
+
+import styles from './About.module.scss';
 
 const About = (): JSX.Element => {
   const { aboutData, apiError, isLoading } = useFetchAboutData();
@@ -33,8 +35,11 @@ const About = (): JSX.Element => {
           <div className={styles.introductionContainer}>
             <img
               src={fixUrl(
-                aboutData.attributes.profileImage.data.attributes.formats.medium
-                  .url,
+                aboutData.attributes.profileImage.data.attributes.formats
+                  .medium !== undefined
+                  ? aboutData.attributes.profileImage.data.attributes.formats
+                      .medium.url
+                  : aboutData.attributes.profileImage.data.attributes.url,
               )}
               alt={t('about.profileImgAlt')}
               className={styles.profileImage}
@@ -66,7 +71,7 @@ const About = (): JSX.Element => {
               </div>
               <div className={styles.valuesImageContainer}>
                 <img
-                  src={'src/assets/images/DSC_0021.JPG'}
+                  src={valuesImage}
                   alt="Values Image"
                   className={styles.valuesImage}
                 />

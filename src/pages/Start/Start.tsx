@@ -96,6 +96,26 @@ const Start = (): JSX.Element => {
     );
   }, [locale]);
 
+  useEffect(() => {
+    const fetchPromises = async (): Promise<void> => {
+      try {
+        const response = await fetch(
+          `https://graph.instagram.com/refresh_access_token?grant_type=ig_refresh_token&access_token=${instaToken}`,
+        );
+
+        if (!response.ok) {
+          // Throw an error if response status is not ok
+          throw new Error(`Error ${response.status}: ${response.statusText}`);
+        }
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+
+    // Wait for all Promises to resolve
+    void fetchPromises();
+  }, []);
+
   return (
     <div className={styles.startContainer}>
       <SEOHelmet
@@ -124,8 +144,11 @@ const Start = (): JSX.Element => {
             }
             imageUrl={fixUrl(
               newsItems !== null
-                ? newsItems[0].attributes.image.data.attributes.formats.medium
-                    .url
+                ? newsItems[0].attributes.image.data.attributes.formats
+                    .medium !== undefined
+                  ? newsItems[0].attributes.image.data.attributes.formats.medium
+                      .url
+                  : newsItems[0].attributes.image.data.attributes.url
                 : '',
             )}
             apiError={apiError}
@@ -153,8 +176,11 @@ const Start = (): JSX.Element => {
                       linkTo={attributes.linkTo}
                       imageUrl={
                         attributes.image.data != null
-                          ? attributes.image.data.attributes.formats.thumbnail
-                              .url
+                          ? attributes.image.data.attributes.formats
+                              .thumbnail !== undefined
+                            ? attributes.image.data.attributes.formats.thumbnail
+                                .url
+                            : attributes.image.data.attributes.url
                           : ''
                       }
                     />
