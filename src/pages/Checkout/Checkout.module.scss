@@ -20,6 +20,7 @@
   background-color: var(--color-grey-1);
   border-radius: 16px;
   width: 100%;
+  overflow: hidden;
 
   @include is-desktop {
     gap: 32px;
@@ -134,8 +135,11 @@
 .cartEmpty {
   @include flex-centered(true);
 
-  height: 100%;
+  background-color: var(--color-white);
+  flex-grow: 1;
+
   text-align: center;
+  padding: 48px 24px;
 }
 
 .cartEmptyIcon {
@@ -143,6 +147,10 @@
 
   fill: var(--color-blue-1);
   margin-bottom: 16px;
+}
+
+.cartEmptyText {
+  color: var(--color-black);
 }
 
 .cartEmptyHeading,

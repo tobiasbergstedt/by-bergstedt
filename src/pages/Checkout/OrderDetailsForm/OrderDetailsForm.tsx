@@ -38,19 +38,23 @@ const OrderDetailsForm = ({
     setFormState((prevState) => ({ ...prevState, [field]: value }));
   };
 
+  useEffect(() => {
+    if (shoppingCart === null) {
+      // Do nothing if shoppingCart is null
+      return;
+    }
+    handleOptionChange('swish', 'payment');
+  }, [shoppingCart, formState.pickup]);
+
   if (shoppingCart === null) {
     return (
       <div className={styles.cartEmpty}>
         <CartEmptyIcon className={styles.cartEmptyIcon} />
         <h2 className={styles.cartEmptyHeading}>{t('shoppingCart.empty')}</h2>
-        <p>{t('checkout.cartEmpty')}</p>
+        <p className={styles.cartEmptyText}>{t('checkout.cartEmpty')}</p>
       </div>
     );
   }
-
-  useEffect(() => {
-    handleOptionChange('swish', 'payment');
-  }, [formState.pickup]);
 
   return (
     <div className={styles.orderDetails}>
