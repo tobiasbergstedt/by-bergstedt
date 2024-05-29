@@ -23,17 +23,13 @@
   overflow: hidden;
 }
 
-.newsImage {
-  margin-bottom: 24px;
-}
-
 .datePublished {
   @include font-16;
 }
 
 .textContent {
   // @include font-16;
-  margin: 24px 0 0;
+  margin: 32px 0 0;
   padding: 0 16px;
 
   text-align: start;
