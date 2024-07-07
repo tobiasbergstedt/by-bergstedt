@@ -16,15 +16,15 @@ interface PropTypes {
 }
 
 const RangeSlider = ({
-  min,
-  max,
+  min = 0,
+  max = 10000,
   values,
   filter,
   setFilter,
 }: PropTypes): JSX.Element => {
   const STEP = 10;
-  const MIN = min ?? 0;
-  const MAX = max ?? 10000;
+  const MIN = min;
+  const MAX = max;
 
   const { t } = useTranslation();
 

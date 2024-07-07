@@ -8,14 +8,25 @@ import {
 import styles from './Pagination.module.scss';
 
 interface PaginationProps {
-  pagination: any;
-  onPageChange: (value: any) => void;
+  pagination:
+    | {
+        page: number;
+        pageSize: number;
+        pageCount: number;
+        total: number;
+      }
+    | undefined;
+  onPageChange: (value: number) => void;
 }
 
 const Pagination = ({
   pagination,
   onPageChange,
 }: PaginationProps): JSX.Element => {
+  if (pagination === undefined) {
+    return null; // Or some other fallback UI
+  }
+
   const { page, pageCount } = pagination;
 
   const handleChangePage = (newPage: number): void => {
