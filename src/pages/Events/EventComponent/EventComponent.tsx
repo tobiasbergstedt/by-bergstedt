@@ -2,7 +2,6 @@ import { useContext, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { type MetaData, type EventItem } from '@interfaces/interfaces';
 import { fetchData } from '@utils/api';
-import fixUrl from '@utils/fix-url';
 import ErrorMessage from '@components/ErrorMessage/ErrorMessage';
 import Pagination from '@components/Pagination/Pagination';
 import { UserContext } from '@context/UserContext';
@@ -98,7 +97,7 @@ const EventComponent = ({ eventType }: EventComponentProps): JSX.Element => {
                       date={attributes.date}
                       imageUrl={
                         attributes.image.data !== null
-                          ? fixUrl(attributes.image.data.attributes.url)
+                          ? attributes.image.data.attributes.url
                           : ''
                       }
                     />

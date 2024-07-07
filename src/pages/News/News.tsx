@@ -4,7 +4,6 @@ import { useTranslation } from 'react-i18next';
 import { UserContext } from '@context/UserContext';
 import { type NewsItem, type MetaData } from '@interfaces/interfaces';
 import { fetchData } from '@utils/api';
-import fixUrl from '@utils/fix-url';
 
 import Article from '@pages/Start/Article/Article';
 import SEOHelmet from '@components/SEOHelmet/SEOHelmet';
@@ -68,12 +67,12 @@ const News = (): JSX.Element => {
                     }`}
                     apiError={apiError}
                     isMainArticle={false}
-                    imageUrl={fixUrl(
+                    imageUrl={
                       newsItems !== null
                         ? newsItems[index].attributes.image.data.attributes
                             .formats.medium.url
-                        : '',
-                    )}
+                        : ''
+                    }
                     publishedAt={attributes.publishedAt}
                   />
                 ))}

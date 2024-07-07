@@ -4,7 +4,6 @@ import { useTranslation } from 'react-i18next';
 import { UserContext } from '@context/UserContext';
 import { type NewsItem as NewsItemProps } from '@interfaces/interfaces';
 import { fetchData } from '@utils/api';
-import fixUrl from '@utils/fix-url';
 
 import SEOHelmet from '@components/SEOHelmet/SEOHelmet';
 import Loading from '@components/Spinner/Loading/Loading';
@@ -64,13 +63,13 @@ const NewsItem = (): JSX.Element => {
               </p>
               <div className={styles.newsImageContainer}>
                 <img
-                  src={fixUrl(
+                  src={
                     newsItemData.attributes.image.data.attributes.formats
                       .large !== undefined
                       ? newsItemData.attributes.image.data.attributes.formats
                           .large.url
-                      : newsItemData.attributes.image.data.attributes.url,
-                  )}
+                      : newsItemData.attributes.image.data.attributes.url
+                  }
                   alt={t('newsItem.alt', {
                     newsHeading:
                       locale === 'sv'

@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 
-import fixUrl from '@utils/fix-url';
 import {
   type ZoomPosition,
   type ProductPropsImageGallery,
@@ -52,12 +51,12 @@ const ImageGallery = ({ product }: ProductPropsImageGallery): JSX.Element => {
           >
             <img
               className={styles.mainImage}
-              src={fixUrl(
+              src={
                 selectedImage.length !== 0
                   ? selectedImage
                   : product.attributes.images.data[0].attributes.formats.large
-                      .url,
-              )}
+                      .url
+              }
               style={{
                 transformOrigin: `${zoomPosition.x * 100}% ${
                   zoomPosition.y * 100

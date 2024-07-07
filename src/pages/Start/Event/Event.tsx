@@ -5,7 +5,6 @@ import formatDate, { FormatType } from '@utils/format-date';
 import Button from '@components/Button/Button';
 
 import styles from './Event.module.scss';
-import fixUrl from '@utils/fix-url';
 
 interface EventProps {
   date: string;
@@ -22,7 +21,7 @@ const Event = ({ date, title, linkTo, imageUrl }: EventProps): JSX.Element => {
     <article className={styles.eventContainer}>
       {imageUrl.length > 0 && (
         <img
-          src={fixUrl(imageUrl)}
+          src={imageUrl}
           alt={t('start.eventImage')}
           className={styles.eventImage}
         />

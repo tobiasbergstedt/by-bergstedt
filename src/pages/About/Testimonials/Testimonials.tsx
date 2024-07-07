@@ -1,5 +1,3 @@
-import fixUrl from '@utils/fix-url';
-
 import { type AboutData, type Testimonial } from '@interfaces/interfaces';
 
 import testimonialImage1 from '@assets/icons/testimonial-1.svg';
@@ -39,12 +37,12 @@ const Testimonials = ({
             <div className={styles.testimonialBottom}>
               <div className={styles.testimonialImageWrapper}>
                 <img
-                  src={fixUrl(
+                  src={
                     attributes.image.data.attributes.formats.thumbnail !==
-                      undefined
+                    undefined
                       ? attributes.image.data.attributes.formats.thumbnail.url
-                      : attributes.image.data.attributes.url,
-                  )}
+                      : attributes.image.data.attributes.url
+                  }
                   alt={`Profile image of ${attributes.name}`}
                   className={styles.testimonialImage}
                 />

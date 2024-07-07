@@ -14,7 +14,6 @@ import Loading from '@components/Spinner/Loading/Loading';
 import ErrorMessage from '@components/ErrorMessage/ErrorMessage';
 
 import styles from './Start.module.scss';
-import fixUrl from '@utils/fix-url';
 import {
   type NewsItemLocalization,
   type InstaPost,
@@ -142,15 +141,15 @@ const Start = (): JSX.Element => {
                   }`
                 : ''
             }
-            imageUrl={fixUrl(
+            imageUrl={
               newsItems !== null
                 ? newsItems[0].attributes.image.data.attributes.formats
                     .medium !== undefined
                   ? newsItems[0].attributes.image.data.attributes.formats.medium
                       .url
                   : newsItems[0].attributes.image.data.attributes.url
-                : '',
-            )}
+                : ''
+            }
             apiError={apiError}
             publishedAt={
               newsItems !== null ? newsItems[0].attributes.publishedAt : ''
@@ -221,12 +220,12 @@ const Start = (): JSX.Element => {
                         }`}
                         apiError={apiError}
                         isMainArticle={false}
-                        imageUrl={fixUrl(
+                        imageUrl={
                           newsItems !== null
                             ? newsItems[index + 1].attributes.image.data
                                 .attributes.formats.medium.url
-                            : '',
-                        )}
+                            : ''
+                        }
                         publishedAt={attributes.publishedAt}
                       />
                     ))}

@@ -1,5 +1,3 @@
-import fixUrl from '@utils/fix-url';
-
 import styles from './Thumbnail.module.scss';
 import clsx from 'clsx';
 
@@ -16,7 +14,7 @@ const Thumbnail = ({
 }: ThumbnailProps): JSX.Element => {
   return (
     <img
-      src={fixUrl(imageUrl)}
+      src={imageUrl}
       alt="Thumbnail"
       onClick={onThumbnailClick}
       className={clsx(styles.thumbnailImg, {

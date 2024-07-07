@@ -5,7 +5,6 @@ import { useTranslation } from 'react-i18next';
 import { UserContext } from '@context/UserContext';
 import { type ShoppingCartItem } from '@interfaces/interfaces';
 import { renderProductName } from '@utils/cart';
-import fixUrl from '@utils/fix-url';
 import formatPrice from '@utils/format-price';
 
 import { ReactComponent as RemoveCross } from '@assets/icons/close-cross.svg';
@@ -45,7 +44,7 @@ const CartItem = ({
         className={isOrderItem ? styles.orderItemImage : styles.cartItemImage}
       >
         <img
-          src={fixUrl(item.image)}
+          src={item.image}
           alt={`${t('cartItem.imgAlt')} ${
             locale === 'sv' ? item.name.sv : item.name.en
           }`}

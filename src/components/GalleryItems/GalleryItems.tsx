@@ -5,7 +5,6 @@ import clsx from 'clsx';
 
 import { UserContext } from '@context/UserContext';
 import { type Product, type GroupedItems } from '@interfaces/interfaces';
-import fixUrl from '@utils/fix-url';
 import formatPrice from '@utils/format-price';
 
 import SoldOut from '@components/GalleryItems/SoldOut/Soldout';
@@ -70,9 +69,7 @@ const GalleryItems = ({
                   className={clsx(styles.galleryImage, {
                     [styles.isSoldOut]: attributes.amount === 0,
                   })}
-                  src={fixUrl(
-                    attributes.images.data[0].attributes.formats.small.url,
-                  )}
+                  src={attributes.images.data[0].attributes.formats.small.url}
                   alt={
                     locale === t('locales.sv')
                       ? `${t('gallery.coverImage')} ${attributes.title}`

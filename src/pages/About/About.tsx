@@ -1,7 +1,5 @@
 import { useTranslation } from 'react-i18next';
 
-import fixUrl from '@utils/fix-url';
-
 import SEOHelmet from '@components/SEOHelmet/SEOHelmet';
 import ErrorMessage from '@components/ErrorMessage/ErrorMessage';
 import Loading from '@components/Spinner/Loading/Loading';
@@ -34,13 +32,13 @@ const About = (): JSX.Element => {
         <>
           <div className={styles.introductionContainer}>
             <img
-              src={fixUrl(
+              src={
                 aboutData.attributes.profileImage.data.attributes.formats
                   .medium !== undefined
                   ? aboutData.attributes.profileImage.data.attributes.formats
                       .medium.url
-                  : aboutData.attributes.profileImage.data.attributes.url,
-              )}
+                  : aboutData.attributes.profileImage.data.attributes.url
+              }
               alt={t('about.profileImgAlt')}
               className={styles.profileImage}
             />
