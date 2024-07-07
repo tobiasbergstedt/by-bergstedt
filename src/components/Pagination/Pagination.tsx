@@ -22,7 +22,8 @@ interface PaginationProps {
 const Pagination = ({
   pagination,
   onPageChange,
-}: PaginationProps): JSX.Element => {
+}: PaginationProps): JSX.Element | null => {
+  // Explicitly allow null as a return type
   if (pagination === undefined) {
     return null; // Or some other fallback UI
   }
