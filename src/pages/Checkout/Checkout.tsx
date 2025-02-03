@@ -52,6 +52,7 @@ const Checkout = (): JSX.Element => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [apiError, setApiError] = useState<string>('');
   const [showModal, setShowModal] = useState<boolean>(false);
+  const [showErrorModal, setShowErrorModal] = useState<boolean>(true);
 
   const { formState, setFormState, handleChange, validate, errors } =
     useFormState(personalDetailsInitial, optionalFields);
@@ -131,6 +132,19 @@ const Checkout = (): JSX.Element => {
         title={t('helmet.checkout.title')}
         description={t('helmet.checkout.description')}
       />
+      {showErrorModal && (
+        <Modal
+          onClick={() => {
+            setShowErrorModal(false);
+          }}
+        >
+          <div>
+            <h2>{t('checkout.notWorkingHeading')}</h2>
+            <p>{t('checkout.notWorking1')}</p>
+            <p>{t('checkout.notWorking2')}</p>
+          </div>
+        </Modal>
+      )}
       <div className={styles.checkoutContainer}>
         <h1 className={styles.checkoutHeading}>{t('checkout.heading')}</h1>
         <div className={styles.orderInfoContainer}>

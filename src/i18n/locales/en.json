@@ -119,6 +119,9 @@
     "imgAlt": "Thumbnail image of "
   },
   "checkout": {
+    "notWorkingHeading": "We're sorry!",
+    "notWorking1": "Unfortunately, we are currently experiencing some technical issues with the checkout. If you would like to place an order, please contact us by email or phone.",
+    "notWorking2": "Thank you for your patience until we fix the problem.",
     "heading": "Checkout",
     "orderInfo1": "Below you can choose whether you want to have your order sent to you, or if you prefer to pick it up at our workshop, and which payment method you prefer. We will notify you by email when your order has been shipped or is available for pickup. If you have any comments or requests on the order, enter this in the 'Message' field during checkout.",
     "orderInfo2": "Payment is available via Swish, card and cash (card and cash payment is only available for pickup orders). In case of delivery via postal package, we will manually send a payment request via Swish to the phone number you specified when ordering. For those who choose pickup, it is perfectly fine to pay with your preferred payment method at the time of delivery.",

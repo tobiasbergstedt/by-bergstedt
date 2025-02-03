@@ -121,6 +121,9 @@
     "imgAlt": "Miniatyrbild av "
   },
   "checkout": {
+    "notWorkingHeading": "Förlåt oss!",
+    "notWorking1": "Tyvärr har vi lite tekniska problem med kassan för närvarande. Önskar du lägga en beställning hänvisar vi till mail eller telefon.",
+    "notWorking2": "Tack för att ni har överseende tills vi åtgärdat problemet.",
     "heading": "Kassa",
     "orderInfo1": "Nedan kan du välja om du vill få din beställning skickad till dig, eller om du hellre hämtar den i vår verkstad, samt vilket betalsätt du föredrar. Vi meddelar dig via mail när din beställning har skickats eller är tillgänglig för avhämtning. Har du några kommentarer eller önskemål på beställningen, anger du detta i fältet 'Meddelande' här i kassan.",
     "orderInfo2": "Betalning är möjlig via Swish, kort och kontanter (kort- och kontantbetalning är endast tillgängligt vid avhämtning). Vid leverans via postpaket skickar vi manuellt en betalningsförfrågan via Swish till det telefonnummer du angett vid beställning. För de som väljer upphämtning, går det utmärkt att betala med valfritt betalsätt vid leveranstillfället.",
