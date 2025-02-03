@@ -70,14 +70,16 @@ const SingleItem = (): JSX.Element => {
   };
 
   useEffect(() => {
-    const desiredCategorySlug =
-      product?.attributes.product_category.data[0].attributes.slug;
-    const categorySlug = categories?.find(
-      (category) => category.attributes.slug === desiredCategorySlug,
-    );
+    if (product != null && categories != null) {
+      const desiredCategorySlug =
+        product.attributes.product_category.data[0].attributes.slug;
+      const categorySlug = categories.find(
+        (category) => category.attributes.slug === desiredCategorySlug,
+      );
 
-    setCategory(categorySlug);
-  }, [categories]);
+      setCategory(categorySlug);
+    }
+  }, [product, categories]);
 
   return (
     <>
