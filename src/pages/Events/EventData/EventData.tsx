@@ -6,6 +6,7 @@ import {
   getMonthNameFromDate,
 } from '@utils/format-date';
 import clsx from 'clsx';
+import React from 'react';
 
 interface Props {
   title: string;
@@ -26,6 +27,13 @@ const EventData = ({
 }: Props): JSX.Element => {
   const day = new Date(date).getDate().toString().padStart(2, '0');
   const month = getMonthNameFromDate(date).slice(0, 3);
+
+  const formattedDescription = description.split('\n').map((line, index) => (
+    <React.Fragment key={index}>
+      {line}
+      <br />
+    </React.Fragment>
+  ));
 
   return (
     <div className={styles.singleEvent}>
@@ -51,7 +59,7 @@ const EventData = ({
         <p className={styles.location}>
           {location} ({formatDateToLocaleString(date)})
         </p>
-        <p className={styles.description}>{description}</p>
+        <p className={styles.description}>{formattedDescription}</p>
       </div>
     </div>
   );
