@@ -16,8 +16,6 @@ const sendConfirmationData = async (
   setApiError: (data: string) => void,
   locale: string,
 ): Promise<void> => {
-  const apiKey = import.meta.env.VITE_STRAPI_API_KEY;
-
   const date = new Date().toLocaleDateString();
   const currency = i18n.t('misc.currencies.sek');
 
@@ -168,7 +166,6 @@ const sendConfirmationData = async (
     method: 'POST',
     headers: {
       'Content-Type': 'application/x-www-form-urlencoded',
-      Authorization: `Bearer ${apiKey}`,
     },
     body: fetchBodyData.toString(),
   });

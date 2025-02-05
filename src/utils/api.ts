@@ -120,13 +120,11 @@ export const postData = async (
 ): Promise<void> => {
   try {
     setIsLoading(true);
-    const apiKey = import.meta.env.VITE_STRAPI_API_KEY;
 
     const response = await fetch(fixUrl(url), {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        Authorization: `bearer ${apiKey}`,
       },
       // eslint-disable-next-line object-shorthand
       body: JSON.stringify({ data: data }),
@@ -165,7 +163,6 @@ export const updateObjectAmount = async (
   setApiError: (data: string) => void,
 ): Promise<void> => {
   try {
-    const apiKey = import.meta.env.VITE_STRAPI_API_KEY;
     const data = {
       amount: newAmount,
     };
@@ -174,10 +171,8 @@ export const updateObjectAmount = async (
       method: 'PATCH',
       headers: {
         'Content-Type': 'application/json',
-        Authorization: `bearer ${apiKey}`,
       },
-      // eslint-disable-next-line object-shorthand
-      body: JSON.stringify({ data: data }),
+      body: JSON.stringify({ data }),
     });
 
     if (!response.ok) {
